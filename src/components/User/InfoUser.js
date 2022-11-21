@@ -3,17 +3,24 @@ import { useForm } from 'react-hook-form'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import Typography from './modules/components/Typography';
-import AppForm from './modules/views/AppForm';
-import withRoot from './modules/withRoot';
+import Typography from '../../layouts/landingpage/modules/components/Typography';
+import AppForm from '../../layouts/landingpage/modules/views/AppForm';
+import withRoot from '../../layouts/landingpage/modules/withRoot';
 
-function SignUp() {
+function InfoUser() {
   const { handleSubmit: registerSubmit, register: registro } = useForm()
   // const [sexo, setSexo] = useState('Otro');
 
 
   const onSubmit = data => {
     console.log(data)
+  }
+
+  const prueba = {
+    'Name': 'Diego Norrea',
+    'City': 'Cali',
+    'BirthDate': '2000-01-01',
+    'Sex': 'Masculino'
   }
 
   const sexo = [
@@ -39,15 +46,16 @@ function SignUp() {
       <>
         <AppForm >
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Registrarse
+            Mi perfil
           </Typography>
           <Typography variant="body2" align="center">
-              ScrapWare
+              Editar
           </Typography>
           <div>
             <form onSubmit = {registerSubmit(onSubmit)}>
             <TextField
                   label="Nombre"
+                  defaultValue={prueba.Name}
                   {...registro('nombre', { required: true })}
                   inputProps={{
                     maxLength: 50
@@ -56,6 +64,7 @@ function SignUp() {
               />
               <TextField
                   label="Ciudad"
+                  defaultValue={prueba.City}
                   {...registro('ciudad', { required: true })}
                   inputProps={{
                     maxLength: 50
@@ -65,6 +74,7 @@ function SignUp() {
               <TextField
                   label="Fecha de nacimiento"
                   type="date"
+                  defaultValue={prueba.BirthDate}
                   InputLabelProps={{ shrink: true }} 
                   {...registro('fecha', { required: true })}
                   inputProps={{
@@ -75,7 +85,7 @@ function SignUp() {
               <TextField
                   label="Sexo"
                   select
-                  defaultValue = {''}
+                  defaultValue={prueba.Sex}
                   {...registro('sexo', { required: true })}
                   sx={{ mx: 4, my: 2, width: '40ch' }}
               >
@@ -86,7 +96,7 @@ function SignUp() {
                 ))}
               </TextField>
             </form>
-            <Button sx={{ mx: 9, my: 2, width: '40ch' }} variant='contained' onClick={registerSubmit(onSubmit)} >Registrarse</Button>
+            <Button sx={{ mx: 9, my: 2, width: '40ch' }} variant='contained' onClick={registerSubmit(onSubmit)} >Actualizar</Button>
           </div>
         </AppForm>
       {/* <AppFooter /> */}
@@ -94,4 +104,4 @@ function SignUp() {
   );
 }
 
-export default withRoot(SignUp);
+export default withRoot(InfoUser);
