@@ -1,30 +1,42 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form'
+import { useEffect, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react';
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { useAuth0 } from '@auth0/auth0-react';
-import Typography from './modules/components/Typography';
-import AppForm from './modules/views/AppForm';
-import withRoot from './modules/withRoot';
+import Typography from '../../layouts/landingpage/modules/components/Typography';
+import AppForm from '../../layouts/landingpage/modules/views/AppForm';
+import withRoot from '../../layouts/landingpage/modules/withRoot';
 import { useExternalApi } from '../../hooks/UserResponse';
 
-function SignUp() {
+function InfoUser() {
   const { handleSubmit: registerSubmit, register: registro } = useForm()
-  const { user } = useAuth0();
+  // const [sexo, setSexo] = useState('Otro');
+  
+  const { user, isLoading } = useAuth0()
+  
+  const [user1, setUser1] = useState({})
+
 
   const {
-    createAccount
+    getUser,
+    updateUser
   } = useExternalApi()
 
   const onSubmit = data => {
     console.log(data)
-    /* getUser(user.sub.replace('|','_')) */
-    createAccount(data, user.sub.replace('|','_'), user.email)
-    // setTimeout(() => {
-    //  createUser(data, user.sub.replace('|','_'))
-    // }, 2000)
+    updateUser(data, user.sub.replace('|','_'))
   }
+
+  /* 
+    const prueba = {
+    'Name': 'Diego Norrea',
+    'City': 'Cali',
+    'BirthDate': '2000-01-01',
+    'Sex': 'Masculino'
+  } 
+  */
 
   const sexo = [
     {
@@ -41,23 +53,31 @@ function SignUp() {
     },
   ]
 
+  useEffect(() => {
+    getUser(user.sub.replace('|','_'), setUser1)
+    // eslint-disable-next-line
+  }, [])
+
   /* const handleChange = () => {
     setSexo()
   } */
 
+  if (JSON.stringify(user1) === '{}' && !isLoading ) return <></>
+  
   return (
       <>
         <AppForm >
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Registrarse
+            Mi perfil
           </Typography>
           <Typography variant="body2" align="center">
-              ScrapWare
+              Editar
           </Typography>
           <div>
             <form onSubmit = {registerSubmit(onSubmit)}>
             <TextField
                   label="Nombre"
+                  defaultValue={user1.name}
                   {...registro('nombre', { required: true })}
                   inputProps={{
                     maxLength: 50
@@ -66,6 +86,7 @@ function SignUp() {
               />
               <TextField
                   label="Ciudad"
+                  defaultValue={user1.city}
                   {...registro('ciudad', { required: true })}
                   inputProps={{
                     maxLength: 50
@@ -75,6 +96,7 @@ function SignUp() {
               <TextField
                   label="Fecha de nacimiento"
                   type="date"
+                  defaultValue={user1.birth_date}
                   InputLabelProps={{ shrink: true }} 
                   {...registro('fecha', { required: true })}
                   inputProps={{
@@ -85,7 +107,7 @@ function SignUp() {
               <TextField
                   label="Sexo"
                   select
-                  defaultValue = {''}
+                  defaultValue={user1.sex}
                   {...registro('sexo', { required: true })}
                   sx={{ mx: 4, my: 2, width: '40ch' }}
               >
@@ -96,7 +118,7 @@ function SignUp() {
                 ))}
               </TextField>
             </form>
-            <Button sx={{ mx: 9, my: 2, width: '40ch' }} variant='contained' onClick={registerSubmit(onSubmit)} >Registrarse</Button>
+            <Button sx={{ mx: 9, my: 2, width: '40ch' }} variant='contained' onClick={registerSubmit(onSubmit)} >Actualizar</Button>
           </div>
         </AppForm>
       {/* <AppFooter /> */}
@@ -104,4 +126,4 @@ function SignUp() {
   );
 }
 
-export default withRoot(SignUp);
+export default withRoot(InfoUser);

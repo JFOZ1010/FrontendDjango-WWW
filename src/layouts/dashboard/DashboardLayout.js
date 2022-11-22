@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react'
 // @mui
 import { styled } from '@mui/material/styles';
 //
@@ -34,7 +35,9 @@ const Main = styled('div')(({ theme }) => ({
 
 export default function DashboardLayout() {
   const [open, setOpen] = useState(false);
+  const { isLoading } = useAuth0()
 
+  if (isLoading) return <></>
   return (
     <StyledRoot>
       <Header onOpenNav={() => setOpen(true)} />
