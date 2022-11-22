@@ -3,17 +3,27 @@ import { useForm } from 'react-hook-form'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { useAuth0 } from '@auth0/auth0-react';
 import Typography from './modules/components/Typography';
 import AppForm from './modules/views/AppForm';
 import withRoot from './modules/withRoot';
+import { useExternalApi } from '../../hooks/UserResponse';
 
 function SignUp() {
   const { handleSubmit: registerSubmit, register: registro } = useForm()
-  // const [sexo, setSexo] = useState('Otro');
+  const { user } = useAuth0();
 
+  const {
+    createAccount
+  } = useExternalApi()
 
   const onSubmit = data => {
     console.log(data)
+    /* getUser(user.sub.replace('|','_')) */
+    createAccount(data, user.sub.replace('|','_'), user.email)
+    // setTimeout(() => {
+    //  createUser(data, user.sub.replace('|','_'))
+    // }, 2000)
   }
 
   const sexo = [

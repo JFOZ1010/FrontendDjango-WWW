@@ -1,27 +1,42 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form'
+import { useEffect, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react';
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
 import AppForm from '../../layouts/landingpage/modules/views/AppForm';
 import withRoot from '../../layouts/landingpage/modules/withRoot';
+import { useExternalApi } from '../../hooks/UserResponse';
 
 function InfoUser() {
   const { handleSubmit: registerSubmit, register: registro } = useForm()
   // const [sexo, setSexo] = useState('Otro');
+  
+  const { user, isLoading } = useAuth0()
+  
+  const [user1, setUser1] = useState({})
 
+
+  const {
+    getUser,
+    updateUser
+  } = useExternalApi()
 
   const onSubmit = data => {
     console.log(data)
+    updateUser(data, user.sub.replace('|','_'))
   }
 
-  const prueba = {
+  /* 
+    const prueba = {
     'Name': 'Diego Norrea',
     'City': 'Cali',
     'BirthDate': '2000-01-01',
     'Sex': 'Masculino'
-  }
+  } 
+  */
 
   const sexo = [
     {
@@ -38,10 +53,17 @@ function InfoUser() {
     },
   ]
 
+  useEffect(() => {
+    getUser(user.sub.replace('|','_'), setUser1)
+    // eslint-disable-next-line
+  }, [])
+
   /* const handleChange = () => {
     setSexo()
   } */
 
+  if (JSON.stringify(user1) === '{}' && !isLoading ) return <></>
+  
   return (
       <>
         <AppForm >
@@ -55,7 +77,7 @@ function InfoUser() {
             <form onSubmit = {registerSubmit(onSubmit)}>
             <TextField
                   label="Nombre"
-                  defaultValue={prueba.Name}
+                  defaultValue={user1.name}
                   {...registro('nombre', { required: true })}
                   inputProps={{
                     maxLength: 50
@@ -64,7 +86,7 @@ function InfoUser() {
               />
               <TextField
                   label="Ciudad"
-                  defaultValue={prueba.City}
+                  defaultValue={user1.city}
                   {...registro('ciudad', { required: true })}
                   inputProps={{
                     maxLength: 50
@@ -74,7 +96,7 @@ function InfoUser() {
               <TextField
                   label="Fecha de nacimiento"
                   type="date"
-                  defaultValue={prueba.BirthDate}
+                  defaultValue={user1.birth_date}
                   InputLabelProps={{ shrink: true }} 
                   {...registro('fecha', { required: true })}
                   inputProps={{
@@ -85,7 +107,7 @@ function InfoUser() {
               <TextField
                   label="Sexo"
                   select
-                  defaultValue={prueba.Sex}
+                  defaultValue={user1.sex}
                   {...registro('sexo', { required: true })}
                   sx={{ mx: 4, my: 2, width: '40ch' }}
               >
