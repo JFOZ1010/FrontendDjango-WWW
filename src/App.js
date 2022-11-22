@@ -16,7 +16,7 @@ import SignUp from './layouts/landingpage/SignUp'
 import SignUpAuth from './layouts/landingpage/SignUpAuth'
 import DashboardLayout from './layouts/dashboard/DashboardLayout'
 import InfoUser from './components/User/InfoUser'
-
+import UserPage from './pages/UserPage'
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +31,7 @@ export default function App() {
           <Route path = "registro" element = {<SignUp/>} />
           <Route path = "prueba" element = {<SignUpAuth/>} />
           <Route path = "actualizar" element = {<InfoUser />} />
+          <Route path = "gestion_usuarios" element = {<UserPage/>} />
         </Route>
       </Routes>
     </ThemeProvider>

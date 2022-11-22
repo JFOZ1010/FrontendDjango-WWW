@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // @mui
 import {
   Card,
@@ -23,6 +23,7 @@ import {
   TablePagination,
 } from '@mui/material';
 // components
+import { useExternalApi } from '../hooks/AdminResponse';
 import Label from '../components/label';
 import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
@@ -31,14 +32,15 @@ import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
 // mock
 import USERLIST from '../_mock/user';
 
+
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'isVerified', label: 'Verified', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
+  { id: 'name', label: 'Nombre', alignRight: false },
+  { id: 'company', label: 'Email', alignRight: false },
+  { id: 'role', label: 'Rol', alignRight: false },
+  { id: 'isVerified', label: 'Ciudad', alignRight: false },
+  { id: 'status', label: 'Estado', alignRight: false },
   { id: '' },
 ];
 
@@ -88,6 +90,24 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
+  // Added by Julian
+
+  const [usuarios, setUsuarios] = useState({})
+
+  const {
+    // getAllUsersDetailed,
+    getAllAccounts,
+    // getAllSupplier,
+    // getAllUsers
+  } = useExternalApi()
+
+  useEffect(() => {
+    getAllAccounts(setUsuarios)
+    console.log(usuarios)
+    // eslint-disable-next-line
+  }, [usuarios])
+
+  //
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
   };
@@ -149,16 +169,16 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> User | Minimal UI </title>
+        <title> Gestión de Usuarios </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+            Gestión de Usuarios
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New User
+            Nuevo Usuario
           </Button>
         </Stack>
 
@@ -232,13 +252,13 @@ export default function UserPage() {
                           }}
                         >
                           <Typography variant="h6" paragraph>
-                            Not found
+                            No encontrado
                           </Typography>
 
                           <Typography variant="body2">
-                            No results found for &nbsp;
+                            No hay resultados para &nbsp;
                             <strong>&quot;{filterName}&quot;</strong>.
-                            <br /> Try checking for typos or using complete words.
+                            <br /> Verifique o utilice palabras completas
                           </Typography>
                         </Paper>
                       </TableCell>
