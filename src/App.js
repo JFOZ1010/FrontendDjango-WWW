@@ -5,7 +5,7 @@ import {
   Route
 } from 'react-router-dom'
 
-// theme #Kevin
+import Router from './routes';
 import ThemeProvider from './theme';
 // components
 import ScrollToTop from './components/scroll-to-top';
@@ -16,6 +16,7 @@ import SignUp from './layouts/landingpage/SignUp'
 import SignUpAuth from './layouts/landingpage/SignUpAuth'
 import DashboardLayout from './layouts/dashboard/DashboardLayout'
 import InfoUser from './components/User/InfoUser'
+
 
 
 // ----------------------------------------------------------------------
