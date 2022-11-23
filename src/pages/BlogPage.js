@@ -6,7 +6,9 @@ import Iconify from '../components/iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
 import POSTS from '../_mock/blog';
+//import NewCreate from '../src/components/News/NewCreate'
 
+//import { useEffect, useState } from 'react'
 // ----------------------------------------------------------------------
 
 const SORT_OPTIONS = [
@@ -29,7 +31,7 @@ export default function BlogPage() {
           <Typography variant="h4" gutterBottom>
             Blog
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} onClick = {NewCreate}>
             New Post
           </Button>
         </Stack>
