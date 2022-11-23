@@ -6,9 +6,10 @@ import Iconify from '../components/iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
 import POSTS from '../_mock/blog';
-//import NewCreate from '../src/components/News/NewCreate'
+// import { useNavigate } from 'react-router'
+// import NewCreate from '../src/components/News/NewCreate'
 
-//import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 // ----------------------------------------------------------------------
 
 const SORT_OPTIONS = [
@@ -20,6 +21,8 @@ const SORT_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function BlogPage() {
+
+  // nav = useNavigate()
   return (
     <>
       <Helmet>
@@ -31,7 +34,7 @@ export default function BlogPage() {
           <Typography variant="h4" gutterBottom>
             Blog
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} onClick = {NewCreate}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
             New Post
           </Button>
         </Stack>

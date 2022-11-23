@@ -1,5 +1,5 @@
 
-function NewCreate(){
+export default function NewCreate(){
 
     return (
         <div>

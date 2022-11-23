@@ -1,10 +1,12 @@
 // routes
+// import {Routes,Route} from 'react-router-dom'
 import Router from './routes';
 // theme
 import ThemeProvider from './theme';
 // components
 import ScrollToTop from './components/scroll-to-top';
 import { StyledChart } from './components/chart';
+
 
 // ----------------------------------------------------------------------
 
