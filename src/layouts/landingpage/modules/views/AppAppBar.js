@@ -5,6 +5,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 import Button from '@mui/material/Button'
 import AppBar from '../components/AppBar';
 import Toolbar from '../components/Toolbar';
+import DropdownLogin from '../components/LogComponents/DropdownLogin'
+import DropdownRegister from '../components/LogComponents/DropdownRegister'
 
 const rightLink = {
   fontSize: 16,
@@ -32,15 +34,8 @@ function AppAppBar() {
           </Button>
           { !isAuthenticated &&  
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-              <Button
-              color="inherit"
-              variant="h6"
-              underline="none"
-              onClick = { () => loginWithRedirect()}
-              sx={rightLink}
-              >
-                {'Login'}
-              </Button>
+              <DropdownLogin /> 
+              <DropdownRegister />
             </Box>
             }
             { isAuthenticated && 
