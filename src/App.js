@@ -17,6 +17,7 @@ import SignUpAuth from './layouts/landingpage/SignUpAuth'
 import DashboardLayout from './layouts/dashboard/DashboardLayout'
 import InfoUser from './components/User/InfoUser'
 import NewCreate from './components/News/NewCreate';
+import BlogPage from './pages/BlogPage';
 
 
 
@@ -30,6 +31,7 @@ export default function App() {
       <Routes>
         <Route path = "/" element = {<Home /> } /> 
         <Route path = "/dashboard" element = {<DashboardLayout/>}>
+          <Route path = "blog" element = {<BlogPage/>}/>
           <Route path = "registro" element = {<SignUp/>} />
           <Route path = "prueba" element = {<SignUpAuth/>} />
           <Route path = "actualizar" element = {<InfoUser />} />

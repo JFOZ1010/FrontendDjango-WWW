@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { Link as LinkNew} from 'react-router-dom'
 // @mui
 import { Grid, Button, Container, Stack, Typography } from '@mui/material';
 // components
@@ -34,7 +35,7 @@ export default function BlogPage() {
           <Typography variant="h4" gutterBottom>
             Blog
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} component = {LinkNew} to = {'/dashboard/NewCreate'}>
             New Post
           </Button>
         </Stack>

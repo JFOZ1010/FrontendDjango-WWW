@@ -21,10 +21,10 @@ export const useExternalApi = () => {
         }
     }
 
-    /*const getUser = async (id, setUser) => {
+    const allNew = async () => {
 
         const config = {
-            url: `${apiServerUrl}/api/user/retrieve/${id}`,
+            url: `${apiServerUrl}/New/all/`,
             method: 'GET',
             headers: {},
             data: {}
@@ -33,9 +33,25 @@ export const useExternalApi = () => {
         const data = await makeRequest({config})
 
         console.log(data)
-        setUser(data)
+        return data;
 
-    }*/
+    } 
+
+    const getNew = async (id, setNew) => {
+
+        const config = {
+            url: `${apiServerUrl}/New/get/${id}`,
+            method: 'GET',
+            headers: {},
+            data: {}
+        }
+
+        const data = await makeRequest({config})
+
+        console.log(data)
+        setNew(data)
+
+    }
 
     const createNew = async (datos) => {
 
@@ -46,8 +62,8 @@ export const useExternalApi = () => {
             },
             data: {
                 "new_title": datos.new_title,
-                "new_image": datos.new_image,
-                "new_description": datos.new_description
+                "new_image": "IMAGEN GENERICA",
+                "new_description": JSON.stringify(datos.new_description)
             }
         }
 
@@ -57,27 +73,27 @@ export const useExternalApi = () => {
 
     }
 
-    // const updateUser = async (datos, id) => {
+    const updateNew = async (datos, id) => {
 
-    //     const config = {
-    //         url: `${apiServerUrl}/api/user/update/${id}`,
-    //         method: 'PUT',
-    //         headers: {
-    //         },
-    //         data: {
-    //             "user_type": 1,
-    //             "name": datos.nombre,
-    //             "city": datos.ciudad,
-    //             "birth_date": datos.fecha,
-    //             "sex": datos.sexo
-    //         }
-    //     }
+        const config = {
+            url: `${apiServerUrl}'New/delete/${id}`,
+            method: 'PUT',
+            headers: {
+            },
+            data: {
+                "new_id": id,
+                "new_date": datos.new_date,
+                "new_title": datos.new_title,
+                "new_image": "IMAGEN GENERICA",
+                "new_description": JSON.stringify(datos.new_description)
+            }
+        }
 
-    //     const data = await makeRequest({config})
+        const data = await makeRequest({config})
 
-    //     console.log(data)
+        console.log(data)
 
-    // }
+    }
 
     // const createAccount = async (datos, id, email) => {
 
@@ -104,5 +120,8 @@ export const useExternalApi = () => {
     
     return {
         createNew,
+        allNew,
+        updateNew,
+        getNew,
     }
 }
