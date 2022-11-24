@@ -21,6 +21,7 @@ import {
   IconButton,
   TableContainer,
   TablePagination,
+  LinearProgress,
 } from '@mui/material';
 // components
 import { useExternalApi } from '../hooks/AdminResponse';
@@ -29,17 +30,17 @@ import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
-// mock
-import USERLIST from '../_mock/user';
+// mock -> Users made by Faker: Not used
+// import USERLIST from '../_mock/user';
 
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Nombre', alignRight: false },
-  { id: 'company', label: 'Email', alignRight: false },
+  { id: 'city', label: 'Ciudad', alignRight: false },
   { id: 'role', label: 'Rol', alignRight: false },
-  { id: 'isVerified', label: 'Ciudad', alignRight: false },
+  { id: 'email', label: 'Email', alignRight: false },
   { id: 'status', label: 'Estado', alignRight: false },
   { id: '' },
 ];
@@ -82,7 +83,10 @@ export default function UserPage() {
 
   const [order, setOrder] = useState('asc');
 
+  // selected names - Hook by template
   const [selected, setSelected] = useState([]);
+  // selected ids - Hook by Julian
+  // const [selectedIds, setSelectedIds] = useState([])
 
   const [orderBy, setOrderBy] = useState('name');
 
@@ -92,28 +96,38 @@ export default function UserPage() {
 
   // Added by Julian
 
-  const [usuarios, setUsuarios] = useState({})
+  const [USERLIST, setUsuarios] = useState({})
+
+  const [userrow, setUserrow] = useState({})
+
+  const [isLoading, setLoading] = useState('Cargando informacion...')
+
 
   const {
-    // getAllUsersDetailed,
-    getAllAccounts,
-    // getAllSupplier,
-    // getAllUsers
+    getAllAccountsDetailed,
+    setStatusUser,
+    // setStatusUserAux, getAllUsersDetailed,
   } = useExternalApi()
 
   useEffect(() => {
-    getAllAccounts(setUsuarios)
-    console.log(usuarios)
+
+    getAllAccountsDetailed(setUsuarios)
+      .then(() => {
+        setLoading('Usuarios')
+      })
+    // console.log('Initialize Users: ', USERLIST)
     // eslint-disable-next-line
-  }, [usuarios])
+  }, [])
 
   //
-  const handleOpenMenu = (event) => {
+  const handleOpenMenu = (event, row) => {
     setOpen(event.currentTarget);
+    setUserrow(row)
   };
 
   const handleCloseMenu = () => {
     setOpen(null);
+    setUserrow({})
   };
 
   const handleRequestSort = (event, property) => {
@@ -160,10 +174,48 @@ export default function UserPage() {
     setFilterName(event.target.value);
   };
 
+  const handleChangeStatus = (status) => {
+    setStatusUser(status, userrow.id)
+      .then(() => {
+        setLoading('Cambiando estado...')
+        getAllAccountsDetailed(setUsuarios)
+          .then(() => {
+            setLoading('Usuarios')
+          })
+      })
+  }
+
+  const checkStatus = userrow.status === 'Activo'
+
+  if (Object.keys(USERLIST).length === 0) {
+    // console.log('No users loaded yet :c')
+    return(
+      <>
+        <Helmet>
+          <title> Gestión de Usuarios </title>
+        </Helmet>
+        <Container>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+            <Typography variant="h4" gutterBottom align = "center" >
+              Cargando usuarios
+            </Typography>
+            <Button variant="contained" startIcon={<Iconify icon="eva:clock-outline" />}>
+              {isLoading}
+            </Button>
+          </Stack>
+          <Card>
+            <Stack sx={{ width: '100%' }} spacing={2}>
+              <LinearProgress color = "secondary" />
+            </Stack>
+          </Card>
+        </Container>
+      </>
+    )
+  } 
+  // console.log('User list deatiled received!', USERLIST)
+  // Filtering information 
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
-
   const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
-
   const isNotFound = !filteredUsers.length && !!filterName;
 
   return (
@@ -177,8 +229,8 @@ export default function UserPage() {
           <Typography variant="h4" gutterBottom>
             Gestión de Usuarios
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-            Nuevo Usuario
+          <Button variant="contained" startIcon={<Iconify icon="eva:layers-outline" />}>
+            {isLoading}
           </Button>
         </Stack>
 
@@ -199,7 +251,9 @@ export default function UserPage() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                    // id, name, role, status, company, avatarUrl, isVerified <- template
+                    // id, name, role, status, city, avatarUrl, email <- our data
+                    const { id, name, role, status, city, avatarUrl, email } = row;
                     const selectedUser = selected.indexOf(name) !== -1;
 
                     return (
@@ -217,18 +271,18 @@ export default function UserPage() {
                           </Stack>
                         </TableCell>
 
-                        <TableCell align="left">{company}</TableCell>
+                        <TableCell align="left">{city}</TableCell>
 
                         <TableCell align="left">{role}</TableCell>
 
-                        <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
+                        <TableCell align="left">{email}</TableCell>
 
                         <TableCell align="left">
-                          <Label color={(status === 'banned' && 'error') || 'success'}>{sentenceCase(status)}</Label>
+                          <Label color={(status === 'Inactivo' && 'error') || 'success'}>{sentenceCase(status)}</Label>
                         </TableCell>
 
                         <TableCell align="right">
-                          <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
+                          <IconButton size="large" color="inherit" onClick={(event) => {handleOpenMenu(event, row)}}>
                             <Iconify icon={'eva:more-vertical-fill'} />
                           </IconButton>
                         </TableCell>
@@ -299,14 +353,14 @@ export default function UserPage() {
           },
         }}
       >
-        <MenuItem>
-          <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
-          Edit
+        <MenuItem disabled = {checkStatus} onClick = {() => {handleChangeStatus(true)}}> 
+          <Iconify icon={'eva:person-done-fill'} sx={{ mr: 2 }} />
+          Activar
         </MenuItem>
 
-        <MenuItem sx={{ color: 'error.main' }}>
-          <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
-          Delete
+        <MenuItem  disabled = {!checkStatus} sx={{ color: 'error.main' }} onClick = {() => {handleChangeStatus(false)}}>
+          <Iconify icon={'eva:person-delete-fill'} sx={{ mr: 2 }} />
+          Desactivar
         </MenuItem>
       </Popover>
     </>

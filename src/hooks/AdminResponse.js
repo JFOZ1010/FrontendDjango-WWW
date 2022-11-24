@@ -30,112 +30,116 @@ export const useExternalApi = () => {
         }
     }
 
-    const getAllUsersDetailed = async (setUsersDetailed) => {
-        var accounts_retreived, users_retreived, sups_retreived;
-        const RELATED_DATA = [];
+    const getAllAccountsDetailed = async (setUsersDetailed) => {
+        var users_retreived, sups_retreived;
         var USERLIST = [];
+        
         // Using django API to retreive all acounts, users and sups information
-        accounts_retreived = await getAllAccounts();
-        users_retreived = await getAllUsers();
-        sups_retreived = await getAllSuppliers();
-        const COMBINED_DATA = users_retreived.concat(sups_retreived)
+        users_retreived = await getAllUsersDetailed();
+        sups_retreived = await getAllSupsDetailed();
         
-        /* Dividing information in 2 sections: Account_User or Account_Supplier Creating USERLIST, 
-         giving detailed and nested information between user - account or supplier - account */ 
-        for (const x of accounts_retreived) {
-            for (const y of COMBINED_DATA) {
-                if (x.user_id === y.user_id) {
-                    RELATED_DATA.push([x,y]);
-                    continue;
-                }
-            }
-        }
-
         // then building USERLIST, JSON that is going to be sent to UserPage
-        let role_name; let city; let name_of = '';
-            let counter = 0; 
-            for (const i of RELATED_DATA) {
-              if (counter === 24) {
-                counter = 0;
-              }
-              counter++;
-              switch(i[0].user_type) {
-                case 1 : {
-                  role_name = 'Usuario';
-                  name_of = i[1].name;
-                  city = i[1].city; 
-                  break; 
-                }
-                case 2 : {
-                  role_name = 'Proveedor';
-                  name_of = i[1].supplier_name;
-                  city = '--';
-                  break; 
-                }
-                case 3 : {
-                  role_name = 'Admin';
-                  name_of = i[1].name;
-                  city = i[1].city;
-                  break;
-                }
-              }
-              USERLIST.push({
-                id: i[0].user_id, 
-                avatarUrl: `/assets/images/avatars/avatar_${counter}.jpg`,
-                name: name_of,
-                city: city,
-                email: i[0].email, 
-                status: i[0].user_status,
-                role: role_name,
-              })
+        // first, user time 
+        let role_name; let status; let contador = 0;  
+        // console.log(users_retreived, 'usuarios recibidos!')
+        // console.log(sups_retreived, 'suppliers recibidos!')
+        // console.log('*** Recibiendo informacion')
+        const users_builded = users_retreived.map(item => {
+            if (contador === 24) {
+                contador = 0; 
             }
-            // console.log(USERLIST, 'Lo que se deberia mandar')
-            setUsersDetailed(USERLIST);
+            contador++
+            role_name = (item.user_id.user_type === 3) ? 'Admin' : 'Usuario'
+            status = (item.user_id.user_status) ? 'Activo' : 'Inactivo' 
+            return ({
+                id: item.user_id.user_id,
+                avatarUrl: `/assets/images/avatars/avatar_${contador}.jpg`,
+                name: item.name, 
+                city: item.city,
+                email: item.user_id.email,
+                status: status,
+                role: role_name,
+            })           
+        })
+        contador = 0; 
+        const sups_builded = sups_retreived.map(item => {
+            if (contador === 24) {
+                contador = 0;
+            }
+            contador++
+            status = (item.user_id.user_status) ? 'Activo' : 'Inactivo'
+            return ({
+                id: item.user_id.user_id,
+                avatarUrl: `/assets/images/avatars/avatar_${contador}.jpg`,
+                name: item.supplier_name, 
+                city: '--',
+                email: item.user_id.email,
+                status: status,
+                role: 'Proveedor',
+            }) 
+        })
+        USERLIST = users_builded.concat(sups_builded)
+        // console.log(USERLIST, 'Lo que se deberia mandar')
+        setUsersDetailed(USERLIST);
     }
 
-    const getAllAccounts = async (setAccounts) => {
-        
+    const getAllUsersDetailed = async () => {
         const config = {
-            url : `${apiServerUrl}api/retreive_all_accounts`,
+            url : `${apiServerUrl}/api/user/retreive/all/detailed`,
             method: 'GET',
             headers: {},
             data: {}
         }
-
         const data = await makeRequest({config})
-        setAccounts(data)
+        return data
     }
 
-    const getAllUsers = async (setUsers) => {
+    const getAllSupsDetailed = async () => {
         const config = {
-            url : `${apiServerUrl}api/retreive_all_users`,
+            url : `${apiServerUrl}/api/supplier/retreive/all/detailed`,
             method: 'GET',
             headers: {},
             data: {}
         }
-
         const data = await makeRequest({config})
-        setUsers(data)
+        return data
     }
 
-    const getAllSuppliers = async (setSups) => {
+
+    // Update status of accounts!! Admin only
+    const setStatusUser = async (status, id) => {
+        // console.log('si llegue')
         const config = {
-            url : `${apiServerUrl}api/retreive_all_suppliers`,
-            method: 'GET',
-            headers: {},
-            data: {}
+            url : `${apiServerUrl}/api/admin/update_status/${id}`,
+            method : 'PUT',
+            headers : {
+            },
+            data : {
+                "user_id": id,
+                "user_status" : status
+            }
         }
-
         const data = await makeRequest({config})
-        setSups(data)
+        console.log(data)
     }
 
-    
+    const setStatusUserAux = async (status, list_id, admin_id) => {
+        list_id.map(item => {
+            if (item === admin_id) {
+                console.log('Unable to deactivate or activate itself')
+            } else {
+                setStatusUser(status, item)
+            }
+            return console.log('Users have been changed!')
+        })
+    }
+
     return {
         getAllUsersDetailed,
-        getAllAccounts,
-        getAllUsers,
-        getAllSuppliers
+        getAllSupsDetailed,
+        getAllAccountsDetailed,
+        setStatusUser,
+        setStatusUserAux
     }
 }
 
