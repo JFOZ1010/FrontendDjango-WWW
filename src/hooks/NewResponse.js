@@ -37,7 +37,7 @@ export const useExternalApi = () => {
 
     } 
 
-    const getNew = async (id, setNew) => {
+    const getNew = async (id, setNoticia) => {
 
         const config = {
             url: `${apiServerUrl}/New/get/${id}`,
@@ -49,7 +49,7 @@ export const useExternalApi = () => {
         const data = await makeRequest({config})
 
         console.log(data)
-        setNew(data)
+        setNoticia(data)
 
     }
 
