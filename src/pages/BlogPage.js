@@ -1,16 +1,20 @@
-import { Helmet } from 'react-helmet-async';
-import { Link as LinkNew} from 'react-router-dom'
-// @mui
 import { Grid, Button, Container, Stack, Typography } from '@mui/material';
+import { Link as LinkNew} from 'react-router-dom'; 
+import { useEffect, useMemo, useState } from 'react'; 
+import { Helmet } from 'react-helmet-async';
+import { useExternalApi } from '../hooks/NewResponse';
+// @mui
 // components
 import Iconify from '../components/iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
 import POSTS from '../_mock/blog';
+
+
 // import { useNavigate } from 'react-router'
 // import NewCreate from '../src/components/News/NewCreate'
 
-// import { useEffect, useState } from 'react'
+
 // ----------------------------------------------------------------------
 
 const SORT_OPTIONS = [
@@ -20,10 +24,45 @@ const SORT_OPTIONS = [
 ];
 
 // ----------------------------------------------------------------------
+// python3 manage.py runserver 6060
+
+// crear una funcion para mostrar la data obtenida de allNew useExternalApi
+
 
 export default function BlogPage() {
 
-  // nav = useNavigate()
+  const [new1, setNew1] = useState({})
+
+  const {getAllNew} = useExternalApi()
+
+  useEffect(() => {
+    getAllNew(setNew1)
+    // eslint-disable-next-line
+  }, [])
+
+  useEffect(() => {
+    // map new1
+    new1.map((new1) => {
+      console.log(new1)
+      return new1; 
+    }) 
+  }, [new1])
+
+  // const {allNew} = useExternalApi()
+  // const [data, setData] = useState({})
+
+  // const news = useMemo(() => allNew(), [allNew]) 
+
+ // hacer un useEffect de allNew, para que se ejecute cuando se renderice la pagina
+ /* 
+  useEffect(() => {
+    setData(allNew())
+
+  }, [])
+  */
+
+
+
   return (
     <>
       <Helmet>
@@ -35,7 +74,7 @@ export default function BlogPage() {
           <Typography variant="h4" gutterBottom>
             Blog
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} component = {LinkNew} to = {'/dashboard/NewCreate'}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
             New Post
           </Button>
         </Stack>
@@ -44,13 +83,8 @@ export default function BlogPage() {
           <BlogPostsSearch posts={POSTS} />
           <BlogPostsSort options={SORT_OPTIONS} />
         </Stack>
-
-        <Grid container spacing={3}>
-          {POSTS.map((post, index) => (
-            <BlogPostCard key={post.id} post={post} index={index} />
-          ))}
-        </Grid>
       </Container>
     </>
   );
+  // nav = useNavigate()
 }
