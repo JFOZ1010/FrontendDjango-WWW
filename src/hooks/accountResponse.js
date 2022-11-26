@@ -26,7 +26,7 @@ export const useExternalApi = () => {
     const getInfoAccount = async (id) => {
 
         const config = {
-            url: `${apiServerUrl}/api/account/retrieve/auth/`,
+            url: `${apiServerUrl}/api/auth/retrieve`,
             method: 'POST',
             headers: {},
             data: {

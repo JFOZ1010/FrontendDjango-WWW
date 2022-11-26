@@ -19,7 +19,7 @@ function AppFormNew(props) {
         <Box sx={{ mt: 0, mb: 12 }}>
           <Paper
             elevation = {3}
-            // background="light"
+            background="white"
             sx={{ py: { xs: 4, md: 8 }, px: { xs: 3, md: 6 } }}
           >
             {children}

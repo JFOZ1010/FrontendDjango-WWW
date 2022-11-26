@@ -24,7 +24,7 @@ export const useExternalApi = () => {
     const allNew = async () => {
 
         const config = {
-            url: `${apiServerUrl}/New/all/`,
+            url: `${apiServerUrl}/api/new/all`,
             method: 'GET',
             headers: {},
             data: {}
@@ -40,7 +40,7 @@ export const useExternalApi = () => {
     const getNew = async (id, setNoticia) => {
 
         const config = {
-            url: `${apiServerUrl}/New/get/${id}`,
+            url: `${apiServerUrl}/api/new/get/${id}`,
             method: 'GET',
             headers: {},
             data: {}
@@ -56,7 +56,7 @@ export const useExternalApi = () => {
     const createNew = async (datos) => {
 
         const config = {
-            url: `${apiServerUrl}/New/create/`,
+            url: `${apiServerUrl}/api/new/create`,
             method: 'POST',
             headers: {
             },
@@ -79,7 +79,7 @@ export const useExternalApi = () => {
         console.log(JSON.stringify(datos.new_description))
 
         const config = {
-            url: `${apiServerUrl}/New/update/${id}`,
+            url: `${apiServerUrl}/api/new/update/${id}`,
             method: 'PUT',
             headers: {
             },

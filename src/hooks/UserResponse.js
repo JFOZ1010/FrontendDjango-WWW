@@ -40,7 +40,7 @@ export const useExternalApi = () => {
     const createUser = async (datos, id) => {
 
         const config = {
-            url: `${apiServerUrl}/api/user/create/`,
+            url: `${apiServerUrl}/api/user/create`,
             method: 'POST',
             headers: {
             },
@@ -85,7 +85,7 @@ export const useExternalApi = () => {
     const createAccount = async (datos, id, email) => {
 
         const config = {
-            url: `${apiServerUrl}/api/account/create/`,
+            url: `${apiServerUrl}/api/account/create`,
             method: 'POST',
             headers: {},
             data: {

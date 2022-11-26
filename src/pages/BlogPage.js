@@ -1,12 +1,12 @@
-import { Grid, Button, Container, Stack, Typography } from '@mui/material';
-import { Link as LinkNew} from 'react-router-dom'; 
-import { useEffect, useMemo, useState } from 'react'; 
+import { Button, Container, Stack, Typography } from '@mui/material';
+import { Link as LinkNew} from 'react-router-dom'
+import { useEffect, useState } from 'react'; 
 import { Helmet } from 'react-helmet-async';
 import { useExternalApi } from '../hooks/NewResponse';
 // @mui
 // components
 import Iconify from '../components/iconify';
-import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
+import { BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
 import POSTS from '../_mock/blog';
 
@@ -31,22 +31,25 @@ const SORT_OPTIONS = [
 
 export default function BlogPage() {
 
+  // eslint-disable-next-line
   const [new1, setNew1] = useState({})
 
-  const {getAllNew} = useExternalApi()
+  const {allNew} = useExternalApi()
 
   useEffect(() => {
-    getAllNew(setNew1)
+    allNew(setNew1)
     // eslint-disable-next-line
   }, [])
 
-  useEffect(() => {
+  /*
+    useEffect(() => {
     // map new1
     new1.map((new1) => {
       console.log(new1)
       return new1; 
     }) 
   }, [new1])
+  */
 
   // const {allNew} = useExternalApi()
   // const [data, setData] = useState({})
@@ -74,7 +77,7 @@ export default function BlogPage() {
           <Typography variant="h4" gutterBottom>
             Blog
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} component = {LinkNew} to = {'/dashboard/NewCreate'}>
             New Post
           </Button>
         </Stack>
