@@ -2,6 +2,7 @@ import {
 
   Routes,
   Route,
+  useParams
 } from 'react-router-dom'
 import { useState } from 'react'
 import ProtectedRoute from './Auth0/ProtectedRoute'
@@ -41,7 +42,7 @@ export default function App() {
             <Route path = "blog" element = {<BlogPage/>}/>
             <Route path = "actualizar" element = {<InfoUser />} />
             <Route path = "NewCreate" element = {<NewCreate />} />
-            <Route path = "NewUpdate" element = {<NewUpdate />} />
+            <Route path = "NewUpdate/:newId" element = {<NewUpdate />}  />
             <Route path = "gestion_usuarios" element = {<UserPage/>} />
           </Route>
         </Routes>

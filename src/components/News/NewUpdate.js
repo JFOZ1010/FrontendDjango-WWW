@@ -7,7 +7,7 @@ import { useExternalApi } from '../../hooks/NewResponse';
 import NewBodyUtil from './NewBodyUtil';
 
 
-export default function NewCreate(){
+export default function NewUpdate(id){
     const [noticia, setNoticia] = useState({});
     const [flag, setFlag] = useState(false)
     
