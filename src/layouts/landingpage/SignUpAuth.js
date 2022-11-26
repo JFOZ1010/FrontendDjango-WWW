@@ -4,12 +4,20 @@ import withRoot from './modules/withRoot';
 import LoginButton from './modules/components/LogComponents/LoginButton'
 import LogOutButton from './modules/components/LogComponents/LogoutButton'
 import Profile from './modules/components/LogComponents/Profile'
-
+import { useExternalApi } from '../../hooks/accountResponse';
 
 
 function SignUpAuth() {
   
-  const { isAuthenticated, isLoading } = useAuth0()
+  const { user, isAuthenticated, isLoading } = useAuth0()
+
+  const {
+    getInfoAccount,
+  } = useExternalApi()
+
+  const handleClick = () => {
+    getInfoAccount(user.sub)
+  }
 
   if (isLoading) return <h1>Cargando...</h1>
   return (
@@ -17,6 +25,7 @@ function SignUpAuth() {
       <h1> Application </h1>
       { isAuthenticated ? <LogOutButton /> : <LoginButton /> }
       <Profile />
+      <button type = "button" onClick = {handleClick}>Prueba</button>
     </>
   );
 }

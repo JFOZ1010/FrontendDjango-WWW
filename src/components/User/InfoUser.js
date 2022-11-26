@@ -26,7 +26,7 @@ function InfoUser() {
 
   const onSubmit = data => {
     console.log(data)
-    updateUser(data, user.sub.replace('|','_'))
+    updateUser(data, user.sub)
   }
 
   /* 
@@ -54,7 +54,7 @@ function InfoUser() {
   ]
 
   useEffect(() => {
-    getUser(user.sub.replace('|','_'), setUser1)
+    getUser(user.sub, setUser1)
     // eslint-disable-next-line
   }, [])
 
