@@ -20,7 +20,7 @@ function SignUp() {
   const onSubmit = data => {
     console.log(data)
     /* getUser(user.sub.replace('|','_')) */
-    createAccount(data, user.sub.replace('|','_'), user.email)
+    createAccount(data, user.sub, user.email)
     // setTimeout(() => {
     //  createUser(data, user.sub.replace('|','_'))
     // }, 2000)
