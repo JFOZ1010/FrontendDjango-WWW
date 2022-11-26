@@ -31,14 +31,20 @@ const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
 }));
 
 // ----------------------------------------------------------------------
-
+// Modified by Julian
 UserListToolbar.propTypes = {
   numSelected: PropTypes.number,
   filterName: PropTypes.string,
   onFilterName: PropTypes.func,
+  /*
+  selected_users: PropTypes.array,
+  setStatusUsers: PropTypes.func,
+  id_admin: PropTypes.string,
+  */
 };
 
-export default function UserListToolbar({ numSelected, filterName, onFilterName }) {
+/* eslint-disable camelcase */
+export default function UserListToolbar({ numSelected, filterName, onFilterName,}) {
   return (
     <StyledRoot
       sx={{
@@ -50,13 +56,13 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
     >
       {numSelected > 0 ? (
         <Typography component="div" variant="subtitle1">
-          {numSelected} selected
+          {numSelected} seleccionado(s)
         </Typography>
       ) : (
         <StyledSearch
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search user..."
+          placeholder="Buscar usuario..."
           startAdornment={
             <InputAdornment position="start">
               <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled', width: 20, height: 20 }} />
@@ -68,7 +74,7 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>
-            <Iconify icon="eva:trash-2-fill" />
+            <Iconify icon="eva:person-delete-fill" />
           </IconButton>
         </Tooltip>
       ) : (
