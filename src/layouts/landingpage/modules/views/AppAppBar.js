@@ -16,7 +16,7 @@ const rightLink = {
 
 function AppAppBar() {
 
-  const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
+  const { isAuthenticated, logout } = useAuth0()
   return (
     <div>
       <AppBar position="fixed">

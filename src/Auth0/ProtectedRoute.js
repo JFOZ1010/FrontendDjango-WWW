@@ -6,7 +6,7 @@ import { useExternalApi } from '../hooks/accountResponse'
 // eslint-disable-next-line
 export default function ProtectedRoute ({ component, ...args }) {
     const { user, logout } = useAuth0()
-    const { getInfoAccount} = useExternalApi()
+    const { getInfoAccount } = useExternalApi()
     const nav = useNavigate()
     useEffect( () => {
         async function fetchData () {

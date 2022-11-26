@@ -42,9 +42,7 @@ export default function DropdownRegister () {
             horizontal: 'center'
             }}
         >
-            <ButtonT returnTo='/Dashboard/RegistroAdmin' action='signup' titulo="Admin" />
             <ButtonT returnTo='/Dashboard/RegistroCliente' action='signup' titulo="Cliente" />
-            <ButtonT returnTo='/Dashboard/RegistroSupplier' action='signup' titulo="Supplier" />
         </Menu>
         </div>
     )
