@@ -74,15 +74,16 @@ export const useExternalApi = () => {
     }
 
     const updateNew = async (datos, id) => {
+        console.log(typeof(id))
+        console.log(datos.new_title)
+        console.log(JSON.stringify(datos.new_description))
 
         const config = {
-            url: `${apiServerUrl}'New/delete/${id}`,
+            url: `${apiServerUrl}/New/update/${id}`,
             method: 'PUT',
             headers: {
             },
             data: {
-                "new_id": id,
-                "new_date": datos.new_date,
                 "new_title": datos.new_title,
                 "new_image": "IMAGEN GENERICA",
                 "new_description": JSON.stringify(datos.new_description)

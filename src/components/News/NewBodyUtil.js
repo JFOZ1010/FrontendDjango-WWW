@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw,convertFromRaw} from 'draft-js';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-// import { useExternalApi } from '../../hooks/NewResponse';
+import { useExternalApi } from '../../hooks/NewResponse';
 
 
 export default function NewBodyUtil(noticia) {
@@ -14,14 +14,14 @@ export default function NewBodyUtil(noticia) {
     const [titulo, setTitulo] = useState(noticia.noticia.new_title)
     const [editorState, setEditorState] = useState(() => EditorState.createWithContent(convertFromRaw(JSON.parse(noticia.noticia.new_description))));
 
-    // const {
-    //     updateNew,
-    // } = useExternalApi();
+    const {
+        updateNew
+    } = useExternalApi();
 
     const onSubmit = data => {
         data.new_description = convertToRaw(editorState.getCurrentContent())
         console.log(data)
-        // createNew(data)
+        updateNew(data,noticia.noticia.new_id)
     }
 
 
@@ -48,7 +48,7 @@ export default function NewBodyUtil(noticia) {
                     </div>
 
                 </form>
-                <Button sx={{ mx: 0, my: 2, width: '15%' }} variant='contained' onClick={onSubmit}  >Subir</Button>
+                <Button sx={{ mx: 0, my: 2, width: '15%' }} variant='contained' onClick={registerSubmit(onSubmit)}  >Subir</Button>
             </div>
 
 
