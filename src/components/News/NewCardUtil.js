@@ -4,18 +4,6 @@ import { Link as LinkNew } from 'react-router-dom'
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import Box from '@mui/material/Box';
-import { margin } from '@mui/system';
-
-
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-);
 
 export default function NewCardUtil(news) {
 

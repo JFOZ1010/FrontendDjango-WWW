@@ -25,6 +25,7 @@ import BlogPage from './pages/BlogPage';
 
 export default function App() {
   const [userType, setUserType] = useState('')
+  // const { newId } = useParams();
   return (
     <UserContext.Provider value={[userType, setUserType]}>
       <ThemeProvider>
@@ -42,7 +43,7 @@ export default function App() {
             <Route path = "blog" element = {<BlogPage/>}/>
             <Route path = "actualizar" element = {<InfoUser />} />
             <Route path = "NewCreate" element = {<NewCreate />} />
-            <Route path = "NewUpdate/:newId" element = {<NewUpdate />}  />
+            <Route path = "NewUpdate/:newId" element = {<NewUpdate/>}  />
             <Route path = "gestion_usuarios" element = {<UserPage/>} />
           </Route>
         </Routes>

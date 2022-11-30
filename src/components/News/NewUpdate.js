@@ -24,6 +24,7 @@ export default function NewUpdate(id){
     }, [])
 
     useEffect(() => {
+      console.log(11)
       getNew(11,setNoticia)
       // eslint-disable-next-line
     },[flag])
