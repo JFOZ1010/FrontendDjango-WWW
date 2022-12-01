@@ -77,7 +77,7 @@ function SignUp() {
           </AppBar>
           <Toolbar />
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Registrarse
+            Registro
           </Typography>
           <Typography variant="body2" align="center">
               ScrapWare
@@ -90,7 +90,8 @@ function SignUp() {
                   inputProps={{
                     maxLength: 50
                   }}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth
+                  sx={{ mx: 4, my: 2 }}
               />
               <TextField
                   label="Ciudad"
@@ -98,7 +99,8 @@ function SignUp() {
                   inputProps={{
                     maxLength: 50
                   }}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth
+                  sx={{ mx: 4, my: 2}}
               />
               <TextField
                   label="Fecha de nacimiento"
@@ -108,14 +110,16 @@ function SignUp() {
                   inputProps={{
                     maxLength: 50
                   }}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth
+                  sx={{ mx: 4, my: 2}}
               />
               <TextField
                   label="Sexo"
                   select
                   defaultValue = {''}
                   {...registro('sexo', { required: true })}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth
+                  sx={{ mx: 4, my: 2 }}
               >
                 {sexo.map((el) => (
                   <MenuItem key={el.value} value={el.value}>
@@ -124,7 +128,7 @@ function SignUp() {
                 ))}
               </TextField>
             </form>
-            <Button sx={{ mx: 9, my: 2, width: '40ch', ':hover' : { bgcolor: '#155FA8', color:'white'} }} variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
+            <Button sx={{ ml: { xs: 4, md: 4}, mr: { xs: 4, md: 4}, my: 2, ':hover' : { bgcolor: '#155FA8', color:'white'} }} fullWidth variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
           </div>
         </AppForm>
       <AppFooter />

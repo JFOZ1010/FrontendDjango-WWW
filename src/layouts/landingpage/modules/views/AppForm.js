@@ -19,7 +19,7 @@ function AppForm(props) {
         <Box sx={{ mt: 7, mb: 12 }}>
           <Paper
             background="light"
-            sx={{ py: { xs: 4, md: 8 }, px: { xs: 3, md: 6 } }}
+            sx={{ py: { xs: 4, md: 8 }, pl: { xs: 4, md: 6 }, pr: {xs: 10, md: 10}}}
           >
             {children}
           </Paper>

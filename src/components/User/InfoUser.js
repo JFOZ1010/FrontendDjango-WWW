@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
 import AppForm from '../../layouts/landingpage/modules/views/AppForm';
-import withRoot from '../../layouts/landingpage/modules/withRoot';
+// import withRoot from '../../layouts/landingpage/modules/withRoot';
 import { useExternalApi } from '../../hooks/UserResponse';
 
 function InfoUser() {
@@ -93,7 +93,6 @@ function InfoUser() {
           <Typography variant="body2" align="center">
               Editar
           </Typography>
-          <div>
             <form onSubmit = {registerSubmit(onSubmit)}>
             <TextField
                   label="Nombre"
@@ -102,7 +101,8 @@ function InfoUser() {
                   inputProps={{
                     maxLength: 50
                   }}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth 
+                  sx={{ mx: 4, my: 2 }}
               />
               <TextField
                   label="Ciudad"
@@ -111,7 +111,8 @@ function InfoUser() {
                   inputProps={{
                     maxLength: 50
                   }}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth
+                  sx={{ mx: 4, my: 2 }}
               />
               <TextField
                   label="Fecha de nacimiento"
@@ -122,14 +123,16 @@ function InfoUser() {
                   inputProps={{
                     maxLength: 50
                   }}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth
+                  sx={{ mx: 4, my: 2}}
               />
               <TextField
                   label="Sexo"
                   select
                   defaultValue={user1.sex}
                   {...registro('sexo', { required: true })}
-                  sx={{ mx: 4, my: 2, width: '40ch' }}
+                  fullWidth
+                  sx={{ mx: 4, my: 2}}
               >
                 {sexo.map((el) => (
                   <MenuItem key={el.value} value={el.value}>
@@ -138,12 +141,11 @@ function InfoUser() {
                 ))}
               </TextField>
             </form>
-            <Button sx={{ mx: 9, my: 2, width: '40ch', ':hover' : { bgcolor: '#155FA8', color:'white'}}} variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
-          </div>
+            <Button sx={{ ml: { xs: 4, md: 4}, mr: { xs: 4, md: 4} , my: 2, ':hover' : { bgcolor: '#155FA8', color:'white'}}} fullWidth variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
         </AppForm>
       {/* <AppFooter /> */}
     </>
   );
 }
 
-export default withRoot(InfoUser);
+export default InfoUser;
