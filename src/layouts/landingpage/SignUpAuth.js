@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useAuth0 } from '@auth0/auth0-react'
-import withRoot from './modules/withRoot';
+// import withRoot from './modules/withRoot';
 import LoginButton from './modules/components/LogComponents/LoginButton'
 import LogOutButton from './modules/components/LogComponents/LogoutButton'
 import Profile from './modules/components/LogComponents/Profile'
@@ -30,4 +30,4 @@ function SignUpAuth() {
   );
 }
 
-export default withRoot(SignUpAuth);
+export default SignUpAuth;
