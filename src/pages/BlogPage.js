@@ -1,15 +1,12 @@
 
 import { Link as LinkNew } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { Grid, Button, Container, Stack, Typography } from '@mui/material';
+import { Button, Container, Stack, Typography } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 
 
 // @mui
-import CardContent from '@mui/material/CardContent';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import Box from '@mui/material/Box';
+
 import NewCardUtil from '../components/News/NewCardUtil';
 
 import { useExternalApi } from '../hooks/NewResponse';
@@ -32,14 +29,6 @@ const SORT_OPTIONS = [
   { value: 'oldest', label: 'Oldest' },
 ];
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
 
 // ----------------------------------------------------------------------
 // python3 manage.py runserver 6060
@@ -61,29 +50,6 @@ export default function BlogPage() {
 
     // eslint-disable-next-line
   }, [])
-
-  /*
-    useEffect(() => {
-    // map new1
-    new1.map((new1) => {
-      console.log(new1)
-      return new1; 
-    }) 
-  }, [new1])
-  */
-
-  // const {allNew} = useExternalApi()
-  // const [data, setData] = useState({})
-
-  // const news = useMemo(() => allNew(), [allNew]) 
-
-  // hacer un useEffect de allNew, para que se ejecute cuando se renderice la pagina
-  /* 
-   useEffect(() => {
-     setData(allNew())
- 
-   }, [])
-   */
 
   if (JSON.stringify(new1) === '{}') return <div>Cargando</div>
   console.log(JSON.stringify(new1))

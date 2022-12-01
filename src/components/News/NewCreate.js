@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form'
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react'
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState,convertToRaw } from 'draft-js'
@@ -14,7 +15,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 export default function NewCreate(){
     const { handleSubmit: registerSubmit, register: registro } = useForm()
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
-
+    const nav = useNavigate()
     
     const {
         createNew
@@ -24,6 +25,8 @@ export default function NewCreate(){
         data.new_description = convertToRaw(editorState.getCurrentContent())
         console.log(data)
         createNew(data)
+        alert("New created succesfully")
+        nav('/dashboard/blog')
     }
 
     // useEffect(() => {

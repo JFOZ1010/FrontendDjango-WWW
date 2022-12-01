@@ -1,3 +1,4 @@
+import {useLocation} from 'react-router-dom';
 import * as React from 'react';
 import { useEffect, useState } from 'react'
 import Typography from '../../layouts/landingpage/modules/components/Typography';
@@ -7,9 +8,12 @@ import { useExternalApi } from '../../hooks/NewResponse';
 import NewBodyUtil from './NewBodyUtil';
 
 
-export default function NewUpdate(id){
+
+export default function NewUpdate(){
     const [noticia, setNoticia] = useState({});
     const [flag, setFlag] = useState(false)
+    const location = useLocation();
+    const id = location.pathname.split('/')
     
     const {
         // updateNew,
@@ -24,8 +28,8 @@ export default function NewUpdate(id){
     }, [])
 
     useEffect(() => {
-      console.log(11)
-      getNew(11,setNoticia)
+      console.log(id[3])
+      getNew(id[3],setNoticia)
       // eslint-disable-next-line
     },[flag])
 

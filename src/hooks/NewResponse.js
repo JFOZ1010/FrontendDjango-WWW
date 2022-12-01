@@ -103,33 +103,26 @@ export const useExternalApi = () => {
 
     }
 
-    // const createAccount = async (datos, id, email) => {
+    const deleteNew = async (id) => {
+        const config = {
+            url: `${apiServerUrl}/api/new/delete/${id}`,
+            method: 'DELETE',
+            headers: {
+            },
+            data: {}
+        }
+        const data = await makeRequest({ config })
+        console.log(data)
+        return {noticia:"Borrada"}
 
-    //     const config = {
-    //         url: `${apiServerUrl}/api/account/create/`,
-    //         method: 'POST',
-    //         headers: {},
-    //         data: {
-    //             "user_id": id,
-    //             "user_type": 1,
-    //             "password": "basic",
-    //             "email": email,
-    //             "user_status": true
-    //         }
-    //     }
+    }
 
-    //     const data = await makeRequest({config})
-
-    //     console.log(data)
-
-    //     createUser(datos, id)
-
-    // }
 
     return {
         createNew,
         allNew,
         updateNew,
         getNew,
+        deleteNew
     }
 }

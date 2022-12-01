@@ -22,6 +22,7 @@ export default function NewBodyUtil(noticia) {
         data.new_description = convertToRaw(editorState.getCurrentContent())
         console.log(data)
         updateNew(data,noticia.noticia.new_id)
+        alert("New Succesfully update")
     }
 
 
