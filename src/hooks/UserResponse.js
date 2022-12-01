@@ -32,7 +32,7 @@ export const useExternalApi = () => {
 
         const data = await makeRequest({config})
 
-        console.log(data)
+        // console.log(data)
         setUser(data)
 
     }
@@ -46,7 +46,7 @@ export const useExternalApi = () => {
             },
             data: {
                 "user_id": id,
-                "user_type": 1,
+                "user_type": 3,
                 "name": datos.nombre,
                 "city": datos.ciudad,
                 "birth_date": datos.fecha,
@@ -60,7 +60,7 @@ export const useExternalApi = () => {
 
     }
 
-    const updateUser = async (datos, id) => {
+    const updateUser = async (datos, id, tipo, setMensaje) => {
 
         const config = {
             url: `${apiServerUrl}/api/user/update/${id}`,
@@ -68,21 +68,22 @@ export const useExternalApi = () => {
             headers: {
             },
             data: {
-                "user_type": 1,
+                "user_type": tipo,
                 "name": datos.nombre,
                 "city": datos.ciudad,
                 "birth_date": datos.fecha,
                 "sex": datos.sexo
             }
         }
-
         const data = await makeRequest({config})
 
         console.log(data)
+        
+        setMensaje('Se ha actualizado')
 
     }
 
-    const createAccount = async (datos, id, email) => {
+    const createAccount = async (datos, id, email, setMensaje) => {
 
         const config = {
             url: `${apiServerUrl}/api/account/create`,
@@ -90,7 +91,7 @@ export const useExternalApi = () => {
             headers: {},
             data: {
                 "user_id": id,
-                "user_type": 1,
+                "user_type": 3,
                 "password": "basic",
                 "email": email,
                 "user_status": true
@@ -102,6 +103,8 @@ export const useExternalApi = () => {
         console.log(data)
 
         createUser(datos, id)
+
+        setMensaje('Registrado correctamente')
 
     }
     

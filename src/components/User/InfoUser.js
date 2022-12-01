@@ -5,6 +5,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
 import AppForm from '../../layouts/landingpage/modules/views/AppForm';
 import withRoot from '../../layouts/landingpage/modules/withRoot';
@@ -18,15 +20,28 @@ function InfoUser() {
   
   const [user1, setUser1] = useState({})
 
+  const [mensaje, setMensaje] = useState('Actualizar')
+
 
   const {
     getUser,
     updateUser
   } = useExternalApi()
 
+  const tipo = window.localStorage.getItem('tipo');
+
   const onSubmit = data => {
     console.log(data)
-    updateUser(data, user.sub)
+    setMensaje('Actualizando...')
+    if (tipo.localeCompare('Cliente') === 0) {
+      updateUser(data, user.sub, 3, setMensaje)
+    }else if (tipo.localeCompare('Admin') === 0) {
+      updateUser(data, user.sub, 1, setMensaje)
+    } else {
+      console.log("Hay problemas")
+    }
+    setTimeout(() => {
+    }, 2000)
   }
 
   /* 
@@ -62,7 +77,12 @@ function InfoUser() {
     setSexo()
   } */
 
-  if (JSON.stringify(user1) === '{}' && !isLoading ) return <></>
+  if (JSON.stringify(user1) === '{}' && !isLoading ) return (
+    <Box sx={{ width: '100%' }}>
+      <LinearProgress />
+    </Box>
+  )
+  
   
   return (
       <>
@@ -118,7 +138,7 @@ function InfoUser() {
                 ))}
               </TextField>
             </form>
-            <Button sx={{ mx: 9, my: 2, width: '40ch' }} variant='contained' onClick={registerSubmit(onSubmit)} >Actualizar</Button>
+            <Button sx={{ mx: 9, my: 2, width: '40ch', ':hover' : { bgcolor: '#155FA8', color:'white'}}} variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
           </div>
         </AppForm>
       {/* <AppFooter /> */}

@@ -9,19 +9,31 @@ import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover 
 // import account from '../../../_mock/account';
 
 // ----------------------------------------------------------------------
+const tipo = window.localStorage.getItem('tipo');
+let MENU_OPTIONS;
 
-const MENU_OPTIONS = [
-  {
-    label: 'Inicio',
-    icon: 'eva:home-fill',
-    ruta: '/',
-  },
-  {
-    label: 'Perfil',
-    icon: 'eva:person-fill',
-    ruta: '/dashboard/actualizar'
-  },
-];
+if (tipo.localeCompare('Cliente') === 0 || tipo.localeCompare('Admin') === 0 ){
+  MENU_OPTIONS = [
+    {
+      label: 'Inicio',
+      icon: 'eva:home-fill',
+      ruta: '/',
+    },
+    {
+      label: 'Perfil',
+      icon: 'eva:person-fill',
+      ruta: '/dashboard/actualizar'
+    },
+  ];
+} else {
+  MENU_OPTIONS = [
+    {
+      label: 'Inicio',
+      icon: 'eva:home-fill',
+      ruta: '/',
+    },
+  ];
+}
 
 // ----------------------------------------------------------------------
 

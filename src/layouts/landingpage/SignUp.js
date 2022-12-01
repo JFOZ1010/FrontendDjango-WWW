@@ -1,29 +1,40 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form'
+import {  useState } from 'react'
+import { Link as LinkRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router'
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useAuth0 } from '@auth0/auth0-react';
+import AppBar from './modules/components/AppBar';
+import Toolbar from './modules/components/Toolbar';
 import Typography from './modules/components/Typography';
 import AppForm from './modules/views/AppForm';
 import withRoot from './modules/withRoot';
+import AppFooter from './modules/views/AppFooter';
 import { useExternalApi } from '../../hooks/UserResponse';
+
 
 function SignUp() {
   const { handleSubmit: registerSubmit, register: registro } = useForm()
   const { user } = useAuth0();
+  const nav = useNavigate()
 
   const {
     createAccount
   } = useExternalApi()
 
+  const [mensaje, setMensaje] = useState('Registrarme')
+
   const onSubmit = data => {
     console.log(data)
-    /* getUser(user.sub.replace('|','_')) */
-    createAccount(data, user.sub, user.email)
-    // setTimeout(() => {
-    //  createUser(data, user.sub.replace('|','_'))
-    // }, 2000)
+    setMensaje('Registrando...')
+    createAccount(data, user.sub, user.email, setMensaje)
+    setTimeout(() => {
+    nav(`/`)
+    }, 2000)
   }
 
   const sexo = [
@@ -48,6 +59,23 @@ function SignUp() {
   return (
       <>
         <AppForm >
+          <AppBar position="fixed">
+            <Toolbar sx={{ justifyContent: 'center' }}>
+              <Box sx={{ justifyContent: 'center'}}>
+              <Button
+                variant="h6"
+                underline="none"
+                color="inherit"
+                component = {LinkRouter}
+                to = {'/'}
+                sx={{ fontSize: 24 }}
+              >
+                {'ScrapWare'}
+              </Button>
+              </Box>
+            </Toolbar>
+          </AppBar>
+          <Toolbar />
           <Typography variant="h3" gutterBottom marked="center" align="center">
             Registrarse
           </Typography>
@@ -96,10 +124,10 @@ function SignUp() {
                 ))}
               </TextField>
             </form>
-            <Button sx={{ mx: 9, my: 2, width: '40ch' }} variant='contained' onClick={registerSubmit(onSubmit)} >Registrarse</Button>
+            <Button sx={{ mx: 9, my: 2, width: '40ch', ':hover' : { bgcolor: '#155FA8', color:'white'} }} variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
           </div>
         </AppForm>
-      {/* <AppFooter /> */}
+      <AppFooter />
     </>
   );
 }

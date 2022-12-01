@@ -27,7 +27,7 @@ function AppAppBar() {
             underline="none"
             color="inherit"
             component = {LinkRouter}
-            to = {'dashboard'}
+            to = {'/'}
             sx={{ fontSize: 24 }}
           >
             {'ScrapWare'}

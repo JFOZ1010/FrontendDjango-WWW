@@ -13,7 +13,7 @@ import { StyledChart } from './components/chart';
 import Home from './layouts/landingpage/Home'
 import SignUp from './layouts/landingpage/SignUp'
 import SignUpAuth from './layouts/landingpage/SignUpAuth'
-import Profile from './layouts/landingpage/modules/components/LogComponents/Profile'
+// import Profile from './layouts/landingpage/modules/components/LogComponents/Profile'
 import DashboardLayout from './layouts/dashboard/DashboardLayout'
 import InfoUser from './components/User/InfoUser'
 import UserPage from './pages/UserPage'
@@ -31,13 +31,11 @@ export default function App() {
         <StyledChart />
         <Routes>
           <Route path = "/" element = {<Home /> } /> 
+          <Route path="/RegistroCliente" element={<AuthRedirect Component={SignUp} tipo='Cliente' />} />
           <Route path = "/dashboard" element = {<ProtectedRoute component={DashboardLayout} />}>
-            <Route path = "registro" element = {<SignUp/>} />
+            {/* <Route path = "registro" element = {<SignUp/>} /> */}
             <Route path = "prueba" element = {<SignUpAuth/>} />
             <Route path = "actualizar" element = {<InfoUser />} />
-            <Route path="RegistroAdmin" element={<AuthRedirect Component={Profile} tipo='Admin' />} />
-            <Route path="RegistroCliente" element={<AuthRedirect Component={Profile} tipo='Cliente' />} />
-            <Route path="RegistroSupplier" element={<AuthRedirect Component={Profile} tipo='Supplier' />} />
             <Route path = "blog" element = {<BlogPage/>}/>
             <Route path = "actualizar" element = {<InfoUser />} />
             <Route path = "NewCreate" element = {<NewCreate />} />
