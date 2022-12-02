@@ -14,19 +14,12 @@ import { useExternalApi } from '../../hooks/UserResponse';
 
 function InfoUser() {
   const { handleSubmit: registerSubmit, register: registro } = useForm()
-  // const [sexo, setSexo] = useState('Otro');
   
   const { user, isLoading } = useAuth0()
-  
   const [user1, setUser1] = useState({})
-
   const [mensaje, setMensaje] = useState('Actualizar')
 
-
-  const {
-    getUser,
-    updateUser
-  } = useExternalApi()
+  const { getUser, updateUser } = useExternalApi()
 
   const tipo = window.localStorage.getItem('tipo');
 
@@ -44,28 +37,10 @@ function InfoUser() {
     }, 2000)
   }
 
-  /* 
-    const prueba = {
-    'Name': 'Diego Norrea',
-    'City': 'Cali',
-    'BirthDate': '2000-01-01',
-    'Sex': 'Masculino'
-  } 
-  */
-
   const sexo = [
-    {
-      value: 'Masculino',
-      label: 'Masculino',
-    },
-    {
-      value: 'Femenino',
-      label: 'Femenino',
-    },
-    {
-      value: 'Otro',
-      label: 'Otro',
-    },
+    { value: 'Masculino', label: 'Masculino' },
+    { value: 'Femenino', label: 'Femenino' },
+    { value: 'Otro', label: 'Otro' },
   ]
 
   useEffect(() => {
@@ -73,16 +48,11 @@ function InfoUser() {
     // eslint-disable-next-line
   }, [])
 
-  /* const handleChange = () => {
-    setSexo()
-  } */
-
   if (JSON.stringify(user1) === '{}' && !isLoading ) return (
     <Box sx={{ width: '100%' }}>
       <LinearProgress />
     </Box>
   )
-  
   
   return (
       <>
@@ -91,60 +61,72 @@ function InfoUser() {
             Mi perfil
           </Typography>
           <Typography variant="body2" align="center">
-              Editar
+              Ingrese sus datos
           </Typography>
             <form onSubmit = {registerSubmit(onSubmit)}>
-            <TextField
-                  label="Nombre"
-                  defaultValue={user1.name}
-                  {...registro('nombre', { required: true })}
-                  inputProps={{
-                    maxLength: 50
-                  }}
-                  fullWidth 
-                  sx={{ mx: 4, my: 2 }}
+              <TextField
+                label="Nombre"
+                defaultValue={user1.name}
+                {...registro('nombre', { required: true })}
+                inputProps={{
+                  maxLength: 100
+                }}
+                fullWidth 
+                sx={{ mx: 4, my: 2 }}
               />
               <TextField
-                  label="Ciudad"
-                  defaultValue={user1.city}
-                  {...registro('ciudad', { required: true })}
-                  inputProps={{
-                    maxLength: 50
-                  }}
-                  fullWidth
-                  sx={{ mx: 4, my: 2 }}
+                label="Ciudad"
+                defaultValue={user1.city}
+                {...registro('ciudad', { required: true })}
+                inputProps={{
+                  maxLength: 50
+                }}
+                fullWidth
+                sx={{ mx: 4, my: 2 }}
               />
               <TextField
-                  label="Fecha de nacimiento"
-                  type="date"
-                  defaultValue={user1.birth_date}
-                  InputLabelProps={{ shrink: true }} 
-                  {...registro('fecha', { required: true })}
-                  inputProps={{
-                    maxLength: 50
-                  }}
-                  fullWidth
-                  sx={{ mx: 4, my: 2}}
+                label="Fecha de nacimiento"
+                type="date"
+                defaultValue={user1.birth_date}
+                InputLabelProps={{ shrink: true }} 
+                {...registro('fecha', { required: true })}
+                inputProps={{
+                  maxLength: 50
+                }}
+                fullWidth
+                sx={{ mx: 4, my: 2}}
               />
               <TextField
-                  label="Sexo"
-                  select
-                  defaultValue={user1.sex}
-                  {...registro('sexo', { required: true })}
-                  fullWidth
-                  sx={{ mx: 4, my: 2}}
+                label="Sexo"
+                select
+                defaultValue={user1.sex}
+                {...registro('sexo', { required: true })}
+                fullWidth
+                sx={{ mx: 4, my: 2}}
               >
                 {sexo.map((el) => (
                   <MenuItem key={el.value} value={el.value}>
-                  {el.label}
-                </MenuItem>
-                ))}
+                    {el.label}
+                  </MenuItem>
+                  ))
+                }
               </TextField>
             </form>
-            <Button sx={{ ml: { xs: 4, md: 4}, mr: { xs: 4, md: 4} , my: 2, ':hover' : { bgcolor: '#155FA8', color:'white'}}} fullWidth variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
+            <Button 
+              sx={{ 
+                ml: { xs: 4, md: 4}, 
+                mr: { xs: 4, md: 4} , 
+                my: 2, 
+                ':hover' : { bgcolor: '#155FA8', color:'white'}
+              }} 
+              fullWidth 
+              variant='contained' 
+              onClick={registerSubmit(onSubmit)}
+            >
+              {mensaje}
+            </Button>
         </AppForm>
-      {/* <AppFooter /> */}
-    </>
+      </>
   );
 }
 

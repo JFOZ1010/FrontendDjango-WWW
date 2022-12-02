@@ -20,7 +20,6 @@ import UserPage from './pages/UserPage'
 import NewCreate from './components/News/NewCreate';
 import NewUpdate from './components/News/NewUpdate';
 import BlogPage from './pages/BlogPage';
-// Holi
 
 export default function App() {
   const [userType, setUserType] = useState('')

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useForm } from 'react-hook-form'
-import {  useState } from 'react'
+import { useForm } from 'react-hook-form';
+import {  useState } from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField'
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -16,15 +16,12 @@ import withRoot from './modules/withRoot';
 import AppFooter from './modules/views/AppFooter';
 import { useExternalApi } from '../../hooks/UserResponse';
 
-
 function SignUp() {
   const { handleSubmit: registerSubmit, register: registro } = useForm()
   const { user } = useAuth0();
   const nav = useNavigate()
 
-  const {
-    createAccount
-  } = useExternalApi()
+  const { createAccount } = useExternalApi()
 
   const [mensaje, setMensaje] = useState('Registrarme')
 
@@ -38,23 +35,10 @@ function SignUp() {
   }
 
   const sexo = [
-    {
-      value: 'Masculino',
-      label: 'Masculino',
-    },
-    {
-      value: 'Femenino',
-      label: 'Femenino',
-    },
-    {
-      value: 'Otro',
-      label: 'Otro',
-    },
+    { value: 'Masculino', label: 'Masculino' },
+    { value: 'Femenino', label: 'Femenino' },
+    { value: 'Otro', label: 'Otro' },
   ]
-
-  /* const handleChange = () => {
-    setSexo()
-  } */
 
   return (
       <>
@@ -84,55 +68,65 @@ function SignUp() {
           </Typography>
           <div>
             <form onSubmit = {registerSubmit(onSubmit)}>
-            <TextField
-                  label="Nombre"
-                  {...registro('nombre', { required: true })}
-                  inputProps={{
-                    maxLength: 50
-                  }}
-                  fullWidth
-                  sx={{ mx: 4, my: 2 }}
+              <TextField
+                label="Nombre"
+                {...registro('nombre', { required: true })}
+                inputProps={{
+                  maxLength: 50
+                }}
+                fullWidth
+                sx={{ mx: 4, my: 2 }}
               />
               <TextField
-                  label="Ciudad"
-                  {...registro('ciudad', { required: true })}
-                  inputProps={{
-                    maxLength: 50
-                  }}
-                  fullWidth
-                  sx={{ mx: 4, my: 2}}
+                label="Ciudad"
+                {...registro('ciudad', { required: true })}
+                inputProps={{
+                  maxLength: 50
+                }}
+                fullWidth
+                sx={{ mx: 4, my: 2}}
               />
               <TextField
-                  label="Fecha de nacimiento"
-                  type="date"
-                  InputLabelProps={{ shrink: true }} 
-                  {...registro('fecha', { required: true })}
-                  inputProps={{
-                    maxLength: 50
-                  }}
-                  fullWidth
-                  sx={{ mx: 4, my: 2}}
+                label="Fecha de nacimiento"
+                type="date"
+                InputLabelProps={{ shrink: true }} 
+                {...registro('fecha', { required: true })}
+                inputProps={{
+                  maxLength: 50
+                }}
+                fullWidth
+                sx={{ mx: 4, my: 2}}
               />
               <TextField
-                  label="Sexo"
-                  select
-                  defaultValue = {''}
-                  {...registro('sexo', { required: true })}
-                  fullWidth
-                  sx={{ mx: 4, my: 2 }}
+                label="Sexo"
+                select
+                defaultValue = {''}
+                {...registro('sexo', { required: true })}
+                fullWidth
+                sx={{ mx: 4, my: 2 }}
               >
                 {sexo.map((el) => (
-                  <MenuItem key={el.value} value={el.value}>
+                <MenuItem key={el.value} value={el.value}>
                   {el.label}
                 </MenuItem>
                 ))}
               </TextField>
             </form>
-            <Button sx={{ ml: { xs: 4, md: 4}, mr: { xs: 4, md: 4}, my: 2, ':hover' : { bgcolor: '#155FA8', color:'white'} }} fullWidth variant='contained' onClick={registerSubmit(onSubmit)} >{mensaje}</Button>
+            <Button sx={{ 
+              ml: { xs: 4, md: 4}, 
+              mr: { xs: 4, md: 4}, 
+              my: 2, 
+              ':hover' : { bgcolor: '#155FA8', color:'white'} }} 
+              fullWidth 
+              variant='contained' 
+              onClick={registerSubmit(onSubmit)} 
+            >
+              {mensaje}
+            </Button>
           </div>
         </AppForm>
-      <AppFooter />
-    </>
+        <AppFooter />
+      </>
   );
 }
 
