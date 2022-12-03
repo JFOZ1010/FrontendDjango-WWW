@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useAuth0 } from '@auth0/auth0-react';
 import Typography from './modules/components/Typography';
 import AppForm from './modules/views/AppForm';
-import withRoot from './modules/withRoot';
+// import withRoot from './modules/withRoot';
 import { useExternalApi } from '../../hooks/UserResponse';
 
 function SignUp() {
@@ -104,4 +104,4 @@ function SignUp() {
   );
 }
 
-export default withRoot(SignUp);
+export default SignUp;

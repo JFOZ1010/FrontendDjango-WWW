@@ -17,7 +17,7 @@ root.render(
   <HelmetProvider>
     <BrowserRouter>
       <Auth0ProviderWithHistory>
-        <App />
+        <App/>
       </Auth0ProviderWithHistory>
     </BrowserRouter>
   </HelmetProvider>
