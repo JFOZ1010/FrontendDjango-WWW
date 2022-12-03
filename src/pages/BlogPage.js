@@ -2,6 +2,7 @@
 import { Link as LinkNew } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { Button, Container, Stack, Typography } from '@mui/material';
+import LinearProgress from '@mui/material/LinearProgress';
 import { Helmet } from 'react-helmet-async';
 
 
@@ -25,7 +26,6 @@ import POSTS from '../_mock/blog';
 
 const SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
-  { value: 'popular', label: 'Popular' },
   { value: 'oldest', label: 'Oldest' },
 ];
 
@@ -51,7 +51,7 @@ export default function BlogPage() {
     // eslint-disable-next-line
   }, [])
 
-  if (JSON.stringify(new1) === '{}') return <div>Cargando</div>
+  if (JSON.stringify(new1) === '{}') return <div> Cargando <LinearProgress /> </div>
   console.log(JSON.stringify(new1))
 
   return (
@@ -73,7 +73,6 @@ export default function BlogPage() {
         </Stack>
 
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-          <BlogPostsSearch posts={POSTS} />
           <BlogPostsSort options={SORT_OPTIONS} />
         </Stack>
           <NewCardUtil new = {new1}/>

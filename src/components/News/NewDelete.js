@@ -43,7 +43,7 @@ export default function NewDelete() {
             <Grid item xs={2}> </Grid>
             <Grid item xs={4}>
                 <Typography variant="h5" component="div">
-                    New deleted succesfully
+                    Noticia borrada
                 </Typography>
                 <Button variant="contained" component={LinkNew} to={'/dashboard/blog'}>
                     Volver

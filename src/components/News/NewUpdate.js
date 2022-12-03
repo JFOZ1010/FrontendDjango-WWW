@@ -1,6 +1,7 @@
 import {useLocation} from 'react-router-dom';
 import * as React from 'react';
 import { useEffect, useState } from 'react'
+import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
 import AppFormNew from '../../layouts/landingpage/modules/views/AppFormNew';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -33,7 +34,7 @@ export default function NewUpdate(){
       // eslint-disable-next-line
     },[flag])
 
-    if (JSON.stringify(noticia) === '{}') return <div>Cargando</div>
+    if (JSON.stringify(noticia) === '{}') return <div>Cargando <LinearProgress /></div>
 
     return (
         <>

@@ -31,7 +31,7 @@ export default function NewCardUtil(news) {
                 </CardContent>
                 <CardActions>
                     <Button size="small" 
-                    variant="outlined" 
+                    variant="contained" 
                     component={LinkNew} 
                     to={`/dashboard/NewUpdate/${newI.new_id}`}>Actualizar</Button>
                     <Button size="small" 
