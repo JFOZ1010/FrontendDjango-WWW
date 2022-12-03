@@ -2,6 +2,16 @@ import { createTheme } from '@mui/material/styles';
 import { green, grey, red } from '@mui/material/colors';
 
 const rawTheme = createTheme({
+  components: {
+    MuiCssBaseline : {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#4b6cb7',
+          backgroundImage: `linear-gradient(to right, #4b6cb7, #182848)`
+        }
+      }
+    }
+  },
   palette: {
     primary: {
       light: '#69696a',
@@ -10,7 +20,7 @@ const rawTheme = createTheme({
     },
     secondary: {
       light: '#fff5f8',
-      main: '#ff3366',
+      main: '#4b6cb7',
       dark: '#e62958',
     },
     warning: {
@@ -27,9 +37,13 @@ const rawTheme = createTheme({
       main: green[500],
       dark: green[700],
     },
+    background: {
+      main: '#ff00cc',
+      mainGradient: "linear-gradient(to right, #ff00cc, #333399)",
+    }
   },
   typography: {
-    fontFamily: "'Work Sans', sans-serif",
+    fontFamily: "'Public Sans', sans-serif",
     fontSize: 14,
     fontWeightLight: 300, // Work Sans
     fontWeightRegular: 400, // Work Sans
@@ -40,7 +54,7 @@ const rawTheme = createTheme({
 const fontHeader = {
   color: rawTheme.palette.text.primary,
   fontWeight: rawTheme.typography.fontWeightMedium,
-  fontFamily: "'Roboto Condensed', sans-serif",
+  fontFamily: "'Public Sans', sans-serif",
   textTransform: 'uppercase',
 };
 
