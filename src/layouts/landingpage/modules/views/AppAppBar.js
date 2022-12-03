@@ -1,10 +1,9 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { Link as LinkRouter } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'
-import Button from '@mui/material/Button'
-import AppBar from '../components/AppBar';
-import Toolbar from '../components/Toolbar';
+import { Button, Toolbar, AppBar } from '@mui/material'; 
 import DropdownLogin from '../components/LogComponents/DropdownLogin'
 import DropdownRegister from '../components/LogComponents/DropdownRegister'
 
@@ -15,11 +14,22 @@ const rightLink = {
 };
 
 function AppAppBar() {
-
+  const [navbar, setNavbar] = useState(false)
   const { isAuthenticated, logout } = useAuth0()
+
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true)
+    } else {
+      setNavbar(false)
+    }
+  }
+
+  window.addEventListener('scroll', changeBackground)
+
   return (
     <div>
-      <AppBar position="fixed">
+      <AppBar position= 'fixed' elevation = { navbar ? 24 : 0} style = {{ backgroundColor: navbar ? "#182848" : 'transparent', boxShadow: navbar ?  '5px 0px 27px -5px rgba(0, 0, 0, 0.3) !important' : undefined }} >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
           <Button
@@ -30,7 +40,7 @@ function AppAppBar() {
             to = {'/'}
             sx={{ fontSize: 24 }}
           >
-            {'ScrapWare'}
+            {'Scrapware'}
           </Button>
           { !isAuthenticated &&  
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>

@@ -43,7 +43,7 @@ function ProductHeroLayout(props) {
         }}
       >
         <img
-          src="/static/themes/onepirate/productHeroWonder.png"
+          src="./img_aux/Django_logo.svg.png"
           alt="wonder"
           width="147"
           height="80"

@@ -14,6 +14,7 @@ import Typography from './modules/components/Typography';
 import AppForm from './modules/views/AppForm';
 import withRoot from './modules/withRoot';
 import AppFooter from './modules/views/AppFooter';
+
 import { useExternalApi } from '../../hooks/UserResponse';
 
 function SignUp() {
@@ -130,4 +131,4 @@ function SignUp() {
   );
 }
 
-export default withRoot(SignUp);
+export default SignUp;

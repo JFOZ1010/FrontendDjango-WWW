@@ -1,9 +1,11 @@
 import * as React from 'react';
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Typography from '../components/Typography';
+import IllustrationAvatar from './img_aux/illustration_avatar.png'
+import IllustrationLogin from './img_aux/illustration_login.png'
+import IllustrationAvatar2 from './img_aux/avatar_18.jpg'
 
 const item = {
   display: 'flex',
@@ -16,34 +18,33 @@ function ProductValues() {
   return (
     <Box
       component="section"
-      sx={{ display: 'flex', overflow: 'hidden', bgcolor: 'secondary.light' }}
+      sx={{ display: 'flex', overflow: 'hidden', background: '#fff'}}
     >
-      <Container sx={{ mt: 15, mb: 30, display: 'flex', position: 'relative' }}>
+      <Container sx={{ mt: 15, mb: 15, display: 'flex', position: 'relative'}}>
         <Box
           component="img"
-          src="/static/themes/onepirate/productCurvyLines.png"
           alt="curvy lines"
-          sx={{ pointerEvents: 'none', position: 'absolute', top: -180 }}
+          sx={{ pointerEvents: 'none', position: 'absolute', top: -180, }}
         />
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <Box sx={item}>
               <Box
                 component="img"
-                src="/static/themes/onepirate/productValues1.svg"
-                alt="suitcase"
-                sx={{ height: 55 }}
+                src={IllustrationLogin}
+                alt="join"
+                sx={{ height: 150 }}
               />
               <Typography variant="h6" sx={{ my: 5 }}>
-                The best luxury hotels
+                VARIEDAD
               </Typography>
               <Typography variant="h5">
                 {
-                  'From the latest trendy boutique hotel to the iconic palace with XXL pool'
+                  'El portal entre miles de paginas de ventas a tu disposición'
                 }
 
                 {
-                  ', go for a mini-vacation just a few subway stops away from your home.'
+                  ', ¡ingresa ya y echa un vistazo!'
                 }
               </Typography>
             </Box>
@@ -52,19 +53,19 @@ function ProductValues() {
             <Box sx={item}>
               <Box
                 component="img"
-                src="/static/themes/onepirate/productValues2.svg"
-                alt="graph"
-                sx={{ height: 55 }}
+                src= {IllustrationAvatar}
+                alt="free"
+                sx={{ height: 150 }}
               />
               <Typography variant="h6" sx={{ my: 5 }}>
-                New experiences
+                SIN ATADURAS
               </Typography>
               <Typography variant="h5">
                 {
-                  'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '
+                  'Tranquilo, somos un sitio web gratuito y estamos a tu servicio. La brecha entre el computador de tus sueños y tu bolsillo '
                 }
 
-                {'your Sundays will not be alike.'}
+                {' esta a solo un click!'}
               </Typography>
             </Box>
           </Grid>
@@ -72,16 +73,16 @@ function ProductValues() {
             <Box sx={item}>
               <Box
                 component="img"
-                src="/static/themes/onepirate/productValues3.svg"
-                alt="clock"
-                sx={{ height: 55 }}
+                src={IllustrationAvatar2}
+                alt="update"
+                sx={{ height: 150 }}
               />
               <Typography variant="h6" sx={{ my: 5 }}>
-                Exclusive rates
+                OFERTAS
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access specially negotiated rates '}
-                {'that you will not find anywhere else.'}
+                {'Constantemente nuestra pagina se actualiza para que '}
+                {'seas el primero en tener la mejor opción.'}
               </Typography>
             </Box>
           </Grid>
@@ -90,5 +91,6 @@ function ProductValues() {
     </Box>
   );
 }
+
 
 export default ProductValues;

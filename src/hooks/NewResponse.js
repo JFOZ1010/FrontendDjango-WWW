@@ -21,7 +21,7 @@ export const useExternalApi = () => {
         }
     }
 
-    const allNew = async () => {
+    const allNew = async (setNew1) => {
 
         const config = {
             url: `${apiServerUrl}/api/new/all`,
@@ -30,12 +30,19 @@ export const useExternalApi = () => {
             data: {}
         }
 
-        const data = await makeRequest({config})
+        const data = await makeRequest({ config })
+
+        // const array = []
+        // for (var i = 0; i <= data.length; i++) {
+
+        //     array.push(data[i])
+
+        // }
 
         console.log(data)
-        return data;
+        setNew1(data);
 
-    } 
+    }
 
     const getNew = async (id, setNoticia) => {
 
@@ -46,7 +53,7 @@ export const useExternalApi = () => {
             data: {}
         }
 
-        const data = await makeRequest({config})
+        const data = await makeRequest({ config })
 
         console.log(data)
         setNoticia(data)
@@ -67,14 +74,14 @@ export const useExternalApi = () => {
             }
         }
 
-        const data = await makeRequest({config})
+        const data = await makeRequest({ config })
 
         console.log(data)
 
     }
 
     const updateNew = async (datos, id) => {
-        console.log(typeof(id))
+        console.log(typeof (id))
         console.log(datos.new_title)
         console.log(JSON.stringify(datos.new_description))
 
@@ -90,39 +97,32 @@ export const useExternalApi = () => {
             }
         }
 
-        const data = await makeRequest({config})
+        const data = await makeRequest({ config })
 
         console.log(data)
 
     }
 
-    // const createAccount = async (datos, id, email) => {
+    const deleteNew = async (id) => {
+        const config = {
+            url: `${apiServerUrl}/api/new/delete/${id}`,
+            method: 'DELETE',
+            headers: {
+            },
+            data: {}
+        }
+        const data = await makeRequest({ config })
+        console.log(data)
+        return {noticia:"Borrada"}
 
-    //     const config = {
-    //         url: `${apiServerUrl}/api/account/create/`,
-    //         method: 'POST',
-    //         headers: {},
-    //         data: {
-    //             "user_id": id,
-    //             "user_type": 1,
-    //             "password": "basic",
-    //             "email": email,
-    //             "user_status": true
-    //         }
-    //     }
+    }
 
-    //     const data = await makeRequest({config})
 
-    //     console.log(data)
-
-    //     createUser(datos, id)
-
-    // }
-    
     return {
         createNew,
         allNew,
         updateNew,
         getNew,
+        deleteNew
     }
 }

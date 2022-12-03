@@ -29,7 +29,7 @@ function ProductHowItWorks() {
   return (
     <Box
       component="section"
-      sx={{ display: 'flex', bgcolor: 'secondary.light', overflow: 'hidden' }}
+      sx={{ display: 'flex', bgcolor: '#fff', overflow: 'hidden' }}
     >
       <Container
         sx={{
@@ -53,7 +53,7 @@ function ProductHowItWorks() {
           }}
         />
         <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14 }}>
-          How it works
+          NOTICIAS
         </Typography>
         <div>
           <Grid container spacing={5}>
