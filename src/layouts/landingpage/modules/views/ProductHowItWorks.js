@@ -3,7 +3,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import Button from '../components/Button';
 import Typography from '../components/Typography';
 
 const item = {
@@ -103,16 +102,6 @@ function ProductHowItWorks() {
             </Grid>
           </Grid>
         </div>
-        <Button
-          color="secondary"
-          size="large"
-          variant="contained"
-          component="a"
-          href="/premium-themes/onepirate/sign-up/"
-          sx={{ mt: 8 }}
-        >
-          Get started
-        </Button>
       </Container>
     </Box>
   );

@@ -17,7 +17,7 @@ if (tipo.localeCompare('Cliente') === 0) {
     },
     {
       title: 'Noticias',
-      path: '/dashboard',
+      path: '/dashboard/blog',
       icon: icon('ic_blog'),
     },
   ]
