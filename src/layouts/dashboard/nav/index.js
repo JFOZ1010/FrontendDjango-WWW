@@ -78,8 +78,8 @@ export default function Nav({ openNav, onCloseNav }) {
           <StyledAccount>
             <Avatar src={user.picture} alt={user.name} />
 
-            <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+            <Box sx={{ ml: 2 }} overflow = 'hidden'>
+              <Typography variant="subtitle2" sx={{ color: 'text.primary' }} noWrap>
                 {user.name}
               </Typography>
 

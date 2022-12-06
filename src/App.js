@@ -13,17 +13,18 @@ import { StyledChart } from './components/chart';
 import Home from './layouts/landingpage/Home'
 import SignUp from './layouts/landingpage/SignUp'
 import SignUpAuth from './layouts/landingpage/SignUpAuth'
-import Profile from './layouts/landingpage/modules/components/LogComponents/Profile'
+// import Profile from './layouts/landingpage/modules/components/LogComponents/Profile'
 import DashboardLayout from './layouts/dashboard/DashboardLayout'
 import InfoUser from './components/User/InfoUser'
 import UserPage from './pages/UserPage'
 import NewCreate from './components/News/NewCreate';
 import NewUpdate from './components/News/NewUpdate';
 import BlogPage from './pages/BlogPage';
-
+import NewDelete from './components/News/NewDelete'
 
 export default function App() {
   const [userType, setUserType] = useState('')
+  // const { newId } = useParams();
   return (
     <UserContext.Provider value={[userType, setUserType]}>
       <ThemeProvider>
@@ -31,17 +32,16 @@ export default function App() {
         <StyledChart />
         <Routes>
           <Route path = "/" element = {<Home /> } /> 
+          <Route path="/RegistroCliente" element={<AuthRedirect Component={SignUp} tipo='Cliente' />} />
           <Route path = "/dashboard" element = {<ProtectedRoute component={DashboardLayout} />}>
-            <Route path = "registro" element = {<SignUp/>} />
+            {/* <Route path = "registro" element = {<SignUp/>} /> */}
             <Route path = "prueba" element = {<SignUpAuth/>} />
             <Route path = "actualizar" element = {<InfoUser />} />
-            <Route path="RegistroAdmin" element={<AuthRedirect Component={Profile} tipo='Admin' />} />
-            <Route path="RegistroCliente" element={<AuthRedirect Component={Profile} tipo='Cliente' />} />
-            <Route path="RegistroSupplier" element={<AuthRedirect Component={Profile} tipo='Supplier' />} />
             <Route path = "blog" element = {<BlogPage/>}/>
             <Route path = "actualizar" element = {<InfoUser />} />
             <Route path = "NewCreate" element = {<NewCreate />} />
-            <Route path = "NewUpdate" element = {<NewUpdate />} />
+            <Route path = "NewUpdate/:newId" element = {<NewUpdate/>}  />
+            <Route path = "NewDelete/:newId" element = {<NewDelete/>}  />
             <Route path = "gestion_usuarios" element = {<UserPage/>} />
           </Route>
         </Routes>

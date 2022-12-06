@@ -1,5 +1,7 @@
+import {useLocation} from 'react-router-dom';
 import * as React from 'react';
 import { useEffect, useState } from 'react'
+import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
 import AppFormNew from '../../layouts/landingpage/modules/views/AppFormNew';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -7,9 +9,12 @@ import { useExternalApi } from '../../hooks/NewResponse';
 import NewBodyUtil from './NewBodyUtil';
 
 
-export default function NewCreate(){
+
+export default function NewUpdate(){
     const [noticia, setNoticia] = useState({});
     const [flag, setFlag] = useState(false)
+    const location = useLocation();
+    const id = location.pathname.split('/')
     
     const {
         // updateNew,
@@ -24,11 +29,12 @@ export default function NewCreate(){
     }, [])
 
     useEffect(() => {
-      getNew(11,setNoticia)
+      console.log(id[3])
+      getNew(id[3],setNoticia)
       // eslint-disable-next-line
     },[flag])
 
-    if (JSON.stringify(noticia) === '{}') return <div>Cargando</div>
+    if (JSON.stringify(noticia) === '{}') return <div>Cargando <LinearProgress /></div>
 
     return (
         <>

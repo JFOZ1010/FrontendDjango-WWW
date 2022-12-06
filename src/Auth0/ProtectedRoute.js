@@ -16,7 +16,7 @@ export default function ProtectedRoute ({ component, ...args }) {
                 console.log(data.user_type)
                 if (data.user_type.localeCompare('noregistro') === 0) {
                     console.log("No estoy registrado")
-                    nav(`/dashboard/registro${tipo}`)
+                    nav(`/registrocliente`)
                     window.localStorage.setItem('isRegistrated', false)
                 } else if ((tipo.localeCompare(data.user_type) !== 0 || !data.user_status)) {
                     console.log("Me meti donde no era")
@@ -29,7 +29,7 @@ export default function ProtectedRoute ({ component, ...args }) {
                 }
             })
         }
-
+        
         fetchData()
         // eslint-disable-next-line
     }, [])
