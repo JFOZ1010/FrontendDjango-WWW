@@ -10,9 +10,8 @@ import logoUV from './img_aux/Univalle.svg.png'
 function Copyright() {
   return (
     <>
-      {'© '}
       <Link color="secondary.light" href="https://www.univalle.edu.co">
-        Universidad del valle 
+        {'Universidad del valle '}
         {new Date().getFullYear()}
       </Link>{' '}
       
@@ -66,7 +65,7 @@ export default function AppFooter() {
               INTEGRANTES
             </Typography>
             <Typography variant="subtitle1" gutterBottom color = 'secondary.light'>
-              Giron A., Orozco J., Ruiz A., Rodriguez K., Salamanca J.
+              Giron A., Osorio J., Ruiz A., Rodriguez K., Salamanca J.
             </Typography>
           </Grid>
         </Grid>
