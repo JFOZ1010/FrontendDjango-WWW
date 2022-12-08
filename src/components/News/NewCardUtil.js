@@ -30,6 +30,9 @@ export default function NewCardUtil(props) {
         let result = ''
         if (htmlText.match(/https:([\w\W]+?).jpg/g) != null) {
             result = htmlText.match(/https:([\w\W]+?).jpg/g)[0]
+        }else {
+            result = "https://img.freepik.com/premium-vector/pc-components-cpu-gpu-motherboard-cooler-ssd-hand-drawn-memory-modules-system-unit-power-supply-vector-personal-computer-parts-isolated-set_102902-6145.jpg?w=1380"
+
         }
         console.log(result)
         return <CardMedia
