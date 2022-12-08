@@ -17,7 +17,7 @@ if (tipo.localeCompare('Cliente') === 0) {
     },
     {
       title: 'Noticias',
-      path: '/dashboard/blog',
+      path: '/dashboard/noticiasClientes',
       icon: icon('ic_blog'),
     },
   ]
@@ -40,7 +40,7 @@ if (tipo.localeCompare('Cliente') === 0) {
     },
     {
       title: 'Noticias',
-      path: '/dashboard',
+      path: '/dashboard/noticiasAdmin',
       icon: icon('ic_blog'),
     },
     
@@ -55,7 +55,7 @@ if (tipo.localeCompare('Cliente') === 0) {
     },
     {
       title: 'Noticias',
-      path: '/dashboard',
+      path: '/dashboard/noticiasClientes',
       icon: icon('ic_blog'),
     },
     {

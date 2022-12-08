@@ -31,13 +31,13 @@ export default function NewCreate() {
     if (reason && reason === 'backdropClick') {
       return
     }
-    nav('/dashboard/blog')
+    nav('/dashboard/')
   }
 
 
   const onSubmit = data => {
     data.new_description = convertToRaw(editorState.getCurrentContent())
-    console.log(data)
+    // console.log(data)
     createNew(data)
     setVisible(true)
    
@@ -83,7 +83,7 @@ export default function NewCreate() {
         </DialogContent>
         <DialogActions>
           <Button variant="contained" onClick={handleClose}>
-            Volver al BlogPage
+            Volver al dashboard
           </Button>
         </DialogActions>
       </Dialog>

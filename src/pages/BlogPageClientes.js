@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import NewCardUtil from '../components/News/NewCardUtil';
+import NewCardUtilCliente from '../components/News/NewCardUtilCliente';
 
 import { useExternalApi } from '../hooks/NewResponse';
 // components
@@ -67,9 +67,6 @@ export default function BlogPage() {
           <Typography variant="h4" gutterBottom>
             Noticias
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} component={LinkNew} to={'/dashboard/NewCreate'}>
-            New Post
-          </Button>
         </Stack>
 
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
@@ -81,7 +78,7 @@ export default function BlogPage() {
             ))}
           </TextField>
         </Stack>
-        <NewCardUtil new={new1} option = {menuOption} />
+        <NewCardUtilCliente new={new1} option = {menuOption} />
       </Container>
     </>
   );
