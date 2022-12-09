@@ -33,35 +33,35 @@ export const useExternalApi = () => {
     const getAllAccountsDetailed = async (setUsersDetailed) => {
         var users_retreived, sups_retreived;
         var USERLIST = [];
-        
+
         // Using django API to retreive all acounts, users and sups information
         users_retreived = await getAllUsersDetailed();
         sups_retreived = await getAllSupsDetailed();
-        
+
         // then building USERLIST, JSON that is going to be sent to UserPage
-        // first, user time 
-        let role_name; let status; let contador = 0;  
+        // first, user time
+        let role_name; let status; let contador = 0;
         // console.log(users_retreived, 'usuarios recibidos!')
         // console.log(sups_retreived, 'suppliers recibidos!')
         // console.log('*** Recibiendo informacion')
         const users_builded = users_retreived.map(item => {
             if (contador === 24) {
-                contador = 0; 
+                contador = 0;
             }
             contador++
-            role_name = (item.user_id.user_type === 3) ? 'Admin' : 'Usuario'
-            status = (item.user_id.user_status) ? 'Activo' : 'Inactivo' 
+            role_name = (item.user_id.user_type === 3) ? 'Usuario' : 'Admin'
+            status = (item.user_id.user_status) ? 'Activo' : 'Inactivo'
             return ({
                 id: item.user_id.user_id,
                 avatarUrl: `/assets/images/avatars/avatar_${contador}.jpg`,
-                name: item.name, 
+                name: item.name,
                 city: item.city,
                 email: item.user_id.email,
                 status: status,
                 role: role_name,
-            })           
+            })
         })
-        contador = 0; 
+        contador = 0;
         const sups_builded = sups_retreived.map(item => {
             if (contador === 24) {
                 contador = 0;
@@ -71,12 +71,12 @@ export const useExternalApi = () => {
             return ({
                 id: item.user_id.user_id,
                 avatarUrl: `/assets/images/avatars/avatar_${contador}.jpg`,
-                name: item.supplier_name, 
+                name: item.supplier_name,
                 city: '--',
                 email: item.user_id.email,
                 status: status,
                 role: 'Proveedor',
-            }) 
+            })
         })
         USERLIST = users_builded.concat(sups_builded)
         // console.log(USERLIST, 'Lo que se deberia mandar')
