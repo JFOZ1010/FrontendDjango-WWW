@@ -8,64 +8,66 @@ const tipo = window.localStorage.getItem('tipo');
 // console.log(tipo);
 let config;
 
-if (tipo.localeCompare('Cliente') === 0) {
-  config  = [
-    {
-      title: 'Tienda',
-      path: '/dashboard',
-      icon: icon('ic_cart'),
-    },
-    {
-      title: 'Noticias',
-      path: '/dashboard/noticiasClientes',
-      icon: icon('ic_blog'),
-    },
-  ]
-}else if (tipo.localeCompare('Admin') === 0) {
-  config  = [
-    {
-      title: 'Gestion de usuarios',
-      path: '/dashboard/gestion_usuarios',
-      icon: icon('ic_user')
-    },
-    {
-      title: 'Reportes',
-      path: '/dashboard',
-      icon: icon('ic_analytics'),
-    },
-    {
-      title: 'Tienda',
-      path: '/dashboard',
-      icon: icon('ic_cart'),
-    },
-    {
-      title: 'Noticias',
-      path: '/dashboard/noticiasAdmin',
-      icon: icon('ic_blog'),
-    },
-    
-  ]
-} else if (tipo.localeCompare('Supplier') === 0) {
-  config  = 
-  [
-    {
-      title: 'Tienda',
-      path: '/dashboard',
-      icon: icon('ic_cart'),
-    },
-    {
-      title: 'Noticias',
-      path: '/dashboard/noticiasClientes',
-      icon: icon('ic_blog'),
-    },
-    {
-      title: 'Reportes',
-      path: '/dashboard',
-      icon: icon('ic_analytics'),
-    },
-  ]
-} else {
-  config  = []
+if (tipo){
+  if (tipo.localeCompare('Cliente') === 0) {
+    config  = [
+      {
+        title: 'Tienda',
+        path: '/dashboard',
+        icon: icon('ic_cart'),
+      },
+      {
+        title: 'Noticias',
+        path: '/dashboard/noticiasClientes',
+        icon: icon('ic_blog'),
+      },
+    ]
+  }else if (tipo.localeCompare('Admin') === 0) {
+    config  = [
+      {
+        title: 'Gestion de usuarios',
+        path: '/dashboard/gestion_usuarios',
+        icon: icon('ic_user')
+      },
+      {
+        title: 'Reportes',
+        path: '/dashboard',
+        icon: icon('ic_analytics'),
+      },
+      {
+        title: 'Tienda',
+        path: '/dashboard',
+        icon: icon('ic_cart'),
+      },
+      {
+        title: 'Noticias',
+        path: '/dashboard/noticiasAdmin',
+        icon: icon('ic_blog'),
+      },
+      
+    ]
+  } else if (tipo.localeCompare('Supplier') === 0) {
+    config  = 
+    [
+      {
+        title: 'Tienda',
+        path: '/dashboard',
+        icon: icon('ic_cart'),
+      },
+      {
+        title: 'Noticias',
+        path: '/dashboard/noticiasClientes',
+        icon: icon('ic_blog'),
+      },
+      {
+        title: 'Reportes',
+        path: '/dashboard',
+        icon: icon('ic_analytics'),
+      },
+    ]
+  } else {
+    config  = []
+  }
 }
 /*
 const navConfig = [

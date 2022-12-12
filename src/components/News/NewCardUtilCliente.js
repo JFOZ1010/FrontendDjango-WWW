@@ -58,7 +58,11 @@ export default function NewCardUtil(props) {
             </DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                    <td dangerouslySetInnerHTML={{ __html: stateToHTML(convertFromRaw(JSON.parse(newI.new_description))) }} />
+                    {
+                        // eslint-disable-next-line
+                        <td dangerouslySetInnerHTML={{ __html: stateToHTML(convertFromRaw(JSON.parse(newI.new_description))) }} />
+                    }
+                    
                     {console.log()}
                 </DialogContentText>
             </DialogContent>
