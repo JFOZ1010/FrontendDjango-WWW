@@ -192,7 +192,7 @@ export default function UserPage() {
     return(
       <>
         <Helmet>
-          <title> Gestión de Usuarios </title>
+          <title> GESTIÓN DE USUARIOS SUPER VISIBLE </title>
         </Helmet>
         <Container>
           <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
