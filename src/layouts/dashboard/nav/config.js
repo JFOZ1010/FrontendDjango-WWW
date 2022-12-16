@@ -25,7 +25,7 @@ if (tipo){
   }else if (tipo.localeCompare('Admin') === 0) {
     config  = [
       {
-        title: 'Gestion de usuarios',
+        title: 'Gestión de usuarios',
         path: '/dashboard/gestion_usuarios',
         icon: icon('ic_user')
       },

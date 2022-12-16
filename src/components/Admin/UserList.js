@@ -30,6 +30,9 @@ import Iconify from '../iconify';
 import Scrollbar from '../scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../../sections/@dashboard/user';
+// import AppForm from '../../layouts/landingpage/modules/views/AppForm';
+// FrontendDjango-WWW/src/layouts/landingpage/modules/views/AppForm.js
+// FrontendDjango-WWW/src/components/Admin/UserList.js
 // mock -> Users made by Faker: Not used
 // import USERLIST from '../_mock/user';
 
@@ -192,11 +195,11 @@ export default function UserPage() {
     return(
       <>
         <Helmet>
-          <title> GESTIÓN DE USUARIOS SUPER VISIBLE </title>
+          <title> Gestión de usuarios</title>
         </Helmet>
         <Container>
           <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-            <Typography variant="h4" gutterBottom align = "center" >
+            <Typography variant="h2" gutterBottom align = "center" >
               Cargando usuarios
             </Typography>
             <Button variant="contained" startIcon={<Iconify icon="eva:clock-outline" />}>
@@ -221,13 +224,13 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> Gestión de Usuarios </title>
+        <title> Gestión de usuarios </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            Gestión de Usuarios
+          <Typography variant="h2" gutterBottom align = "center" >
+            Gestión de usuarios
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:layers-outline" />}>
             {isLoading}
