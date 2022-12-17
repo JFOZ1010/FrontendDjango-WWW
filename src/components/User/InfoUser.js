@@ -57,11 +57,11 @@ function InfoUser() {
   return (
       <>
         <AppForm >
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+          <Typography variant="h2" gutterBottom marked="center" align="center" sx={{ marginLeft: 6 }}>
             Mi perfil
           </Typography>
-          <Typography variant="body2" align="center">
-              Ingrese sus datos
+          <Typography variant="body1" align="center" sx={{ marginLeft: 6 }}>
+              Modifique su información
           </Typography>
             <form onSubmit = {registerSubmit(onSubmit)}>
               <TextField
@@ -72,7 +72,7 @@ function InfoUser() {
                   maxLength: 100
                 }}
                 fullWidth 
-                sx={{ mx: 4, my: 2 }}
+                sx={{ mx: 3, my: 2 }}
               />
               <TextField
                 label="Ciudad"
@@ -82,7 +82,7 @@ function InfoUser() {
                   maxLength: 50
                 }}
                 fullWidth
-                sx={{ mx: 4, my: 2 }}
+                sx={{ mx: 3, my: 2 }}
               />
               <TextField
                 label="Fecha de nacimiento"
@@ -94,7 +94,7 @@ function InfoUser() {
                   maxLength: 50
                 }}
                 fullWidth
-                sx={{ mx: 4, my: 2}}
+                sx={{ mx: 3, my: 2}}
               />
               <TextField
                 label="Sexo"
@@ -102,7 +102,7 @@ function InfoUser() {
                 defaultValue={user1.sex}
                 {...registro('sexo', { required: true })}
                 fullWidth
-                sx={{ mx: 4, my: 2}}
+                sx={{ mx: 3, my: 2}}
               >
                 {sexo.map((el) => (
                   <MenuItem key={el.value} value={el.value}>
@@ -114,8 +114,8 @@ function InfoUser() {
             </form>
             <Button 
               sx={{ 
-                ml: { xs: 4, md: 4}, 
-                mr: { xs: 4, md: 4} , 
+                ml: { xs: 3, md: 4}, 
+                mr: { xs: 3, md: 4} , 
                 my: 2, 
                 ':hover' : { bgcolor: '#155FA8', color:'white'}
               }} 

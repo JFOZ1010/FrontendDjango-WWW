@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Stack, Typography } from '@mui/material';
+import { Card, Container, Stack, Typography } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 import { Helmet } from 'react-helmet-async';
 
@@ -48,8 +48,31 @@ export default function BlogPage() {
     // eslint-disable-next-line
   }, [])
 
-  if (JSON.stringify(new1) === '{}' ) return <div> Cargando <LinearProgress /> </div>
-  // console.log(JSON.stringify(new1))
+  // if (JSON.stringify(new1) === '{}' ) return <div> Cargando <LinearProgress /> </div>
+  // // console.log(JSON.stringify(new1))
+
+  if (JSON.stringify(new1) === '{}' ) {
+    // console.log('No users loaded yet :c')
+    return(
+      <>
+        <Helmet>
+          <title> Noticias </title>
+        </Helmet>
+        <Container>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+            <Typography variant="h2" gutterBottom align = "center" >
+              Cargando noticias
+            </Typography>
+          </Stack>
+          <Card>
+            <Stack sx={{ width: '100%' }} spacing={2}>
+              <LinearProgress color = "secondary" />
+            </Stack>
+          </Card>
+        </Container>
+      </>
+    )
+  } 
 
   return (
 
@@ -61,7 +84,7 @@ export default function BlogPage() {
       {/* {console.log(JSON.stringify(new1))} */}
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h2" gutterBottom align = "center" >
             Noticias
           </Typography>
         </Stack>
