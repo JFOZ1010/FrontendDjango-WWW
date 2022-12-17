@@ -60,7 +60,7 @@ export const useExternalApi = () => {
 
     }
 
-    const createNew = async (datos) => {
+    const createNew = async (datos, setMensaje) => {
 
         const config = {
             url: `${apiServerUrl}/api/new/create`,
@@ -77,10 +77,11 @@ export const useExternalApi = () => {
         const data = await makeRequest({ config })
 
         console.log(data)
+        setMensaje("Noticia creada")
 
     }
 
-    const updateNew = async (datos, id) => {
+    const updateNew = async (datos, id, setMensaje) => {
         console.log(typeof (id))
         console.log(datos.new_title)
         console.log(JSON.stringify(datos.new_description))
@@ -100,6 +101,7 @@ export const useExternalApi = () => {
         const data = await makeRequest({ config })
 
         console.log(data)
+        setMensaje("Noticia actualizada")
 
     }
 

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react'
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from 'draft-js'
+import { EditorState } from 'draft-js'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -22,6 +22,8 @@ export default function NewCreate() {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const nav = useNavigate()
   const [visible, setVisible] = useState(false)
+  const [mensaje, setMensaje] = useState('Actualizar')
+
 
   const {
     createNew
@@ -31,17 +33,33 @@ export default function NewCreate() {
     if (reason && reason === 'backdropClick') {
       return
     }
-    nav('/dashboard/')
+    nav('/dashboard/noticiasAdmin')
   }
 
+ // crear una function arrow llamada onSubmit, que valide la creacion de una noticia
+ const onSubmit = data => {
+  console.log(data)
+  setMensaje('Creando noticia')
+  // data.new_description = convertToRaw(editorState.getCurrentContent())
+  // data.new_description = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+  // console.log("data descripcion", data.new_description)
 
-  const onSubmit = data => {
-    data.new_description = convertToRaw(editorState.getCurrentContent())
-    // console.log(data)
+  if(data.new_title.length <= 7){
+    setMensaje('Faltan datos')
+    setVisible(true)
+    // return
+  }else if(data.new_title.length > 25){
+    setMensaje('Digite un titulo mas corto')
+    setVisible(true)
+    // return
+  }else{
+    setMensaje('Noticia creada')
     createNew(data)
     setVisible(true)
-   
   }
+  setTimeout(() => {
+  }, 2000)
+ }
 
   // useEffect(() => {
   //     // console.log(convertToRaw(editorState.getCurrentContent()));
@@ -78,7 +96,7 @@ export default function NewCreate() {
         <DialogTitle>Alerta</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Noticia Creada
+            {mensaje} 
           </DialogContentText>
         </DialogContent>
         <DialogActions>

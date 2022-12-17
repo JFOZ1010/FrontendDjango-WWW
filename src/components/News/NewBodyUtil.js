@@ -51,7 +51,7 @@ export default function NewBodyUtil(noticia) {
                         onChange={(e) => { setTitulo(e.target.value) }}
                         {...registro('new_title', { required: true })}
                         inputProps={{
-                            maxLength: 100
+                            maxLength: 25
                         }}
                         sx={{ mx: 0, my: 2, width: '100%' }}
                     />
