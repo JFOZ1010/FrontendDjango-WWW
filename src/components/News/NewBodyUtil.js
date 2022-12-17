@@ -19,13 +19,14 @@ export default function NewBodyUtil(noticia) {
     const [titulo, setTitulo] = useState(noticia.noticia.new_title)
     const [editorState, setEditorState] = useState(() => EditorState.createWithContent(convertFromRaw(JSON.parse(noticia.noticia.new_description))));
     const [visible, setVisible] = useState(false)
+    const [mensaje, setMensaje] = useState('Actualizar')
 
     const handleClose = (event, reason) => {
         if (reason && reason === 'backdropClick') {
-          return
+            return
         }
         setVisible(false)
-      }
+    }
 
     const {
         updateNew
@@ -33,16 +34,26 @@ export default function NewBodyUtil(noticia) {
 
     const onSubmit = data => {
         data.new_description = convertToRaw(editorState.getCurrentContent())
-        console.log(data)
-        updateNew(data, noticia.noticia.new_id)
-        setVisible(true)
+        // console.log(data)
+        if(data.new_title.length <= 7){
+            setMensaje('Faltan datos')
+            setVisible(true)
+            // return
+        }else if(data.new_title.length > 25){
+            setMensaje('Digite un titulo mas corto')
+            setVisible(true)
+            // return
+        }else{
+            setMensaje('Noticia actualizada')
+            updateNew(data, noticia.noticia.new_id)
+            setVisible(true)
+        }
     }
 
 
     return (
 
         <>
-
             <div>
                 <form onSubmit={registerSubmit(onSubmit)}>
                     <TextField
@@ -51,7 +62,7 @@ export default function NewBodyUtil(noticia) {
                         onChange={(e) => { setTitulo(e.target.value) }}
                         {...registro('new_title', { required: true })}
                         inputProps={{
-                            maxLength: 25
+                            maxLength: 100
                         }}
                         sx={{ mx: 0, my: 2, width: '100%' }}
                     />
@@ -69,7 +80,7 @@ export default function NewBodyUtil(noticia) {
                 <DialogTitle>Alerta</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Noticia Actualizada
+                        {mensaje}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

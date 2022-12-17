@@ -37,7 +37,7 @@ export default function NewCreate() {
   }
 
  // crear una function arrow llamada onSubmit, que valide la creacion de una noticia
- const onSubmit = data => {
+const onSubmit = data => {
   console.log(data)
   setMensaje('Creando noticia')
   // data.new_description = convertToRaw(editorState.getCurrentContent())
