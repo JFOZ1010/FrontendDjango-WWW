@@ -32,13 +32,6 @@ export const useExternalApiItem = () => {
 
         const data = await makeRequest({ config })
 
-        // const array = []
-        // for (var i = 0; i <= data.length; i++) {
-
-        //     array.push(data[i])
-
-        // }
-
         console.log(data)
         setItem(data);
 
