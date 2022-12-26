@@ -34,7 +34,7 @@ export default function NewCardUtil(props) {
             result = "https://img.freepik.com/premium-vector/pc-components-cpu-gpu-motherboard-cooler-ssd-hand-drawn-memory-modules-system-unit-power-supply-vector-personal-computer-parts-isolated-set_102902-6145.jpg?w=1380"
 
         }
-        console.log(result)
+        // console.log(result)
         return <CardMedia
             component="img"
             height="140"
