@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react'
 import Box from '@mui/material/box';
+import Paper from '@mui/material/paper';
 import Stack from '@mui/material/stack'
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -11,7 +12,7 @@ import { useExternalApiItem } from '../../hooks/ItemsResponse';
 export default function ScrappingGen() {
 
     const { ScrappingAmazon, ScrappingMercadolibre, ScrappingNewegg } = useExternalApiItem()
-    const [ message, setMessage ] = useState({ 'message': '', 'res': 0})
+    const [ message, setMessage ] = useState({ 'message': 'Generar scrapping', 'res': 0})
     const [ visible, setVisible ] = useState(false)
 
     const onSubmit = async () => {
@@ -50,7 +51,20 @@ export default function ScrappingGen() {
 
     return (
         <>  
-            <Box textAlign='center'>
+            <Box textAlign='center' >
+                <Typography variant="h2" align="center" >
+                    Generación de Scrapping
+                </Typography>
+                <Box  display="flex" justifyContent="center" alignItems="center" mt = {2}>
+                <Paper elevation={3} sx={{ width: 0.6 }} >
+                    <Typography variant="body2" align="justify" p = {3} style={{whiteSpace: 'pre-line'}} >
+                    En esta sección se realiza el proceso de scrapping en las páginas: Mercadolibre, Amazon y NewEgg.
+                    Tenga en consideración que dicho proceso puede tener una duración mayor a 3 minutos dependiendo de la cantidad de datos obtenidos,
+                    si el tiempo supera con creces este valor, es posible que haya ocurrido algún tipo de fallo dentro del proceso. <br/>
+                    Los resultados de este proceso serán mostrados en el apartado de "Tienda".
+                    </Typography>
+                </Paper>
+                </Box>
                 <Button 
                 sx={{ 
                     ml: { xs: 3, md: 4}, 
@@ -61,17 +75,16 @@ export default function ScrappingGen() {
                 variant='contained' 
                 onClick={ () => {onSubmit() }}
                 >
-                Generar Scrapping
+                    <Stack direction="row" alignItems="center" justifyContent = "center" >
+                        { visible && <CircularProgress color="inherit" sx={{ marginRight: 2 }} /> }
+                        <Typography variant="body1" align="center" >
+                            {message.message}
+                        </Typography>
+                    </Stack>
                 </Button>
                 
                 
             </Box>
-            <Stack direction="row" alignItems="center" justifyContent = "center" >
-                { visible && <CircularProgress /> }
-                <Typography variant="body1" align="center" sx={{ marginLeft: 2 }}>
-                    {message.message}
-                </Typography>
-            </Stack>
         </>
     );
 }
