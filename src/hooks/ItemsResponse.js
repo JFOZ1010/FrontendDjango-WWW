@@ -48,8 +48,52 @@ export const useExternalApiItem = () => {
 
         const data = await makeRequest({ config })
         
-        console.log(data)
-        setMessage(JSON.stringify(data))
+        // console.log(data)
+        if (data.res === 200) {
+            setMessage({ 'message': 'Los datos de Amazon han sido scrapeados', 'res': 0 })
+        } else {
+            setMessage({ 'message': 'Ha sucedido algún error', 'res': 1})
+        }
+
+    }
+
+    const ScrappingMercadolibre = async (setMessage) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/item/scrapping/mercadolibre`,
+            method: 'POST',
+            headers: {},
+            data: {}
+        }
+
+        const data = await makeRequest({ config })
+        
+        // console.log(data)
+        if (data.res === 200) {
+            setMessage({ 'message': 'Los datos de Mercadolibre han sido scrapeados', 'res': 0 })
+        } else {
+            setMessage({ 'message': 'Ha sucedido algún error', 'res': 1})
+        }
+
+    }
+
+    const ScrappingNewegg = async (setMessage) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/item/scrapping/newegg`,
+            method: 'POST',
+            headers: {},
+            data: {}
+        }
+
+        const data = await makeRequest({ config })
+        
+        // console.log(data)
+        if (data.res === 200) {
+            setMessage({ 'message': 'Los datos de Newegg han sido scrapeados', 'res': 0 })
+        } else {
+            setMessage({ 'message': 'Ha sucedido algún error', 'res': 1})
+        }
 
     }
 
@@ -58,5 +102,7 @@ export const useExternalApiItem = () => {
     return {
         allItems,
         ScrappingAmazon,
+        ScrappingMercadolibre,
+        ScrappingNewegg,
     }
 }
