@@ -21,7 +21,8 @@ import NewCreate from './components/News/NewCreate';
 import NewUpdate from './components/News/NewUpdate';
 import BlogPage from './pages/BlogPage';
 import BlogPageClientes from './pages/BlogPageClientes';
-import NewDelete from './components/News/NewDelete'
+import NewDelete from './components/News/NewDelete';
+import ScrappingGen from './components/Admin/ScrappingGen';
 
 export default function App() {
   const [userType, setUserType] = useState('')
@@ -45,6 +46,7 @@ export default function App() {
             <Route path = "NewUpdate/:newId" element = {<NewUpdate/>}  />
             <Route path = "NewDelete/:newId" element = {<NewDelete/>}  />
             <Route path = "gestion_usuarios" element = {<ListUser/>} />
+            <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
           </Route>
         </Routes>
       </ThemeProvider>

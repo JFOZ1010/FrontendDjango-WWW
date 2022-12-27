@@ -37,9 +37,26 @@ export const useExternalApiItem = () => {
 
     }
 
+    const ScrappingAmazon = async (setMessage) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/item/scrapping/amazon`,
+            method: 'POST',
+            headers: {},
+            data: {}
+        }
+
+        const data = await makeRequest({ config })
+        
+        console.log(data)
+        setMessage(JSON.stringify(data))
+
+    }
+
 
 
     return {
         allItems,
+        ScrappingAmazon,
     }
 }
