@@ -21,6 +21,8 @@ import NewCreate from './components/News/NewCreate';
 import NewUpdate from './components/News/NewUpdate';
 import BlogPage from './pages/BlogPage';
 import BlogPageClientes from './pages/BlogPageClientes';
+import NewDelete from './components/News/NewDelete';
+import ScrappingGen from './components/Admin/ScrappingGen';
 import NewDelete from './components/News/NewDelete'
 import ProductsPage from './pages/ProductsPage'
 
@@ -46,6 +48,7 @@ export default function App() {
             <Route path = "NewUpdate/:newId" element = {<NewUpdate/>}  />
             <Route path = "NewDelete/:newId" element = {<NewDelete/>}  />
             <Route path = "gestion_usuarios" element = {<ListUser/>} />
+            <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
             <Route path = "productPage" element = {<ProductsPage/>} />
           </Route>
         </Routes>
