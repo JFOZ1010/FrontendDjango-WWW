@@ -13,7 +13,7 @@ if (tipo){
     config  = [
       {
         title: 'Tienda',
-        path: '/dashboard',
+        path: '/dashboard/productPage',
         icon: icon('ic_cart'),
       },
       {
@@ -44,10 +44,10 @@ if (tipo){
         path: '/dashboard/noticiasAdmin',
         icon: icon('ic_blog'),
       },
-      
+
     ]
   } else if (tipo.localeCompare('Supplier') === 0) {
-    config  = 
+    config  =
     [
       {
         title: 'Tienda',
