@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEnv } from '../context/env.context'
 
-export const useExternalApiItem = () => {
+export const useExternalApi = () => {
 
     const { apiServerUrl } = useEnv()
 
@@ -32,7 +32,7 @@ export const useExternalApiItem = () => {
 
         const data = await makeRequest({ config })
 
-        console.log(data)
+        // console.log(data)
         setItem(data);
 
     }
