@@ -97,6 +97,22 @@ export const useExternalApi = () => {
 
     }
 
+    const UpdateClicItem = async (idItem) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/item/update/clic/${idItem}`,
+            method: 'PUT',
+            headers: {},
+            data: {}
+        }
+
+        const data = await makeRequest({ config })
+        
+        return data
+        
+
+    }
+
 
 
     return {
@@ -104,5 +120,6 @@ export const useExternalApi = () => {
         ScrappingAmazon,
         ScrappingMercadolibre,
         ScrappingNewegg,
+        UpdateClicItem
     }
 }

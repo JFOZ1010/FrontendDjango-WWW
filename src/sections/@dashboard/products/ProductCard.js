@@ -15,6 +15,7 @@ import Label from '../../../components/label';
 import NewEggIcon from '../../../components/Item/supplier_logos/newEggIcon'
 import MLIcon from '../../../components/Item/supplier_logos/MLIcon'
 import AmazonIcon from '../../../components/Item/supplier_logos/AmazonIcon'
+import { useExternalApi } from '../../../hooks/ItemsResponse';
 
 // import { ColorPreview } from '../../../components/color-utils';
 // ---------------------------------------------------------------------
@@ -52,9 +53,13 @@ function checkIcon(user_id) {
   return(<NewEggIcon />)
 }
 export default function ShopProductCard({ product }) {
-  const { item_name, item_picture, item_price, item_url, user_id, type_id } = product;
+  const { item_id, item_name, item_picture, item_price, item_url, user_id, type_id } = product;
   const [entered, setEntered] = useState(false)
   const [datosBorde, setDatosBorde] = useState({})
+  const {
+    UpdateClicItem,
+  } = useExternalApi();
+
   useEffect(() => {
     if (entered) {
       setDatosBorde({
@@ -70,6 +75,11 @@ export default function ShopProductCard({ product }) {
     }
 
   }, [entered, user_id])
+
+  const clicSave = async () => {
+    UpdateClicItem(item_id)
+  }
+
   return (
     <Card onMouseEnter = {() => {setEntered(true)}} onMouseLeave = {() => {setEntered(false)}} sx = {datosBorde}>
       <Box sx={{ pt: '100%', position: 'relative' }}>
@@ -92,7 +102,7 @@ export default function ShopProductCard({ product }) {
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Link rel="noopener noreferrer" href = {item_url} target="_blank" color="inherit" underline="hover" >
+        <Link rel="noopener noreferrer" href = {item_url} onClick = {() => {clicSave()}} target="_blank" color="inherit" underline="hover" >
           <Typography variant="subtitle2" wrap="nowrap" sx = {{ fontSize: '11px' }}>
             {item_name}
           </Typography>
