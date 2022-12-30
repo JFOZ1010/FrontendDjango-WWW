@@ -6,12 +6,12 @@ import Stack from '@mui/material/stack'
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
-import { useExternalApiItem } from '../../hooks/ItemsResponse';
+import { useExternalApi } from '../../hooks/ItemsResponse';
 
 
 export default function ScrappingGen() {
 
-    const { ScrappingAmazon, ScrappingMercadolibre, ScrappingNewegg } = useExternalApiItem()
+    const { ScrappingAmazon, ScrappingMercadolibre, ScrappingNewegg } = useExternalApi()
     const [ message, setMessage ] = useState({ 'message': 'Generar scrapping', 'res': 0})
     const [ visible, setVisible ] = useState(false)
 
@@ -32,7 +32,7 @@ export default function ScrappingGen() {
                         
                         if (message.res === 0) {
                             setTimeout( () => {
-                                setMessage({ 'message': 'Todos los datos fueron correctamente scrapeados', 'res': 0})
+                                setMessage({ 'message': 'El proceso ha finalizado', 'res': 0})
                                 setVisible(false)
                             }, 2000)
                         } else {
@@ -59,7 +59,7 @@ export default function ScrappingGen() {
                 <Paper elevation={3} sx={{ width: 0.6 }} >
                     <Typography variant="body2" align="justify" p = {3} style={{whiteSpace: 'pre-line'}} >
                     En esta sección se realiza el proceso de scrapping en las páginas: Mercadolibre, Amazon y NewEgg.
-                    Tenga en consideración que dicho proceso puede tener una duración mayor a 3 minutos dependiendo de la cantidad de datos obtenidos,
+                    Tenga en consideración que dicho proceso puede tener una duración mayor a 20 minutos dependiendo de la cantidad de datos obtenidos,
                     si el tiempo supera con creces este valor, es posible que haya ocurrido algún tipo de fallo dentro del proceso. <br/>
                     Los resultados de este proceso serán mostrados en el apartado de "Tienda".
                     </Typography>

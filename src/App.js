@@ -23,7 +23,6 @@ import BlogPage from './pages/BlogPage';
 import BlogPageClientes from './pages/BlogPageClientes';
 import NewDelete from './components/News/NewDelete';
 import ScrappingGen from './components/Admin/ScrappingGen';
-import NewDelete from './components/News/NewDelete'
 import ProductsPage from './pages/ProductsPage'
 
 export default function App() {

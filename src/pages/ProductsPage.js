@@ -90,6 +90,7 @@ export default function ProductsPage() {
     setOpenFilter(false);
   };
 
+  // eslint-disable-next-line
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');

@@ -36,7 +36,7 @@ if (tipo){
       },
       {
         title: 'Tienda',
-        path: '/dashboard',
+        path: '/dashboard/productPage',
         icon: icon('ic_cart'),
       },
       {
@@ -55,13 +55,18 @@ if (tipo){
     [
       {
         title: 'Tienda',
-        path: '/dashboard',
+        path: '/dashboard/productPage',
         icon: icon('ic_cart'),
       },
       {
         title: 'Noticias',
         path: '/dashboard/noticiasClientes',
         icon: icon('ic_blog'),
+      },
+      {
+        title: 'Tienda',
+        path: '/dashboard/productPage',
+        icon: icon('ic_cart'),
       },
       {
         title: 'Reportes',
