@@ -214,9 +214,9 @@ export default function UserPage() {
         </Container>
       </>
     )
-  } 
+  }
   // console.log('User list deatiled received!', USERLIST)
-  // Filtering information 
+  // Filtering information
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
   const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
   const isNotFound = !filteredUsers.length && !!filterName;
@@ -356,7 +356,7 @@ export default function UserPage() {
           },
         }}
       >
-        <MenuItem disabled = {checkStatus} onClick = {() => {handleChangeStatus(true)}}> 
+        <MenuItem disabled = {checkStatus} onClick = {() => {handleChangeStatus(true)}}>
           <Iconify icon={'eva:person-done-fill'} sx={{ mr: 2 }} />
           Activar
         </MenuItem>
