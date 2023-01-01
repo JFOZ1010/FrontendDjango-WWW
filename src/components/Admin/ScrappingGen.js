@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react'
-import Box from '@mui/material/box';
-import Paper from '@mui/material/paper';
-import Stack from '@mui/material/stack'
-import Button from '@mui/material/Button';
+import { Box, Paper, Stack, Button } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
 import { useExternalApi } from '../../hooks/ItemsResponse';

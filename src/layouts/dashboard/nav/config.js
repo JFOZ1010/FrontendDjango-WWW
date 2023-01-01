@@ -49,6 +49,11 @@ if (tipo){
         path: '/dashboard/scrapping-gen',
         icon: icon('ic_lock'),
       },
+      {
+        title: 'Reporte ItemByCat',
+        path: 'reports/itembycat',
+        icon: icon('ic_analytics'),
+      },
     ]
   } else if (tipo.localeCompare('Supplier') === 0) {
     config  =
@@ -71,6 +76,11 @@ if (tipo){
       {
         title: 'Reportes',
         path: '/dashboard',
+        icon: icon('ic_analytics'),
+      },
+      {
+        title: 'Reporte ItemByCat',
+        path: 'reports/itembycat',
         icon: icon('ic_analytics'),
       },
     ]

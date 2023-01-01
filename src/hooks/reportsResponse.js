@@ -25,17 +25,21 @@ export const useExternalApi = () => {
 
         const config = {
             url: `${apiServerUrl}/api/report/itembycat`,
-            method: 'GET',
-            headers: {},
+            method: 'POST',
+            headers: {
+            },
             data: {
                 "type_id": type
             }
         }
-
+        
         const data = await makeRequest({config})
 
-        // console.log(data)
-        setData(data)
+        if (JSON.stringify(data) !== '{"err":"No se ha encontrado los datos"}') {
+            setData(data)
+        } else {
+            setData(0)
+        }
 
     }
 
