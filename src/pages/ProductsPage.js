@@ -1,13 +1,16 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate'
 // @mui
 import { Container, Stack, Typography, Button, Card, LinearProgress, OutlinedInput, InputAdornment, Paper } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import Iconify from '../components/iconify';
+
 // components
 import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 import { useExternalApi } from '../hooks/ItemsResponse';
+import PaginationProduct from './PaginationProduct';
 // ----------------------------------------------------------------------
 
 function descendingComparator(a, b, orderBy) {
@@ -64,6 +67,10 @@ export default function ProductsPage() {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('item_name');
 
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(36);
+
 
   const {
     allItems,
@@ -78,9 +85,10 @@ export default function ProductsPage() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
+  const handleFilterName = (e) => {
+    setFilterName(e.target.value)
 
-  }, [filterName])
+  }
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -89,6 +97,10 @@ export default function ProductsPage() {
   const handleCloseFilter = () => {
     setOpenFilter(false);
   };
+
+  const paginate = ({ selected }) => {
+    setCurrentPage(selected + 1);
+ };
 
   // eslint-disable-next-line
   const handleRequestSort = (event, property) => {
@@ -155,6 +167,13 @@ export default function ProductsPage() {
   const filteredItems = applySortFilter(listaItems, getComparator(order, orderBy), filterName);
   const isNotFound = !filteredItems.length && !!filterName;
   // console.log(listaItems)
+
+  const lastProductIndex = currentPage * productsPerPage;
+  const firstProductIndex = lastProductIndex - productsPerPage; 
+
+  const currentProducts = filteredItems.slice(firstProductIndex, lastProductIndex)
+
+
   return (
     <>
       <Helmet>
@@ -170,7 +189,7 @@ export default function ProductsPage() {
           <Stack direction = 'row' spacing = {2} flexShrink = {0} sx = {{ my: 1 }} >
             <StyledSearch
               value = {filterName}
-              onChange = {(event) => {setFilterName(event.target.value)}}
+              onChange = {handleFilterName}
               placeholder = 'Buscar producto...'
               startAdornment = {
                 <InputAdornment position="start">
@@ -188,7 +207,8 @@ export default function ProductsPage() {
           </Stack>
         </Stack>
 
-        <ProductList products={filteredItems} />
+        <ProductList products={currentProducts} />
+        <ReactPaginate onPageChange = {paginate} pageCount = {Math.ceil(filteredItems.length/productsPerPage)} previousLabel = {'Prev'} nextLabel = {'next'} />
         {isNotFound && (
             <Paper
             sx={{
