@@ -13,7 +13,7 @@ if (tipo){
     config  = [
       {
         title: 'Tienda',
-        path: '/dashboard',
+        path: '/dashboard/productPage',
         icon: icon('ic_cart'),
       },
       {
@@ -36,7 +36,7 @@ if (tipo){
       },
       {
         title: 'Tienda',
-        path: '/dashboard',
+        path: '/dashboard/productPage',
         icon: icon('ic_cart'),
       },
       {
@@ -44,20 +44,29 @@ if (tipo){
         path: '/dashboard/noticiasAdmin',
         icon: icon('ic_blog'),
       },
-      
+      {
+        title: 'Generar Scrapping',
+        path: '/dashboard/scrapping-gen',
+        icon: icon('ic_lock'),
+      },
     ]
   } else if (tipo.localeCompare('Supplier') === 0) {
-    config  = 
+    config  =
     [
       {
         title: 'Tienda',
-        path: '/dashboard',
+        path: '/dashboard/productPage',
         icon: icon('ic_cart'),
       },
       {
         title: 'Noticias',
         path: '/dashboard/noticiasClientes',
         icon: icon('ic_blog'),
+      },
+      {
+        title: 'Tienda',
+        path: '/dashboard/productPage',
+        icon: icon('ic_cart'),
       },
       {
         title: 'Reportes',

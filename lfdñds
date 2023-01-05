@@ -1,0 +1,306 @@
+[33mcommit 5451ab5541b5e68111ece68f8132af540f99705b[m[33m ([m[1;36mHEAD -> [m[1;32mRamaKevinArmando1.5[m[33m, [m[1;31morigin/RamaKevinArmando1.5[m[33m)[m
+Merge: ef43150 480d006
+Author: Kelocoes <51235539+Kelocoes@users.noreply.github.com>
+Date:   Mon Dec 5 19:09:07 2022 -0500
+
+    Merge pull request #9 from JFOZ1010/main
+    
+    Merge
+
+[33mcommit 480d006d6ff2f70e363a6f67b40c40310ddf0078[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Sat Dec 3 10:26:35 2022 -0500
+
+    Arreglos por el merge
+
+[33mcommit a982d043802920d1ea6db217d177cb00d11a5d2c[m
+Merge: 635a62f ef43150
+Author: Kelocoes <51235539+Kelocoes@users.noreply.github.com>
+Date:   Sat Dec 3 09:30:01 2022 -0500
+
+    Merge pull request #8 from JFOZ1010/RamaKevinArmando1.5
+    
+    Rama kevin armando1.5
+
+[33mcommit ef431503f65764741caaf6281e0e244b83702599[m
+Merge: 2e90d84 635a62f
+Author: Kelocoes <51235539+Kelocoes@users.noreply.github.com>
+Date:   Sat Dec 3 09:29:55 2022 -0500
+
+    Merge branch 'main' into RamaKevinArmando1.5
+
+[33mcommit 635a62f0c5a2364e6e9b70c721284035d329690d[m
+Merge: 02100d0 91b15f6
+Author: Andres Felipe Giron Perez <52893982+AndresGiron@users.noreply.github.com>
+Date:   Sat Dec 3 09:20:21 2022 -0500
+
+    Merge pull request #7 from JFOZ1010/A_J1.5
+    
+    A j1.5
+
+[33mcommit 91b15f63a520ac87934e2bba2804ba78a5b87605[m[33m ([m[1;31morigin/A_J1.5[m[33m)[m
+Merge: 9c968ef 02100d0
+Author: Andres Felipe Giron Perez <52893982+AndresGiron@users.noreply.github.com>
+Date:   Sat Dec 3 09:19:58 2022 -0500
+
+    Merge branch 'main' into A_J1.5
+
+[33mcommit 9c968ef25ae60fdf055b670a08c7565ad2c2d219[m
+Author: Andres Felipe Giron Perez <gyron@pop-os.localdomain>
+Date:   Sat Dec 3 09:15:53 2022 -0500
+
+    Actualizacion de noticias
+
+[33mcommit 02100d002f65046757b93c2b71e61f75fd3b74de[m
+Merge: 1aed15d 3ca96ec
+Author: Julian Andres Salamanca Tellez <52895213+Joules17@users.noreply.github.com>
+Date:   Sat Dec 3 09:10:40 2022 -0500
+
+    Merge pull request #6 from JFOZ1010/FrontJulian1.1
+    
+    Front julian1.1
+
+[33mcommit 2e90d84fb2a9b7e017a8011cd88ce9f20ddcf036[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Thu Dec 1 22:14:11 2022 -0500
+
+    Arreglo identacion
+
+[33mcommit 02f434b64b74b7aaae2f47dc68130b6c59b60a33[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Thu Dec 1 17:16:08 2022 -0500
+
+    Arreglos de response
+
+[33mcommit 3ca96ec8e8950d987fac0fc94e1c0fcb8caa8e70[m[33m ([m[1;31morigin/FrontJulian1.1[m[33m)[m
+Author: Joules <52895213+Joules17@users.noreply.github.com>
+Date:   Thu Dec 1 16:16:06 2022 -0500
+
+    actualizacion
+
+[33mcommit bbf661966cf36e27edbbdd2917c619f6c4cc2b11[m
+Author: Joules <52895213+Joules17@users.noreply.github.com>
+Date:   Thu Dec 1 15:53:49 2022 -0500
+
+    Se actualiza el landing page para que se vea mas bonito uwu
+
+[33mcommit aabd62ddc8a3771fa792483704a704723230b1f0[m
+Author: Armando Ruiz <ArmandoRuizM@hotmail.com>
+Date:   Thu Dec 1 14:16:44 2022 -0500
+
+    Se añadieron algunas animaciones de carga y redirecciones
+
+[33mcommit c1eb8c523456fb72080bdcd238bc250fbb3a30e6[m
+Author: Andres Felipe Giron Perez <gyron@pop-os.localdomain>
+Date:   Wed Nov 30 19:00:24 2022 -0500
+
+    sprint finalizado
+
+[33mcommit 602a465bccdb2ee6a723e5e186bfa93b42f6f987[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Wed Nov 30 12:41:45 2022 -0500
+
+    Agregando cards
+
+[33mcommit 63a04109b00aeaf5b830492d05ec4ca286bbe333[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Sat Nov 26 18:55:46 2022 -0500
+
+    Traer las noticias en card a la page de blog
+
+[33mcommit 303f787955713fc9a40ef065384a32cfd9a67b97[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Sat Nov 26 11:55:39 2022 -0500
+
+    Nueva branch Kevin Armando sprint y medio
+
+[33mcommit 1aed15d7d30f403ba8e401c54ad8ddeed2fac2b1[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Sat Nov 26 11:53:32 2022 -0500
+
+    Arreglos front por el merge
+
+[33mcommit 1471ee03b641dc4ffd4aef1a79136f33121b69af[m
+Merge: 1d22b35 dee9434
+Author: Julian Andres Salamanca Tellez <52895213+Joules17@users.noreply.github.com>
+Date:   Sat Nov 26 10:04:19 2022 -0500
+
+    Merge pull request #5 from JFOZ1010/FrontJulian
+    
+    Front julian
+
+[33mcommit dee943487ed18130d2e35abd598d1ec375a9c728[m[33m ([m[1;31morigin/FrontJulian[m[33m)[m
+Merge: 8ea668b 1d22b35
+Author: Julian Andres Salamanca Tellez <52895213+Joules17@users.noreply.github.com>
+Date:   Sat Nov 26 10:04:14 2022 -0500
+
+    Merge branch 'main' into FrontJulian
+
+[33mcommit 1d22b35238c303a13986a24c78f0385a4c766509[m
+Merge: 98d297f 3444ed2
+Author: Andres Felipe Giron Perez <52893982+AndresGiron@users.noreply.github.com>
+Date:   Sat Nov 26 10:01:00 2022 -0500
+
+    Merge pull request #4 from JFOZ1010/JFOZ2
+    
+    News updating
+
+[33mcommit 98d297fa329de95e7d4fb53d435caf0dfdca02f1[m
+Merge: 549f533 dfe07d5
+Author: Andres Felipe Giron Perez <52893982+AndresGiron@users.noreply.github.com>
+Date:   Sat Nov 26 10:00:05 2022 -0500
+
+    Merge pull request #3 from JFOZ1010/AFGP
+    
+    Afgp
+
+[33mcommit dfe07d5bafb2c6a95936766ab926cd733f8fe9c7[m[33m ([m[1;31morigin/AFGP[m[33m)[m
+Merge: 147a1a7 549f533
+Author: Andres Felipe Giron Perez <52893982+AndresGiron@users.noreply.github.com>
+Date:   Sat Nov 26 09:59:58 2022 -0500
+
+    Merge branch 'main' into AFGP
+
+[33mcommit 147a1a7f23c4ee95026fbcda056f335102642b13[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Sat Nov 26 09:56:54 2022 -0500
+
+    Dios mio, gracias, funciona traerme los datos
+
+[33mcommit 549f533d6b4b4cbcb9674a58c99e1d4270302b06[m
+Merge: d7bd219 e1629af
+Author: Kelocoes <51235539+Kelocoes@users.noreply.github.com>
+Date:   Sat Nov 26 09:56:21 2022 -0500
+
+    Merge pull request #2 from JFOZ1010/KevinFront1
+    
+    Kevin front1
+
+[33mcommit e1629af5a8ef0c24083714df5872ed6a3c557ae5[m[33m ([m[1;31morigin/KevinFront1[m[33m, [m[1;32mKevinFront1[m[33m)[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Fri Nov 25 21:02:33 2022 -0500
+
+    Arreglo front
+
+[33mcommit d1df4fb448e93078e1372d1b9440928ec0501b68[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Fri Nov 25 16:47:06 2022 -0500
+
+    Dios mio, gracias, funciona traerme los datos
+
+[33mcommit 3444ed222d95047396a8c7707bbcf556060e82e5[m[33m ([m[1;31morigin/JFOZ2[m[33m)[m
+Author: Juan Felipe Osorio <82562585+JFOZ1010@users.noreply.github.com>
+Date:   Fri Nov 25 11:59:02 2022 -0500
+
+    News updating
+
+[33mcommit 8ea668bd27d4a384e74da95744be5b8c73a6dcb1[m
+Author: Joules <52895213+Joules17@users.noreply.github.com>
+Date:   Thu Nov 24 13:15:54 2022 -0500
+
+    Se agregan funcionalidades respecto al front del sprint de julian
+
+[33mcommit 6a17866cbf5ed52ef494627731d5a6dea4b37db3[m[33m ([m[1;31morigin/RamaKevinBack1[m[33m, [m[1;32mRamaKevinBack1[m[33m)[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Thu Nov 24 11:57:30 2022 -0500
+
+    Omitir env
+
+[33mcommit 72e9cc980744e0a1ec1d0aa8c969a40e351a8fd8[m
+Merge: 5acacf8 d78023f
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Wed Nov 23 22:36:42 2022 -0500
+
+    Arreglo merge
+
+[33mcommit 5acacf827cb12f52fcf05143a453f6b6af5b7bc2[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Wed Nov 23 22:31:25 2022 -0500
+
+    Modificaciones para el loguin -kevin
+
+[33mcommit 12668fb9af4d6cd62996c8a085be3579fee053f5[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Wed Nov 23 21:05:46 2022 -0500
+
+    Funcion para crear noticias terminada
+
+[33mcommit a317a2c710ff3f30165d7a30bb3c39e363cac453[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Wed Nov 23 15:45:15 2022 -0500
+
+    Nueva rama
+
+[33mcommit d78023fa2d7299d36697de1075cb6799ae0d9ccc[m
+Merge: 15ca3d3 cd5efa5
+Author: Andres Felipe Giron Perez <52893982+AndresGiron@users.noreply.github.com>
+Date:   Wed Nov 23 15:33:43 2022 -0500
+
+    Merge branch 'JFOZ' into KevinFront1
+
+[33mcommit cd5efa5b60b39ee0c47b89f1604e71c121b58a81[m[33m ([m[1;31morigin/JFOZ[m[33m)[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Wed Nov 23 15:28:05 2022 -0500
+
+    Agregando components para News
+
+[33mcommit 687e5962498e50d4d5e8792e49b5973d9dc0981c[m
+Author: AndresGiron <andresfelipe042001@gmail.com>
+Date:   Wed Nov 23 08:57:32 2022 -0500
+
+    Iniciando el front del apartado News
+
+[33mcommit 07af8c6df2d1fb9f0cd0f1e486b9b8caada15398[m
+Author: Joules <52895213+Joules17@users.noreply.github.com>
+Date:   Tue Nov 22 01:15:49 2022 -0500
+
+    Se agrega AdminResponse junto a algunas funciones dentro de el para interactuar con las funciones RetreiveAll del back, ademas se adjunta el modulo Gestion de usuarios al dashboard. Faltan funciones para cambiar el estado y conectar bien la aplicacion al back (no esta del todo bien
+
+[33mcommit 502a0e025fbe6d889196245230bca19a3dc1f127[m
+Merge: 6f9b8ff 15ca3d3
+Author: Joules <52895213+Joules17@users.noreply.github.com>
+Date:   Mon Nov 21 23:58:18 2022 -0500
+
+    Merge remote-tracking branch 'origin/KevinFront1' into FrontJulian
+
+[33mcommit 15ca3d38b688caab3f811028a33ab233e1b43e0d[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Mon Nov 21 20:15:53 2022 -0500
+
+    Sprint 1 Front completado creo Armando-Kevin
+
+[33mcommit d24cf4cfa015e03b36a1498337663f5425aa2675[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Sun Nov 20 21:27:50 2022 -0500
+
+    Armando y Kevin: Sprint 1 front
+
+[33mcommit 6f9b8ffe607acc1ff0b7f770200be840cffc48dd[m
+Author: Joules <52895213+Joules17@users.noreply.github.com>
+Date:   Fri Nov 18 21:27:59 2022 -0500
+
+    Creacion de rama de Julian para Front - Toma como base la de Kevin y Armando
+
+[33mcommit 974c949efae11c01f00db4c05381a856801846de[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Mon Nov 14 21:37:28 2022 -0500
+
+    Agrega landing page Armando-Kevin
+
+[33mcommit 9e8cb42f72e25a69a1ccb450f4dbf38a4866dd30[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Sat Nov 5 12:25:29 2022 -0500
+
+    Creacion branch kevin front 1
+
+[33mcommit d7bd21907ac195c7a62318ae781f00d42294b860[m
+Author: Kelocoes <kevin.rodriguez109@gmail.com>
+Date:   Sat Nov 5 12:08:18 2022 -0500
+
+    Inicio de proyecto
+
+[33mcommit ab6a97d67ba8bf29ffb2280d8c975001775b74d2[m
+Author: Juan Felipe Osorio <82562585+JFOZ1010@users.noreply.github.com>
+Date:   Sat Nov 5 11:36:01 2022 -0500
+
+    first commit

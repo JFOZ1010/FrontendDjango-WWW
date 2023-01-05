@@ -34,7 +34,7 @@ export default function NewUpdate(){
       // eslint-disable-next-line
     },[flag])
 
-    if (JSON.stringify(noticia) === '{}') return <div>Cargando <LinearProgress /></div>
+    if (JSON.stringify(noticia) === '{}') return <div><LinearProgress /></div>
 
     return (
         <>

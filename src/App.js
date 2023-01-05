@@ -21,7 +21,9 @@ import NewCreate from './components/News/NewCreate';
 import NewUpdate from './components/News/NewUpdate';
 import BlogPage from './pages/BlogPage';
 import BlogPageClientes from './pages/BlogPageClientes';
-import NewDelete from './components/News/NewDelete'
+import NewDelete from './components/News/NewDelete';
+import ScrappingGen from './components/Admin/ScrappingGen';
+import ProductsPage from './pages/ProductsPage'
 
 export default function App() {
   const [userType, setUserType] = useState('')
@@ -32,7 +34,7 @@ export default function App() {
         <ScrollToTop />
         <StyledChart />
         <Routes>
-          <Route path = "/" element = {<Home /> } /> 
+          <Route path = "/" element = {<Home /> } />
           <Route path="/RegistroCliente" element={<AuthRedirect Component={SignUp} tipo='Cliente' />} />
           <Route path = "/dashboard" element = {<ProtectedRoute component={DashboardLayout} />}>
             {/* <Route path = "registro" element = {<SignUp/>} /> */}
@@ -45,6 +47,8 @@ export default function App() {
             <Route path = "NewUpdate/:newId" element = {<NewUpdate/>}  />
             <Route path = "NewDelete/:newId" element = {<NewDelete/>}  />
             <Route path = "gestion_usuarios" element = {<ListUser/>} />
+            <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
+            <Route path = "productPage" element = {<ProductsPage/>} />
           </Route>
         </Routes>
       </ThemeProvider>
