@@ -7,8 +7,6 @@ import {
   Button,
   Drawer,
   Divider,
-  Checkbox,
-  FormGroup,
   IconButton,
   Typography,
   RadioGroup,
@@ -26,7 +24,7 @@ export const SORT_BY_OPTIONS = [
   { value: 'priceDesc', label: 'Price: High-Low' },
   { value: 'priceAsc', label: 'Price: Low-High' },
 ];
-export const FILTER_COMPONENTS_OPTIONS = ['CPU', 'Memorias Ram', 'Tarjetas de video', 'SSD'];
+export const FILTER_COMPONENTS_OPTIONS = ['Todos', 'CPU', 'Memorias Ram', 'Tarjetas de video', 'SSD'];
 export const FILTER_SUPPLIER_OPTIONS = ['Todos', 'Amazon', 'Mercado Libre', 'NewEgg'];
 
 // ----------------------------------------------------------------------
@@ -35,9 +33,46 @@ ShopFilterSidebar.propTypes = {
   openFilter: PropTypes.bool,
   onOpenFilter: PropTypes.func,
   onCloseFilter: PropTypes.func,
+  setCompFilter: PropTypes.func,
+  FilterSelected: PropTypes.number,
+  setCompAux: PropTypes.func,
+  FilterSupSelected: PropTypes.string,
+  setFilterSupSelected: PropTypes.func,
 };
 
-export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFilter }) {
+export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFilter, setCompFilter, FilterSelected, setCompAux, FilterSupSelected, setFilterSupSelected }) {
+
+  const handleCompFilter = (e) => {
+    switch (e.target.value) {
+      case 'Todos':
+        setCompFilter(0)
+        break;
+      case 'CPU':
+        setCompFilter(1)
+        break;
+      case 'Memorias Ram':
+        setCompFilter(2)
+        break;
+      case 'Tarjetas de video':
+        setCompFilter(3)
+        break;
+      default :
+        setCompFilter(4)
+        break;
+    }
+    setCompAux(e.target.value)
+  }
+
+  const handleSupFilter = (e) => {
+    setFilterSupSelected(e.target.value)
+  }
+
+  const handleReset = () => {
+    setCompFilter(0); 
+    setCompAux('Todos')
+    setFilterSupSelected('Todos')
+  }
+
   return (
     <>
       <Button disableRipple color="inherit" endIcon={<Iconify icon="ic:round-filter-list" />} onClick={onOpenFilter}>
@@ -69,11 +104,11 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
               <Typography variant="subtitle1" gutterBottom>
                 Componentes
               </Typography>
-              <FormGroup>
+              <RadioGroup>
                 {FILTER_COMPONENTS_OPTIONS.map((item) => (
-                  <FormControlLabel key={item} control={<Checkbox />} label={item} />
+                  <FormControlLabel key={item} checked = {FilterSelected === FILTER_COMPONENTS_OPTIONS.indexOf(item)} value={item} control={<Radio />}  label={item} onClick = {handleCompFilter} />
                 ))}
-              </FormGroup>
+              </RadioGroup>
             </div>
 
             <div>
@@ -82,7 +117,7 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
               </Typography>
               <RadioGroup>
                 {FILTER_SUPPLIER_OPTIONS.map((item) => (
-                  <FormControlLabel key={item} value={item} control={<Radio />} label={item} />
+                  <FormControlLabel key={item} checked = {FilterSupSelected === item} value={item} control={<Radio />} label={item} onClick = {handleSupFilter}/>
                 ))}
               </RadioGroup>
             </div>
@@ -98,8 +133,9 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
             color="inherit"
             variant="outlined"
             startIcon={<Iconify icon="ic:round-clear-all" />}
+            onClick = {handleReset}
           >
-            Limpiar todo
+            Restaurar Filtros
           </Button>
         </Box>
       </Drawer>

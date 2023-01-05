@@ -1,18 +1,18 @@
-/*
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-import { PropTypes } from 'prop-types';
 // mui
 import { Container, Typography, Button, Stack, LinearProgress, Card } from '@mui/material';
 
+import PropTypes from 'prop-types';
 import Iconify from '../components/iconify';
 
 ProductLoading.propTypes = {
     status: PropTypes.string.isRequired,
 }; 
 
-export default function ProductLoading({status, ...other}) {
+export default function ProductLoading({status}) {
     return(
       <>
         <Helmet>
@@ -36,4 +36,3 @@ export default function ProductLoading({status, ...other}) {
       </>
     )
 }
-*/
