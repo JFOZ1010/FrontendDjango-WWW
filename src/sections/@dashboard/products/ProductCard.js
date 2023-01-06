@@ -103,7 +103,7 @@ export default function ShopProductCard({ product }) {
 
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link rel="noopener noreferrer" href = {item_url} onClick = {() => {clicSave()}} target="_blank" color="inherit" underline="hover" >
-          <Typography variant="subtitle2" wrap="nowrap" sx = {{ fontSize: '11px' }}>
+          <Typography variant="subtitle2" wrap="nowrap" sx = {{ fontSize: '12px', display: '-webkit-box', overflow: 'hidden', WebkitBoxOrient: 'vertical',  WebkitLineClamp: 2 }}>
             {item_name}
           </Typography>
         </Link>

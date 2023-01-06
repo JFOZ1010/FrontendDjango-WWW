@@ -8,7 +8,7 @@ import { styled, alpha } from '@mui/material/styles';
 import Iconify from '../components/iconify';
 
 // components
-import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
+import { ProductSort, ProductList, ProductFilterSidebar } from '../sections/@dashboard/products';
 import { useExternalApi } from '../hooks/ItemsResponse';
 
 import './pagination.css';
@@ -259,7 +259,6 @@ export default function ProductsPage() {
             </Typography>
           </Paper>
         )}
-        <ProductCartWidget />
       </Container>
     </>
   );
