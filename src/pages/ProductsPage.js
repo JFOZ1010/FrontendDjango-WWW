@@ -111,9 +111,7 @@ export default function ProductsPage() {
   const [listaItems, setListaItems] = useState(undefined);
   const [isLoading, setLoading] = useState('Cargando...');
   const [filterName, setFilterName] = useState('');
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('item_name');
-
+  
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(36);
@@ -122,6 +120,10 @@ export default function ProductsPage() {
   const [compFilter, setCompFilter] = useState(0); 
   const [compAux, setCompAux] = useState('Todos los componentes')
   const [supFilter, setSupFilter] = useState('Todos')
+
+  // Ordenar por: 
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('item_name');
 
   const {
     allItems,
@@ -152,14 +154,6 @@ export default function ProductsPage() {
     setCurrentPage(selected + 1);
  };
 
-  // eslint-disable-next-line
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
-
-
   if (listaItems === undefined) {
     console.log('Cargando...')
     return (
@@ -175,10 +169,12 @@ export default function ProductsPage() {
 
   const filteredComps = applySortCompsFilter(listaItems, compFilter)
   const filteredSups = applySortSupsFilter(filteredComps, filterAuxFunction(supFilter))
+
   const filteredItems = applySortFilter(filteredSups, getComparator(order, orderBy), filterName);
   const isNotFound = !filteredItems.length && !!filterName;
   // console.log(listaItems)
 
+  // PAGINATION VARIABLES 
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage; 
 
@@ -219,7 +215,7 @@ export default function ProductsPage() {
               FilterSupSelected = {supFilter}
               setFilterSupSelected = {setSupFilter}
             />
-            <ProductSort />
+            <ProductSort setOrderBy = {setOrderBy} setOrder = {setOrder} />
           </Stack>
         </Stack>
 
