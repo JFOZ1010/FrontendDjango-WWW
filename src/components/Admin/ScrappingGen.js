@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react'
-import Box from '@mui/material/box';
-import Paper from '@mui/material/paper';
-import Stack from '@mui/material/stack'
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '../../layouts/landingpage/modules/components/Typography';
-import { useExternalApi } from '../../hooks/ItemsResponse';
+import Typography from '../../layouts/landingpage/modules/components/Typography.js';
+import { useExternalApi } from '../../hooks/ItemsResponse.js';
 
 
 export default function ScrappingGen() {

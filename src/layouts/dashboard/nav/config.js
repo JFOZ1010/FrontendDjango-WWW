@@ -35,6 +35,11 @@ if (tipo){
         icon: icon('ic_analytics'),
       },
       {
+        title: 'Reporte: top items por proveedor',
+        path: 'reports/itemsBySupplier',
+        icon: icon('ic_analytics'),
+      },
+      {
         title: 'Tienda',
         path: '/dashboard/productPage',
         icon: icon('ic_cart'),
@@ -71,6 +76,11 @@ if (tipo){
       {
         title: 'Reportes',
         path: '/dashboard',
+        icon: icon('ic_analytics'),
+      },
+      {
+        title: 'Reporte: top items por proveedor',
+        path: 'reports/itemsBySupplier',
         icon: icon('ic_analytics'),
       },
     ]
