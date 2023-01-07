@@ -28,7 +28,7 @@ export const useExternalApi = () => {
         const config = {
             url: `${apiServerUrl}/api/auth/retrieve`,
             method: 'POST',
-            headers: {},
+            headers: { "Access-Control-Allow-Origin": "*"},
             data: {
                 "user_id" : id
             }
