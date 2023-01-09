@@ -1,8 +1,9 @@
 import axios from 'axios'
-import { useEnv } from '../context/env.context'
+import { useEnv } from '../context/env.context.js'
 
 export const useExternalApi = () => {
 
+    
     const { apiServerUrl } = useEnv()
 
     const makeRequest = async (options) => {
@@ -22,6 +23,24 @@ export const useExternalApi = () => {
     }
 
 
+    const getItemsBySupplier = async (supId, top) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/report/itemsBySupplier`,
+            method: 'POST',
+            headers: {},
+            data: {
+                "user_id" : supId,
+                "top" : top
+            }
+        }
+
+        const data = await makeRequest({config});
+
+        return data
+    }
+
     return {
+        getItemsBySupplier
     }
 }

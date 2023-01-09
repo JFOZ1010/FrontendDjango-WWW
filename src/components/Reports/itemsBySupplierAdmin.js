@@ -29,12 +29,13 @@ import {
   Box,
   Grid
 } from '@mui/material';
+// hooks
+import { useExternalApi } from "../../hooks/reportsResponse.js";
 // components
 import Iconify from "../iconify/index.js";
 import Scrollbar from "../scrollbar/index.js";
 // sections
 import { UserListHead, UserListToolbar } from "../../sections/@dashboard/user/index.js";
-
 
 // ----------------------------------------------------------------------
 
@@ -302,110 +303,148 @@ function applySortFilter(array, comparator, query) {
 //   );
 // }
 export default function ProductTable(props) { 
-    const [sup, setSup] = useState(1);
-    const handleChangeSup = (event) => {
-        setSup(event.target.value);
-    };
-    const [top, setTop] = useState(2);
-    const handleChangeTop = (event) => {
-        setTop(event.target.value);
-    };
-    const [generated, setGenerated] = useState(false)
-    const generateReport = (e) => {
-        // eslint-disable-next-line no-use-before-define
-        console.log('Se presionó el botón')
-        setGenerated(true);
+
+  const { getItemsBySupplier} = useExternalApi()
+  let ITEMLIST
+  // const [ITEMLIST,setItemList] = useState('')
+  let supplierID
+  // const[supplierID, setSupplierID] = useState('')
+  // let sup = 1
+  const [sup, setSup] = useState(1);
+  const handleChangeSup = (event) => {
+      setSup(event.target.value);
+      // sup = event.target.value
+  };
+  // const[topN, setTopN] = useState(5)
+  let topN 
+  const [top, setTop] = useState(2);
+  // let top = 2
+  const handleChangeTop = (event) => {
+      setTop(event.target.value);
+      // top = event.target.value
+  };
+  // let generated = false
+  const [generated, setGenerated] = useState(false)
+  const generateReport = (e) => {
+      // eslint-disable-next-line no-use-before-define
+      console.log('Se presionó el botón')
+      if(sup===1){
+          // setSupplierID('auth0|638b682bbc99c67d7152083b')
+          supplierID = 'auth0|638b682bbc99c67d7152083b'
+      } else if(sup===2){
+          // setSupplierID('auth0|639e3ee1aacda0152647f763')
+          supplierID = 'auth0|639e3ee1aacda0152647f763'
+      } else {
+          // setSupplierID('auth0|639e3f6e9c43cd6f74e81ba0')
+          supplierID = 'auth0|639e3f6e9c43cd6f74e81ba0'
       }
-    const goBack = (e) => {
+      if(top===1){
+        // setTopN(3)
+        topN = 3
+      } else if(top===2){
+        // setTopN(5)
+        topN = 5
+      } else {
+        // setTopN(10)
+        topN = 10
+      }
+      // setItemList(getItemsBySupplier(supplierID, topN))
+      ITEMLIST = getItemsBySupplier(supplierID, topN)
+      console.log(supplierID)
+      console.log(topN)
+      console.log(ITEMLIST)
+      setGenerated(true)
+    }
+  const goBack = (e) => {
     // eslint-disable-next-line no-use-before-define
     console.log('Se presionó el botón')
-    setGenerated(false);
-    }
+    setGenerated(false)
+  }
 
-    if (!generated) { 
-    // console.log('No users loaded yet :c')
-    return(
-        <>
-        <Helmet>
-            <title> Top productos por proveedor </title>
-        </Helmet>
-        <Container>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-            <Typography variant="h3" gutterBottom align = "center" >
-            Generar reporte para obtener los productos más clickeados por proveedor
-            </Typography>
-        </Stack>
-        <Grid container spacing={2}>
-            <Grid item xs={2}>
-                Seleccione el proveedor:
-            </Grid>
-            <Grid item xs={3}>
-            <FormControl sx = {{ minWidth: 200}}>
-                <InputLabel id="select-supplier-label">Proveedor</InputLabel>
-                            <Select
-                            labelId="select-supplier-label"
-                            id="select-supplier"
-                            value={sup}
-                            label="Proveedor"
-                            onChange={handleChangeSup}
-                            >
-                                <MenuItem value={1}>Amazon</MenuItem>
-                                <MenuItem value={2}>Mercado Libre</MenuItem>
-                                <MenuItem value={3}>NewEgg</MenuItem>
-                            </Select>
-                        </FormControl>
-            </Grid>
-            <Grid item xs={2}>
-                Seleccione el top de productos:
-            </Grid>
-            <Grid item xs={3}>
-            <FormControl sx = {{ minWidth: 200}}>
-                <InputLabel id="select-top-label"># TOP</InputLabel>
-                            <Select
-                            labelId="select-top-label"
-                            id="select-top"
-                            value={top}
-                            label="# TOP"
-                            onChange={handleChangeTop}
-                            >
-                                <MenuItem value={1}>Top 3 productos</MenuItem>
-                                <MenuItem value={2}>Top 5 productos</MenuItem>
-                                <MenuItem value={3}>Top 10 productos</MenuItem>
-                            </Select>
-                        </FormControl>
-            </Grid>
-            <Grid item xs={2}>
-                <Button variant="contained" startIcon={<Iconify icon="material-symbols:backup-table" />} onClick={generateReport}>
-                    Generar reporte
-                </Button>
-        </Grid>
-        </Grid>
-        </Container>
-        
-        </>
-    )
-    } 
-    if(generated){
-        return(
-            <>
-           <Helmet>
-            <title> Top productos por proveedor </title>
-            </Helmet>
-            <Container>
-            <Box
-                m={1}
-                display="flex"
-                justifyContent="flex-end"
-                alignItems="right"
-                >
-                <Button variant="contained" startIcon={<Iconify icon="material-symbols:arrow-back-rounded" />} onClick={goBack}>
-                        Volver a generar el reporte
-                </Button>
-            </Box>
-            </Container>
-            </>
-        )
-    }
+  if (!generated) { 
+  // console.log('No users loaded yet :c')
+  return(
+      <>
+      <Helmet>
+          <title> Top productos por proveedor </title>
+      </Helmet>
+      <Container>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+          <Typography variant="h3" gutterBottom align = "center" >
+          Generar reporte para obtener los productos más clickeados por proveedor
+          </Typography>
+      </Stack>
+      <Grid container spacing={2}>
+          <Grid item xs={2}>
+              Seleccione el proveedor:
+          </Grid>
+          <Grid item xs={3}>
+          <FormControl sx = {{ minWidth: 200}}>
+              <InputLabel id="select-supplier-label">Proveedor</InputLabel>
+                          <Select
+                          labelId="select-supplier-label"
+                          id="select-supplier"
+                          value={sup}
+                          label="Proveedor"
+                          onChange={handleChangeSup}
+                          >
+                              <MenuItem value={1}>Amazon</MenuItem>
+                              <MenuItem value={2}>Mercado Libre</MenuItem>
+                              <MenuItem value={3}>NewEgg</MenuItem>
+                          </Select>
+                      </FormControl>
+          </Grid>
+          <Grid item xs={2}>
+              Seleccione el top de productos:
+          </Grid>
+          <Grid item xs={3}>
+          <FormControl sx = {{ minWidth: 200}}>
+              <InputLabel id="select-top-label"># TOP</InputLabel>
+                          <Select
+                          labelId="select-top-label"
+                          id="select-top"
+                          value={top}
+                          label="# TOP"
+                          onChange={handleChangeTop}
+                          >
+                              <MenuItem value={1}>Top 3 productos</MenuItem>
+                              <MenuItem value={2}>Top 5 productos</MenuItem>
+                              <MenuItem value={3}>Top 10 productos</MenuItem>
+                          </Select>
+                      </FormControl>
+          </Grid>
+          <Grid item xs={2}>
+              <Button variant="contained" startIcon={<Iconify icon="material-symbols:backup-table" />} onClick={generateReport}>
+                  Generar reporte
+              </Button>
+      </Grid>
+      </Grid>
+      </Container>
+      
+      </>
+  )
+  } 
+  if(generated){
+      return(
+          <>
+          <Helmet>
+          <title> Top productos por proveedor </title>
+          </Helmet>
+          <Container>
+          <Box
+              m={1}
+              display="flex"
+              justifyContent="flex-end"
+              alignItems="right"
+              >
+              <Button variant="contained" startIcon={<Iconify icon="material-symbols:arrow-back-rounded" />} onClick={goBack}>
+                      Volver a generar el reporte
+              </Button>
+          </Box>
+          </Container>
+          </>
+      )
+  }
 
 
     

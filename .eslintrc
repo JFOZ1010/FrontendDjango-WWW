@@ -80,7 +80,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".native.js"]
+        "extensions": [".native.js", ".js"]
       }
     }
   }
