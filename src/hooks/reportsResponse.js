@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEnv } from '../context/env.context.js'
+import { useEnv } from '../context/env.context'
 
 export const useExternalApi = () => {
 
@@ -23,7 +23,7 @@ export const useExternalApi = () => {
     }
 
 
-    const getItemsBySupplier = async (supId, top) => {
+    const getItemsBySupplier = async (supId, top, setItemList) => {
 
         const config = {
             url: `${apiServerUrl}/api/report/itemsBySupplier`,
@@ -36,8 +36,16 @@ export const useExternalApi = () => {
         }
 
         const data = await makeRequest({config});
-
-        return data
+        // console.log(JSON.stringify(data))
+        if (JSON.stringify(data) !== '"No hay items para mostrar"') {
+            // console.log(data)
+            setItemList(data)
+        // eslint-disable-next-line no-use-before-define
+        } else {
+            // console.log("no entró al if")
+            setItemList(false)
+        }
+        
     }
 
     return {
