@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { useState } from 'react'
+<<<<<<< HEAD
+import { Box, Paper, Stack, Button } from '@mui/material';
+=======
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button';
+>>>>>>> 82c844a37bd1755efec9464410bae016454fc6c8
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '../../layouts/landingpage/modules/components/Typography';
 import { useExternalApi } from '../../hooks/ItemsResponse';

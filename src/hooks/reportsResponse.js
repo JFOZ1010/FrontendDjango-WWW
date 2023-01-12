@@ -3,7 +3,10 @@ import { useEnv } from '../context/env.context'
 
 export const useExternalApi = () => {
 
+<<<<<<< HEAD
+=======
     
+>>>>>>> 82c844a37bd1755efec9464410bae016454fc6c8
     const { apiServerUrl } = useEnv()
 
     const makeRequest = async (options) => {
@@ -22,6 +25,32 @@ export const useExternalApi = () => {
         }
     }
 
+<<<<<<< HEAD
+    const getItemByCat = async (type, setData) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/report/itembycat`,
+            method: 'POST',
+            headers: {
+            },
+            data: {
+                "type_id": type
+            }
+        }
+        
+        const data = await makeRequest({config})
+
+        if (JSON.stringify(data) !== '{"err":"No se ha encontrado los datos"}') {
+            setData(data)
+        } else {
+            setData(0)
+        }
+
+    }
+
+    return {
+        getItemByCat
+=======
     const itemPriceReport = async (setReport,itemId) => {
 
         const config = {
@@ -67,5 +96,6 @@ export const useExternalApi = () => {
     return {
         itemPriceReport,
         getItemsBySupplier
+>>>>>>> 82c844a37bd1755efec9464410bae016454fc6c8
     }
 }
