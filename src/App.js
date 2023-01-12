@@ -23,6 +23,8 @@ import BlogPage from './pages/BlogPage';
 import BlogPageClientes from './pages/BlogPageClientes';
 import NewDelete from './components/News/NewDelete';
 import ScrappingGen from './components/Admin/ScrappingGen';
+import ProductsPage from './components/Item/ProductsPage'
+import Reports from './components/Admin/AdminReport/Report'
 import ProductsPage from './pages/ProductsPage'
 import ItemByCat from './components/Reports/ItemByCat'
 import ReportByProduct from './components/Admin/ReportByProduct'
@@ -53,6 +55,7 @@ export default function App() {
             <Route path = "gestion_usuarios" element = {<ListUser/>} />
             <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
             <Route path = "productPage" element = {<ProductsPage/>} />
+            <Route path = "reports" element = {<Reports />} />
             <Route path = "reports/itembycat" element = {<ItemByCat />} />
             <Route path = "reports/itemsBySupplier" element = {<ItemsBySupplierAdmin/>} />
             <Route path = "reportByProduct" element = {<ReportByProduct/>} />

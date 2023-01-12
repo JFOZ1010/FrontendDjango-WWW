@@ -59,8 +59,7 @@ export const useExternalApi = () => {
         } else {
             // console.log("no entró al if")
             setItemList(false)
-        }
-        
+        }   
     }
 
     const getItemByCat = async (type, setData) => {

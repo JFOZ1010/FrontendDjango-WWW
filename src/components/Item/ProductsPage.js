@@ -1,13 +1,19 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate'
 // @mui
-import { Container, Stack, Typography, Button, Card, LinearProgress, OutlinedInput, InputAdornment, Paper } from '@mui/material';
+import { Container, Stack, Typography, OutlinedInput, InputAdornment, Paper } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import Iconify from '../components/iconify';
+import Iconify from '../iconify';
+
 // components
-import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
-import { useExternalApi } from '../hooks/ItemsResponse';
+import { ProductSort, ProductList, ProductFilterSidebar } from './product_component';
+import { useExternalApi } from '../../hooks/ItemsResponse';
+
+import './pagination.css';
+import ProductLoading from './ProductsLoading'
+import ProductsNotReady from './ProductsNotReady'
 // ----------------------------------------------------------------------
 
 function descendingComparator(a, b, orderBy) {
@@ -39,6 +45,50 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
+function filterAuxFunction(filtro) {
+  let filterAux = ''
+  switch(filtro) {
+    case 'Amazon': 
+      filterAux = 'auth0|638b682bbc99c67d7152083b'
+      break;
+    case 'Mercado Libre': 
+      filterAux = 'auth0|639e3ee1aacda0152647f763'
+      break; 
+    case 'NewEgg': 
+      filterAux = 'auth0|639e3f6e9c43cd6f74e81ba0'
+      break; 
+    default: 
+      filterAux = 'Todos'
+      break; 
+  }
+  return filterAux; 
+}
+
+function applySortCompsFilter(array, filtro) {
+  const filteredList = []
+  for (let i = 0; i < array.length; i += 1) {
+    if (filtro === 0) {
+      filteredList.push(array[i]); 
+    } else if (array[i].type_id === filtro) {
+      filteredList.push(array[i]); 
+    }
+  }
+  return filteredList;
+}
+
+function applySortSupsFilter(array, filterAux) {
+  const filteredList = []
+  for (let i = 0; i < array.length; i += 1) {
+    if (filterAux === 'Todos') {
+      filteredList.push(array[i])
+    } else if (array[i].user_id === filterAux) {
+      filteredList.push(array[i])
+    }
+  }
+
+  return filteredList; 
+}
+
 
 const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
   width: 350,
@@ -61,9 +111,19 @@ export default function ProductsPage() {
   const [listaItems, setListaItems] = useState(undefined);
   const [isLoading, setLoading] = useState('Cargando...');
   const [filterName, setFilterName] = useState('');
+  
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(36);
+
+  // Filtros
+  const [compFilter, setCompFilter] = useState(0); 
+  const [compAux, setCompAux] = useState('Todos los componentes')
+  const [supFilter, setSupFilter] = useState('Todos')
+
+  // Ordenar por: 
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('item_name');
-
 
   const {
     allItems,
@@ -78,9 +138,9 @@ export default function ProductsPage() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-
-  }, [filterName])
+  const handleFilterName = (e) => {
+    setFilterName(e.target.value)
+  }
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -90,71 +150,37 @@ export default function ProductsPage() {
     setOpenFilter(false);
   };
 
-  // eslint-disable-next-line
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
-
+  const paginate = ({ selected }) => {
+    setCurrentPage(selected + 1);
+ };
 
   if (listaItems === undefined) {
     console.log('Cargando...')
     return (
-      <>
-        <Helmet>
-          <title> Lista de Items</title>
-        </Helmet>
-        <Container>
-          <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-            <Typography variant="h2" gutterBottom align = "center" >
-              Cargando Items
-            </Typography>
-            <Button variant="contained" startIcon={<Iconify icon="eva:clock-outline" />}>
-              {isLoading}
-            </Button>
-          </Stack>
-          <Card>
-            <Stack sx={{ width: '100%' }} spacing={2}>
-              <LinearProgress color = "secondary" />
-            </Stack>
-          </Card>
-        </Container>
-      </>
+      <ProductLoading status = {isLoading} />
     )
   }
 
   if (Object.keys(listaItems).length === 0) {
     return (
-      <>
-      <Helmet>
-          <title> Dashboard: Items </title>
-        </Helmet>
-        <Container>
-          <Typography variant="h2" sx={{ mb: 5 }}>
-            Productos
-          </Typography>
-          <Paper
-              sx={{
-                textAlign: 'center',
-              }}
-              >
-              <Typography variant="h6" paragraph>
-                No encontrado
-              </Typography>
-
-              <Typography variant="body2">
-                No hay productos disponibles
-                <br /> Verifique que el admin haya scrapeado productos
-              </Typography>
-            </Paper>
-        </Container>
-      </>
+      <ProductsNotReady />
     )
   }
-  const filteredItems = applySortFilter(listaItems, getComparator(order, orderBy), filterName);
+
+  const filteredComps = applySortCompsFilter(listaItems, compFilter)
+  const filteredSups = applySortSupsFilter(filteredComps, filterAuxFunction(supFilter))
+
+  const filteredItems = applySortFilter(filteredSups, getComparator(order, orderBy), filterName);
   const isNotFound = !filteredItems.length && !!filterName;
   // console.log(listaItems)
+
+  // PAGINATION VARIABLES 
+  const lastProductIndex = currentPage * productsPerPage;
+  const firstProductIndex = lastProductIndex - productsPerPage; 
+
+  const currentProducts = filteredItems.slice(firstProductIndex, lastProductIndex)
+
+
   return (
     <>
       <Helmet>
@@ -170,7 +196,7 @@ export default function ProductsPage() {
           <Stack direction = 'row' spacing = {2} flexShrink = {0} sx = {{ my: 1 }} >
             <StyledSearch
               value = {filterName}
-              onChange = {(event) => {setFilterName(event.target.value)}}
+              onChange = {handleFilterName}
               placeholder = 'Buscar producto...'
               startAdornment = {
                 <InputAdornment position="start">
@@ -183,12 +209,35 @@ export default function ProductsPage() {
               openFilter={openFilter}
               onOpenFilter={handleOpenFilter}
               onCloseFilter={handleCloseFilter}
+              setCompFilter = {setCompFilter}
+              FilterSelected = {compFilter}
+              setCompAux = {setCompAux}
+              FilterSupSelected = {supFilter}
+              setFilterSupSelected = {setSupFilter}
             />
-            <ProductSort />
+            <ProductSort setOrderBy = {setOrderBy} setOrder = {setOrder} />
           </Stack>
         </Stack>
 
-        <ProductList products={filteredItems} />
+        <ProductList products={currentProducts} />
+        <Stack direction="row" spacing={1} sx={{ mt: 2 }} justifyContent = 'center'>
+          <ReactPaginate 
+            activeClassName={'item active-pagination '}
+            breakClassName={'item break-me '}
+            breakLabel={'...'}
+            containerClassName={'pagination'}
+            disabledClassName={'disabled-pagination'}
+            marginPagesDisplayed={2}
+            nextClassName={"item next "}
+            nextLabel={<Iconify icon = 'eva:arrow-ios-forward-fill'/>}
+            onPageChange={paginate}
+            pageCount={Math.ceil(filteredItems.length/productsPerPage)}
+            pageClassName={'item pagination-page '}
+            pageRangeDisplayed={2}
+            previousClassName={"item previous"}
+            previousLabel={<Iconify icon = 'eva:arrow-ios-back-outline' />}
+            />
+        </Stack>
         {isNotFound && (
             <Paper
             sx={{
@@ -202,11 +251,14 @@ export default function ProductsPage() {
             <Typography variant="body2">
               No hay resultados para &nbsp;
               <strong>&quot;{filterName}&quot;</strong>.
-              <br /> Verifique o utilice palabras completas
+              <br /> Con el filtro de componente: &nbsp;
+              <strong> &quot;{compAux}&quot;</strong>
+              <br /> Con el filtro de proveedor: &nbsp;
+              <strong> &quot;{supFilter}&quot;</strong>
+              <br /> Verifique, utilice palabras completas o restaure los filtros para una mejor busqueda
             </Typography>
           </Paper>
         )}
-        <ProductCartWidget />
       </Container>
     </>
   );

@@ -30,6 +30,11 @@ if (tipo){
         icon: icon('ic_user')
       },
       {
+        title: 'Reportes',
+        path: '/dashboard/reports',
+        icon: icon('ic_analytics'),
+      }
+      {
         title: 'Reporte ItemByCat',
         path: 'reports/itembycat',
         icon: icon('ic_analytics'),
