@@ -89,7 +89,7 @@ export default function ProductTable(props) {
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const [userrow, setUserrow] = useState({})
-
+  // eslint-disable-next-line
   const [ITEMLIST,setItemList] = useState(props.ITEMLIST)
 
   const navigate = useNavigate()

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEnv } from '../context/env.context'
 
 export const useExternalApi = () => {
+
     const { apiServerUrl } = useEnv()
 
     const makeRequest = async (options) => {
@@ -60,8 +61,33 @@ export const useExternalApi = () => {
             setItemList(false)
         }   
     }
+
+    const getItemByCat = async (type, setData) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/report/itembycat`,
+            method: 'POST',
+            headers: {
+            },
+            data: {
+                "type_id": type
+            }
+        }
+        
+        const data = await makeRequest({config})
+
+        if (JSON.stringify(data) !== '{"err":"No se ha encontrado los datos"}') {
+            setData(data)
+        } else {
+            setData(0)
+        }
+
+    }
+
+
     return {
         itemPriceReport,
-        getItemsBySupplier
+        getItemsBySupplier,
+        getItemByCat
     }
 }
