@@ -21,7 +21,24 @@ export const useExternalApi = () => {
         }
     }
 
+    const itemPriceReport = async (setReport,itemId) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/report/itemPrice?item_id=${itemId}`,
+            method: 'GET',
+            headers: {},
+            data: {}
+        }
+
+        const data = await makeRequest({ config })
+
+        console.log(data)
+        setReport(data);
+
+    }
+
 
     return {
+        itemPriceReport,
     }
 }

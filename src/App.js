@@ -24,6 +24,8 @@ import BlogPageClientes from './pages/BlogPageClientes';
 import NewDelete from './components/News/NewDelete';
 import ScrappingGen from './components/Admin/ScrappingGen';
 import ProductsPage from './pages/ProductsPage'
+import ReportByProduct from './components/Admin/ReportByProduct'
+import PriceReport from './components/Report/PriceReport'
 
 export default function App() {
   const [userType, setUserType] = useState('')
@@ -49,6 +51,8 @@ export default function App() {
             <Route path = "gestion_usuarios" element = {<ListUser/>} />
             <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
             <Route path = "productPage" element = {<ProductsPage/>} />
+            <Route path = "reportByProduct" element = {<ReportByProduct/>} />
+            <Route path = "reportByProduct/reportPrice/:productId/:date/:price" element = {<PriceReport/>}/>
           </Route>
         </Routes>
       </ThemeProvider>
