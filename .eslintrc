@@ -76,5 +76,13 @@
         "array": false
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".native.js", ".js"]
+      }
+    }
   }
+  
 }
