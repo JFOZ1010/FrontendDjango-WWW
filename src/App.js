@@ -25,7 +25,6 @@ import NewDelete from './components/News/NewDelete';
 import ScrappingGen from './components/Admin/ScrappingGen';
 import ProductsPage from './components/Item/ProductsPage'
 import Reports from './components/Admin/AdminReport/Report'
-import ProductsPage from './pages/ProductsPage'
 import ItemByCat from './components/Reports/ItemByCat'
 import ReportByProduct from './components/Admin/ReportByProduct'
 import PriceReport from './components/Reports/PriceReport'

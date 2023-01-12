@@ -62,19 +62,19 @@ const images = [
     type: Bulb,
     title: 'Historial de precios',
     width: '33%',
-    path: '/dashboard'
+    path: '/dashboard/reportByProduct'
   },
   {
     type: Ranking,
     title: 'Ranking de Productos',
     width: '33%',
-    path: '/dashboard'
+    path: '/dashboard/reports/itembycat'
   },
   {
     type: RankingSup,
     title: 'Ranking de productos por proveedor',
     width: '33%',
-    path: '/dashboard'
+    path: '/dashboard/reports/itemsBySupplier'
   },
 ];
 

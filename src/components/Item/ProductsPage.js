@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
 import { useState, useEffect } from 'react';
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from 'react-paginate';
 // @mui
 import { Container, Stack, Typography, OutlinedInput, InputAdornment, Paper } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
@@ -137,6 +137,7 @@ export default function ProductsPage() {
       })
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
 
   const handleFilterName = (e) => {
     setFilterName(e.target.value)
