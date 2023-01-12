@@ -32,7 +32,7 @@ export const useExternalApi = () => {
 
         const data = await makeRequest({ config })
 
-        // console.log(data)
+        console.log(data)
         setItem(data);
 
     }

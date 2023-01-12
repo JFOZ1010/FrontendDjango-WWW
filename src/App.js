@@ -1,19 +1,19 @@
 import {
-
   Routes,
   Route,
-} from 'react-router-dom'
-import { useState } from 'react'
-import ProtectedRoute from './Auth0/ProtectedRoute'
-import AuthRedirect from './Auth0/authRedirect'
-import UserContext from './context/user.context'
-import ThemeProvider from './theme';
-import ScrollToTop from './components/scroll-to-top';
-import { StyledChart } from './components/chart';
-import Home from './layouts/landingpage/Home'
-import SignUp from './layouts/landingpage/SignUp'
-import SignUpAuth from './layouts/landingpage/SignUpAuth'
+} from 'react-router-dom';
+import { useState } from 'react';
+import ProtectedRoute from './Auth0/ProtectedRoute';
+import AuthRedirect from './Auth0/authRedirect';
+import UserContext from './context/user.context';
+import ThemeProvider from './theme/index';
+import ScrollToTop from './components/scroll-to-top/ScrollToTop';
+import { StyledChart } from './components/chart/index';
+import Home from './layouts/landingpage/Home';
+import SignUp from './layouts/landingpage/SignUp';
+import SignUpAuth from './layouts/landingpage/SignUpAuth';
 // import Profile from './layouts/landingpage/modules/components/LogComponents/Profile'
+
 import DashboardLayout from './layouts/dashboard/DashboardLayout'
 import InfoUser from './components/User/InfoUser'
 import ListUser from './components/Admin/UserList'
@@ -25,6 +25,9 @@ import NewDelete from './components/News/NewDelete';
 import ScrappingGen from './components/Admin/ScrappingGen';
 import ProductsPage from './pages/ProductsPage'
 import ItemByCat from './components/Reports/ItemByCat'
+import ReportByProduct from './components/Admin/ReportByProduct'
+import PriceReport from './components/Reports/PriceReport'
+import ItemsBySupplierAdmin from './components/Reports/itemsBySupplierAdmin';
 
 export default function App() {
   const [userType, setUserType] = useState('')
@@ -51,6 +54,9 @@ export default function App() {
             <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
             <Route path = "productPage" element = {<ProductsPage/>} />
             <Route path = "reports/itembycat" element = {<ItemByCat />} />
+            <Route path = "reports/itemsBySupplier" element = {<ItemsBySupplierAdmin/>} />
+            <Route path = "reportByProduct" element = {<ReportByProduct/>} />
+            <Route path = "reportByProduct/reportPrice/:productId/:date/:price" element = {<PriceReport/>}/>
           </Route>
         </Routes>
       </ThemeProvider>

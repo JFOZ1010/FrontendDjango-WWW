@@ -3,6 +3,10 @@ import { useEnv } from '../context/env.context'
 
 export const useExternalApi = () => {
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 82c844a37bd1755efec9464410bae016454fc6c8
     const { apiServerUrl } = useEnv()
 
     const makeRequest = async (options) => {
@@ -21,6 +25,7 @@ export const useExternalApi = () => {
         }
     }
 
+<<<<<<< HEAD
     const getItemByCat = async (type, setData) => {
 
         const config = {
@@ -45,5 +50,52 @@ export const useExternalApi = () => {
 
     return {
         getItemByCat
+=======
+    const itemPriceReport = async (setReport,itemId) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/report/itemPrice?item_id=${itemId}`,
+            method: 'GET',
+            headers: {},
+            data: {}
+        }
+
+        const data = await makeRequest({ config })
+
+        console.log(data)
+        setReport(data);
+
+    }
+
+
+    const getItemsBySupplier = async (supId, top, setItemList) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/report/itemsBySupplier`,
+            method: 'POST',
+            headers: {},
+            data: {
+                "user_id" : supId,
+                "top" : top
+            }
+        }
+
+        const data = await makeRequest({config});
+        // console.log(JSON.stringify(data))
+        if (JSON.stringify(data) !== '"No hay items para mostrar"') {
+            // console.log(data)
+            setItemList(data)
+        // eslint-disable-next-line no-use-before-define
+        } else {
+            // console.log("no entró al if")
+            setItemList(false)
+        }
+        
+    }
+
+    return {
+        itemPriceReport,
+        getItemsBySupplier
+>>>>>>> 82c844a37bd1755efec9464410bae016454fc6c8
     }
 }
