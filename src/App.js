@@ -13,16 +13,19 @@ import Home from './layouts/landingpage/Home.js';
 import SignUp from './layouts/landingpage/SignUp.js';
 import SignUpAuth from './layouts/landingpage/SignUpAuth.js';
 // import Profile from './layouts/landingpage/modules/components/LogComponents/Profile'
-import DashboardLayout from './layouts/dashboard/DashboardLayout.js';
-import InfoUser from './components/User/InfoUser.js';
-import ListUser from './components/Admin/UserList.js';
-import NewCreate from './components/News/NewCreate.js';
-import NewUpdate from './components/News/NewUpdate.js';
-import BlogPage from './pages/BlogPage.js';
-import BlogPageClientes from './pages/BlogPageClientes.js';
-import NewDelete from './components/News/NewDelete.js';
-import ScrappingGen from './components/Admin/ScrappingGen.js';
-import ProductsPage from './pages/ProductsPage.js';
+
+import DashboardLayout from './layouts/dashboard/DashboardLayout'
+import InfoUser from './components/User/InfoUser'
+import ListUser from './components/Admin/UserList'
+import NewCreate from './components/News/NewCreate';
+import NewUpdate from './components/News/NewUpdate';
+import BlogPage from './pages/BlogPage';
+import BlogPageClientes from './pages/BlogPageClientes';
+import NewDelete from './components/News/NewDelete';
+import ScrappingGen from './components/Admin/ScrappingGen';
+import ProductsPage from './pages/ProductsPage'
+import ReportByProduct from './components/Admin/ReportByProduct'
+import PriceReport from './components/Report/PriceReport'
 import ItemsBySupplierAdmin from './components/Reports/itemsBySupplierAdmin.js';
 
 export default function App() {
@@ -50,6 +53,8 @@ export default function App() {
             <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
             <Route path = "productPage" element = {<ProductsPage/>} />
             <Route path = "reports/itemsBySupplier" element = {<ItemsBySupplierAdmin/>} />
+            <Route path = "reportByProduct" element = {<ReportByProduct/>} />
+            <Route path = "reportByProduct/reportPrice/:productId/:date/:price" element = {<PriceReport/>}/>
           </Route>
         </Routes>
       </ThemeProvider>
