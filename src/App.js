@@ -3,15 +3,15 @@ import {
   Route,
 } from 'react-router-dom';
 import { useState } from 'react';
-import ProtectedRoute from './Auth0/ProtectedRoute.js';
-import AuthRedirect from './Auth0/authRedirect.js';
-import UserContext from './context/user.context.js';
-import ThemeProvider from './theme/index.js';
-import ScrollToTop from './components/scroll-to-top/ScrollToTop.js';
-import { StyledChart } from './components/chart/index.js';
-import Home from './layouts/landingpage/Home.js';
-import SignUp from './layouts/landingpage/SignUp.js';
-import SignUpAuth from './layouts/landingpage/SignUpAuth.js';
+import ProtectedRoute from './Auth0/ProtectedRoute';
+import AuthRedirect from './Auth0/authRedirect';
+import UserContext from './context/user.context';
+import ThemeProvider from './theme/index';
+import ScrollToTop from './components/scroll-to-top/ScrollToTop';
+import { StyledChart } from './components/chart/index';
+import Home from './layouts/landingpage/Home';
+import SignUp from './layouts/landingpage/SignUp';
+import SignUpAuth from './layouts/landingpage/SignUpAuth';
 // import Profile from './layouts/landingpage/modules/components/LogComponents/Profile'
 
 import DashboardLayout from './layouts/dashboard/DashboardLayout'
@@ -26,7 +26,7 @@ import ScrappingGen from './components/Admin/ScrappingGen';
 import ProductsPage from './pages/ProductsPage'
 import ReportByProduct from './components/Admin/ReportByProduct'
 import PriceReport from './components/Report/PriceReport'
-import ItemsBySupplierAdmin from './components/Reports/itemsBySupplierAdmin.js';
+import ItemsBySupplierAdmin from './components/Reports/itemsBySupplierAdmin';
 
 export default function App() {
   const [userType, setUserType] = useState('')

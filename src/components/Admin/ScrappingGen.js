@@ -5,8 +5,8 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '../../layouts/landingpage/modules/components/Typography.js';
-import { useExternalApi } from '../../hooks/ItemsResponse.js';
+import Typography from '../../layouts/landingpage/modules/components/Typography';
+import { useExternalApi } from '../../hooks/ItemsResponse';
 
 
 export default function ScrappingGen() {
