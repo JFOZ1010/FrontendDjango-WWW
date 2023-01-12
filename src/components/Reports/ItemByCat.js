@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { NavLink as RouterLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Box, InputLabel, MenuItem, Paper }  from '@mui/material';
+import { Box, InputLabel, MenuItem, Paper, Button }  from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie} from 'react-chartjs-2';
+import Iconify from '../iconify';
 import { useExternalApi } from '../../hooks/reportsResponse';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -92,6 +94,10 @@ export default function ItemByCat() {
                         <MenuItem value={4}>Discos SSD</MenuItem>
                     </Select>
                 </FormControl>
+
+                <Button component = {RouterLink} to = {'/dashboard/reports'} variant = 'contained' align="center" startIcon = {<Iconify icon = 'eva:arrow-back-fill'/>} sx = {{ ml: 1, height: 55}}>
+                    Regresar
+                </Button>
                 
             </Box>
             <Box display="flex" justifyContent="center" alignItems="center" mt = {4}>

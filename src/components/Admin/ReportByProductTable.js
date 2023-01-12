@@ -164,8 +164,6 @@ export default function ProductTable(props) {
       </Helmet>
 
       <Container>
-
-
         <Card>
           <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
 
