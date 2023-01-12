@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7fc189b1.css",
+    "main.js": "/static/js/main.f047eeaf.js",
+    "static/js/496.88671ec2.chunk.js": "/static/js/496.88671ec2.chunk.js",
+    "static/media/illustration_landing.png": "/static/media/illustration_landing.6c6b04942d2f20c9e3f5.png",
+    "static/media/processor.jpg": "/static/media/processor.b964899cc0c4da112f66.jpg",
+    "static/media/Univalle.svg.png": "/static/media/Univalle.svg.0a0981f6108efd871fe4.png",
+    "static/media/amazon.png": "/static/media/amazon.5d81ff2b4d7319079cd6.png",
+    "static/media/mercado-libre-logo.png": "/static/media/mercado-libre-logo.56c662759bba5edef518.png",
+    "static/media/illustration_avatar.png": "/static/media/illustration_avatar.fa325ee7f8c1c80732ec.png",
+    "static/media/illustration_login.png": "/static/media/illustration_login.c0c19451de920ff0d8bc.png",
+    "index.html": "/index.html",
+    "main.7fc189b1.css.map": "/static/css/main.7fc189b1.css.map",
+    "main.f047eeaf.js.map": "/static/js/main.f047eeaf.js.map",
+    "496.88671ec2.chunk.js.map": "/static/js/496.88671ec2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7fc189b1.css",
+    "static/js/main.f047eeaf.js"
+  ]
+}
