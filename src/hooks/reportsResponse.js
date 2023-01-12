@@ -21,7 +21,29 @@ export const useExternalApi = () => {
         }
     }
 
+    const getItemByCat = async (type, setData) => {
+
+        const config = {
+            url: `${apiServerUrl}/api/report/itembycat`,
+            method: 'POST',
+            headers: {
+            },
+            data: {
+                "type_id": type
+            }
+        }
+        
+        const data = await makeRequest({config})
+
+        if (JSON.stringify(data) !== '{"err":"No se ha encontrado los datos"}') {
+            setData(data)
+        } else {
+            setData(0)
+        }
+
+    }
 
     return {
+        getItemByCat
     }
 }

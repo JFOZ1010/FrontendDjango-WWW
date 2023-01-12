@@ -23,7 +23,8 @@ import BlogPage from './pages/BlogPage';
 import BlogPageClientes from './pages/BlogPageClientes';
 import NewDelete from './components/News/NewDelete';
 import ScrappingGen from './components/Admin/ScrappingGen';
-import ProductsPage from './pages/ProductsPage'
+import ProductsPage from './components/Item/ProductsPage'
+import Reports from './components/Admin/AdminReport/Report'
 
 export default function App() {
   const [userType, setUserType] = useState('')
@@ -49,6 +50,7 @@ export default function App() {
             <Route path = "gestion_usuarios" element = {<ListUser/>} />
             <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
             <Route path = "productPage" element = {<ProductsPage/>} />
+            <Route path = "reports" element = {<Reports />} />
           </Route>
         </Routes>
       </ThemeProvider>

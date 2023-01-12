@@ -5,11 +5,11 @@ import ReactPaginate from 'react-paginate'
 // @mui
 import { Container, Stack, Typography, OutlinedInput, InputAdornment, Paper } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import Iconify from '../components/iconify';
+import Iconify from '../iconify';
 
 // components
-import { ProductSort, ProductList, ProductFilterSidebar } from '../sections/@dashboard/products';
-import { useExternalApi } from '../hooks/ItemsResponse';
+import { ProductSort, ProductList, ProductFilterSidebar } from './product_component';
+import { useExternalApi } from '../../hooks/ItemsResponse';
 
 import './pagination.css';
 import ProductLoading from './ProductsLoading'

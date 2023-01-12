@@ -9,12 +9,12 @@ import { styled } from '@mui/material/styles';
 // utils
 import { fCurrency } from '../../../utils/formatNumber';
 // components
-import Label from '../../../components/label';
+import Label from '../../label';
 
 // assets
-import NewEggIcon from '../../../components/Item/supplier_logos/newEggIcon'
-import MLIcon from '../../../components/Item/supplier_logos/MLIcon'
-import AmazonIcon from '../../../components/Item/supplier_logos/AmazonIcon'
+import NewEggIcon from '../supplier_logos/newEggIcon'
+import MLIcon from '../supplier_logos/MLIcon'
+import AmazonIcon from '../supplier_logos/AmazonIcon'
 import { useExternalApi } from '../../../hooks/ItemsResponse';
 
 // import { ColorPreview } from '../../../components/color-utils';
@@ -65,7 +65,8 @@ export default function ShopProductCard({ product }) {
       setDatosBorde({
         'border' : 4,
         'borderColor' :  checkSupplier(user_id),
-        'height': '400px'
+        'height': '400px',
+        'position': 'relative',
       })
     } else {
       setDatosBorde({
@@ -82,6 +83,7 @@ export default function ShopProductCard({ product }) {
 
   return (
     <Card onMouseEnter = {() => {setEntered(true)}} onMouseLeave = {() => {setEntered(false)}} sx = {datosBorde}>
+      
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {type_id && (
           <Label

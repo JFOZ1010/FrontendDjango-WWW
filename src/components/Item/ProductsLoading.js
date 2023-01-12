@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import { Container, Typography, Button, Stack, LinearProgress, Card } from '@mui/material';
 
 import PropTypes from 'prop-types';
-import Iconify from '../components/iconify';
+import Iconify from '../iconify';
 
 ProductLoading.propTypes = {
     status: PropTypes.string.isRequired,

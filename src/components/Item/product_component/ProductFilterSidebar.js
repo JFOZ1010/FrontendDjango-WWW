@@ -13,8 +13,8 @@ import {
   FormControlLabel,
 } from '@mui/material';
 // components
-import Iconify from '../../../components/iconify';
-import Scrollbar from '../../../components/scrollbar';
+import Iconify from '../../iconify';
+import Scrollbar from '../../scrollbar';
 
 // ----------------------------------------------------------------------
 

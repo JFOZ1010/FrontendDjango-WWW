@@ -31,7 +31,7 @@ if (tipo){
       },
       {
         title: 'Reportes',
-        path: '/dashboard',
+        path: '/dashboard/reports',
         icon: icon('ic_analytics'),
       },
       {
