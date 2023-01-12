@@ -33,15 +33,16 @@ function getComparator(order, orderBy) {
 }
 
 function applySortFilter(array, comparator, query) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+  let arrayRenew = array;
+  if (query) {
+    arrayRenew = filter(array, (_product) => _product.item_name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+  }
+  const stabilizedThis = arrayRenew.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) return order;
     return a[1] - b[1];
   });
-  if (query) {
-    return filter(array, (_product) => _product.item_name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
-  }
   return stabilizedThis.map((el) => el[0]);
 }
 
@@ -88,7 +89,6 @@ function applySortSupsFilter(array, filterAux) {
 
   return filteredList; 
 }
-
 
 const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
   width: 350,
@@ -138,7 +138,6 @@ export default function ProductsPage() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-
   const handleFilterName = (e) => {
     setFilterName(e.target.value)
   }
@@ -167,20 +166,18 @@ export default function ProductsPage() {
       <ProductsNotReady />
     )
   }
+  // console.log(listaItems)
 
   const filteredComps = applySortCompsFilter(listaItems, compFilter)
   const filteredSups = applySortSupsFilter(filteredComps, filterAuxFunction(supFilter))
-
   const filteredItems = applySortFilter(filteredSups, getComparator(order, orderBy), filterName);
   const isNotFound = !filteredItems.length && !!filterName;
-  // console.log(listaItems)
 
   // PAGINATION VARIABLES 
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage; 
 
   const currentProducts = filteredItems.slice(firstProductIndex, lastProductIndex)
-
 
   return (
     <>
