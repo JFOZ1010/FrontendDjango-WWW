@@ -97,6 +97,7 @@ export default function ProductCategories() {
             <Box
               sx={{
                 position: 'absolute',
+                border: 1,
                 left: 0,
                 right: 0,
                 top: 0,

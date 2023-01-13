@@ -1,5 +1,6 @@
 /* eslint-disable no-eval */
 import { Helmet } from 'react-helmet-async';
+import { NavLink as RouterLink } from 'react-router-dom';
 import { useState, React } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 // @mui
@@ -168,6 +169,13 @@ export default function ProductTable() {
                 </Button>
         </Grid>
         </Grid>
+        <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" sx = {{ mt: 5 }}>
+            <Grid item xs = {3}>
+                <Button component = {RouterLink} to = {'/dashboard/reports'} variant = 'contained' align="center" startIcon = {<Iconify icon = 'eva:arrow-back-fill'/>}>
+                  Regresar
+                </Button>
+            </Grid>
+        </Grid> 
         </Container>
         
         </>
@@ -454,10 +462,10 @@ export default function ProductTable() {
                         </FormControl>
             </Grid>
             <Grid item xs={2}>
-                <Button variant="contained" startIcon={<Iconify icon="material-symbols:backup-table" />} onClick={() => generateReport("Mercado")}>
-                    Generar reporte
-                </Button>
-        </Grid>
+              <Button variant="contained" startIcon={<Iconify icon="material-symbols:backup-table" />} onClick={() => generateReport("Mercado")}>
+                Generar reporte
+              </Button>
+            </Grid>
         </Grid>
         </Container>
         </>
