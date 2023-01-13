@@ -44,11 +44,11 @@ if (tipo){
         path: '/dashboard/noticiasAdmin',
         icon: icon('ic_blog'),
       },
-      /*{
+      {
         title: 'Generar Scrapping',
         path: '/dashboard/scrapping-gen',
         icon: icon('ic_lock'),
-      },*/
+      },
     ]
   } else if (tipo.localeCompare('Supplier') === 0) {
     config  =
