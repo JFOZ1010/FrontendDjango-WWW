@@ -66,25 +66,10 @@ if (tipo){
         icon: icon('ic_blog'),
       },
       {
-        title: 'Tienda',
-        path: '/dashboard/productPage',
-        icon: icon('ic_cart'),
-      },
-      {
         title: 'Reportes',
         path: '/dashboard/reportsSup',
         icon: icon('ic_analytics'),
       },
-      {
-        title: 'Reporte: top items por proveedor',
-        path: 'reports/itemsBySupplier',
-        icon: icon('ic_analytics'),
-      },
-      {
-        title: 'Reporte ItemByCat',
-        path: 'reports/itembycat',
-        icon: icon('ic_analytics'),
-      }
     ]
   } else {
     config  = []
