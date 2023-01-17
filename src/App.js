@@ -57,12 +57,12 @@ export default function App() {
             <Route path = "scrapping-gen" element = {<ScrappingGen/>} />
             <Route path = "productPage" element = {<ProductsPage/>} />
             <Route path = "reports" element = {<Reports />} />
+            <Route path = "reportsSup" element = {<ReportsSup />} />
             <Route path = "reports/itembycat" element = {<ItemByCat />} />
             <Route path = "reports/itembycatsup" element = {<ItemByCatSup />} /> 
             <Route path = "reports/itemsBySupplier" element = {<ItemsBySupplierAdmin/>} />
             <Route path = "reportByProduct" element = {<ReportByProduct/>} />
             <Route path = "reportByProduct/reportPrice/:productId/:date/:price" element = {<PriceReport/>}/>
-            <Route path = "reportsSup" element = {<ReportsSup />} />
           </Route>
         </Routes>
       </ThemeProvider>
