@@ -25,7 +25,9 @@ import NewDelete from './components/News/NewDelete';
 import ScrappingGen from './components/Admin/ScrappingGen';
 import ProductsPage from './components/Item/ProductsPage'
 import Reports from './components/Admin/AdminReport/Report'
+import ReportsSup from './components/supplier/ReportsSup';
 import ItemByCat from './components/Reports/ItemByCat'
+import ItemByCatSup from './components/Reports/ItemByCatSup'
 import ReportByProduct from './components/Admin/ReportByProduct'
 import PriceReport from './components/Reports/PriceReport'
 import ItemsBySupplierAdmin from './components/Reports/itemsBySupplierAdmin';
@@ -56,9 +58,11 @@ export default function App() {
             <Route path = "productPage" element = {<ProductsPage/>} />
             <Route path = "reports" element = {<Reports />} />
             <Route path = "reports/itembycat" element = {<ItemByCat />} />
+            <Route path = "reports/itembycatsup" element = {<ItemByCatSup />} /> 
             <Route path = "reports/itemsBySupplier" element = {<ItemsBySupplierAdmin/>} />
             <Route path = "reportByProduct" element = {<ReportByProduct/>} />
             <Route path = "reportByProduct/reportPrice/:productId/:date/:price" element = {<PriceReport/>}/>
+            <Route path = "reportsSup" element = {<ReportsSup />} />
           </Route>
         </Routes>
       </ThemeProvider>
