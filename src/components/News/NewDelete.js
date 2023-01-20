@@ -45,7 +45,7 @@ export default function NewDelete() {
                 <Typography variant="h5" component="div">
                     Noticia borrada
                 </Typography>
-                <Button variant="contained" component={LinkNew} to={'/dashboard/blog'}>
+                <Button variant="contained" component={LinkNew} to={'/dashboard/noticiasAdmin'}>
                     Volver
                 </Button>
 
