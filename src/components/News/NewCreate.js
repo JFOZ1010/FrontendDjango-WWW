@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react'
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from 'draft-js'
+import { EditorState, convertToRaw } from 'draft-js'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -53,6 +53,9 @@ const onSubmit = data => {
     setVisible(true)
     // return
   }else{
+    console.log(editorState)
+    data.new_description = convertToRaw(editorState.getCurrentContent())
+    console.log(editorState)
     setMensaje('Noticia creada')
     createNew(data)
     setVisible(true)
